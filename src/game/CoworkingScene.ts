@@ -1138,10 +1138,14 @@ export class CoworkingScene extends Phaser.Scene {
   }
 
   private playFloatingEmote(visual: AvatarVisual, emoji: string): void {
-    const emoteTxt = this.add
-      .text(visual.container.x, visual.container.y - 36, emoji, {
+    const emoteTxt = this.addCrispText(
+      visual.container.x,
+      visual.container.y - 36,
+      emoji,
+      {
         fontSize: '28px',
-      })
+      }
+    )
       .setOrigin(0.5, 0.5)
       .setDepth(2500)
       .setScale(0.3);
@@ -1566,14 +1570,34 @@ export class CoworkingScene extends Phaser.Scene {
       '#FDF5EE'
     );
 
-    this.add
-      .text(1050, 1192, '🏛️ HAUPTEINGANG • UNTERTAUNUS BUSINESS HUB', {
+    this.addCrispText(
+      1050,
+      1192,
+      '🏛️ HAUPTEINGANG • UNTERTAUNUS BUSINESS HUB',
+      {
         fontFamily: 'Inter, sans-serif',
         fontSize: '11px',
         fontStyle: 'bold',
         color: '#174955',
-      })
-      .setOrigin(0.5, 0.5);
+      }
+    ).setOrigin(0.5, 0.5);
+  }
+
+  private addCrispText(
+    x: number,
+    y: number,
+    text: string | string[],
+    style: Phaser.Types.GameObjects.Text.TextStyle
+  ): Phaser.GameObjects.Text {
+    const dpr = Math.max(window.devicePixelRatio || 1, 2);
+    const targetRes = Math.max(dpr * 1.5, 3);
+    const crispStyle: Phaser.Types.GameObjects.Text.TextStyle = {
+      ...style,
+      resolution: targetRes,
+    };
+    const t = this.add.text(x, y, text, crispStyle);
+    t.setResolution(targetRes);
+    return t;
   }
 
   private createZoneLabel(
@@ -1584,7 +1608,7 @@ export class CoworkingScene extends Phaser.Scene {
     accentHex: string,
     bgHex: string
   ): void {
-    const t1 = this.add.text(x, y, title, {
+    const t1 = this.addCrispText(x, y, title, {
       fontFamily: 'Inter, sans-serif',
       fontSize: '12px',
       fontStyle: 'bold',
@@ -1592,7 +1616,7 @@ export class CoworkingScene extends Phaser.Scene {
       backgroundColor: bgHex,
       padding: { x: 8, y: 4 },
     });
-    this.add.text(x, y + t1.height + 3, subtitle, {
+    this.addCrispText(x, y + t1.height + 3, subtitle, {
       fontFamily: 'Inter, sans-serif',
       fontSize: '11px',
       color: '#4B6F77',
@@ -1693,15 +1717,19 @@ export class CoworkingScene extends Phaser.Scene {
       this.grabFreshEspresso();
     });
 
-    this.add
-      .text(this.COFFEE_X, this.COFFEE_Y - 38, '☕ SIEBTRÄGER-BAR [E]', {
+    this.addCrispText(
+      this.COFFEE_X,
+      this.COFFEE_Y - 38,
+      '☕ SIEBTRÄGER-BAR [E]',
+      {
         fontFamily: 'Inter, sans-serif',
         fontSize: '10.5px',
         fontStyle: 'bold',
         color: '#FFFFFF',
         backgroundColor: '#E68A36',
         padding: { x: 7, y: 3 },
-      })
+      }
+    )
       .setOrigin(0.5, 0.5)
       .setDepth(140);
 
@@ -1768,20 +1796,19 @@ export class CoworkingScene extends Phaser.Scene {
       this.playFoosballMatch();
     });
 
-    this.add
-      .text(
-        this.FOOSBALL_X,
-        this.FOOSBALL_Y - 48,
-        '⚽ TAUNUS-TISCHKICKER [E]',
-        {
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '10px',
-          fontStyle: 'bold',
-          color: '#FFFFFF',
-          backgroundColor: '#5F7F6E',
-          padding: { x: 7, y: 3 },
-        }
-      )
+    this.addCrispText(
+      this.FOOSBALL_X,
+      this.FOOSBALL_Y - 48,
+      '⚽ TAUNUS-TISCHKICKER [E]',
+      {
+        fontFamily: 'Inter, sans-serif',
+        fontSize: '10px',
+        fontStyle: 'bold',
+        color: '#FFFFFF',
+        backgroundColor: '#5F7F6E',
+        padding: { x: 7, y: 3 },
+      }
+    )
       .setOrigin(0.5, 0.5)
       .setDepth(this.FOOSBALL_Y + 25);
 
@@ -1854,15 +1881,19 @@ export class CoworkingScene extends Phaser.Scene {
       setTimeout(() => this.callbacks.onOpenBulletinBoard(), 20);
     });
 
-    this.add
-      .text(this.STELE_X, this.STELE_Y - 40, '📌 SCHWARZES BRETT [E]', {
+    this.addCrispText(
+      this.STELE_X,
+      this.STELE_Y - 40,
+      '📌 SCHWARZES BRETT [E]',
+      {
         fontFamily: 'Inter, sans-serif',
         fontSize: '11px',
         fontStyle: 'bold',
         color: '#FFFFFF',
         backgroundColor: '#00A5B5',
         padding: { x: 8, y: 4 },
-      })
+      }
+    )
       .setOrigin(0.5, 0.5)
       .setDepth(this.STELE_Y + 30);
 
@@ -1914,20 +1945,19 @@ export class CoworkingScene extends Phaser.Scene {
       setTimeout(() => this.callbacks.onOpenWhiteboard(), 20);
     });
 
-    this.add
-      .text(
-        this.WHITEBOARD_X,
-        this.WHITEBOARD_Y - 34,
-        '🎨 TEAM-WHITEBOARD [E]',
-        {
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '10px',
-          fontStyle: 'bold',
-          color: '#FFFFFF',
-          backgroundColor: '#7E1946',
-          padding: { x: 7, y: 3 },
-        }
-      )
+    this.addCrispText(
+      this.WHITEBOARD_X,
+      this.WHITEBOARD_Y - 34,
+      '🎨 TEAM-WHITEBOARD [E]',
+      {
+        fontFamily: 'Inter, sans-serif',
+        fontSize: '10px',
+        fontStyle: 'bold',
+        color: '#FFFFFF',
+        backgroundColor: '#7E1946',
+        padding: { x: 7, y: 3 },
+      }
+    )
       .setOrigin(0.5, 0.5)
       .setDepth(this.WHITEBOARD_Y + 25);
 
@@ -1998,15 +2028,19 @@ export class CoworkingScene extends Phaser.Scene {
       if (firstNetSeat) this.handleSeatOrDeskClick(firstNetSeat, pointer);
     });
 
-    this.add
-      .text(netX, netY - 122, '🤝 SPEED-NETWORKING TISCH (Klick zum Hinsetzen)', {
+    this.addCrispText(
+      netX,
+      netY - 122,
+      '🤝 SPEED-NETWORKING TISCH (Klick zum Hinsetzen)',
+      {
         fontFamily: 'Inter, sans-serif',
         fontSize: '10px',
         fontStyle: 'bold',
         color: '#FFFFFF',
         backgroundColor: '#E68A36',
         padding: { x: 7, y: 3 },
-      })
+      }
+    )
       .setOrigin(0.5, 0.5)
       .setDepth(netY + 30);
 
@@ -2204,15 +2238,14 @@ export class CoworkingScene extends Phaser.Scene {
     benches.forEach((b) => {
       this.add.image(b.x, b.y, 'park-bench').setDepth(b.y + 8);
       if (b.label) {
-        this.add
-          .text(b.x, b.y - 24, b.label, {
-            fontFamily: 'Inter, sans-serif',
-            fontSize: '9.5px',
-            fontStyle: 'bold',
-            color: '#174955',
-            backgroundColor: '#F4F7F8',
-            padding: { x: 6, y: 2 },
-          })
+        this.addCrispText(b.x, b.y - 24, b.label, {
+          fontFamily: 'Inter, sans-serif',
+          fontSize: '9.5px',
+          fontStyle: 'bold',
+          color: '#174955',
+          backgroundColor: '#F4F7F8',
+          padding: { x: 6, y: 2 },
+        })
           .setOrigin(0.5, 0.5)
           .setDepth(b.y + 15);
       }
@@ -2226,15 +2259,14 @@ export class CoworkingScene extends Phaser.Scene {
     ];
     signposts.forEach((sp) => {
       this.add.image(sp.x, sp.y, 'trail-signpost').setDepth(sp.y + 12);
-      this.add
-        .text(sp.x, sp.y - 34, sp.text, {
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '9.5px',
-          fontStyle: 'bold',
-          color: '#FFFFFF',
-          backgroundColor: '#5F7F6E',
-          padding: { x: 6, y: 2 },
-        })
+      this.addCrispText(sp.x, sp.y - 34, sp.text, {
+        fontFamily: 'Inter, sans-serif',
+        fontSize: '9.5px',
+        fontStyle: 'bold',
+        color: '#FFFFFF',
+        backgroundColor: '#5F7F6E',
+        padding: { x: 6, y: 2 },
+      })
         .setOrigin(0.5, 0.5)
         .setDepth(sp.y + 20);
     });
@@ -2325,16 +2357,14 @@ export class CoworkingScene extends Phaser.Scene {
       const startPt = hc.waypoints[hc.startIdx];
       const nextIdx = (hc.startIdx + 1) % hc.waypoints.length;
       const sprite = this.add.image(0, 0, `${hc.texPrefix}-0`);
-      const tag = this.add
-        .text(0, -32, hc.name, {
-          fontFamily: 'Inter, sans-serif',
-          fontSize: '9.5px',
-          fontStyle: 'bold',
-          color: '#174955',
-          backgroundColor: '#F4F7F8',
-          padding: { x: 5, y: 2 },
-        })
-        .setOrigin(0.5, 0.5);
+      const tag = this.addCrispText(0, -32, hc.name, {
+        fontFamily: 'Inter, sans-serif',
+        fontSize: '9.5px',
+        fontStyle: 'bold',
+        color: '#174955',
+        backgroundColor: '#F4F7F8',
+        padding: { x: 5, y: 2 },
+      }).setOrigin(0.5, 0.5);
 
       const container = this.add
         .container(startPt.x, startPt.y, [sprite, tag])
@@ -2556,15 +2586,19 @@ export class CoworkingScene extends Phaser.Scene {
     deskSprite.body?.setSize(104, 44);
     deskSprite.body?.setOffset(7, 10);
 
-    const occupiedBadge = this.add
-      .text(deskX, deskY - 34, '🪑 BESETZT', {
+    const occupiedBadge = this.addCrispText(
+      deskX,
+      deskY - 34,
+      '🪑 BESETZT',
+      {
         fontFamily: 'Inter, sans-serif',
         fontSize: '9.5px',
         fontStyle: 'bold',
         color: '#FFFFFF',
         backgroundColor: '#E68A36',
         padding: { x: 6, y: 2 },
-      })
+      }
+    )
       .setOrigin(0.5, 0.5)
       .setDepth(deskY + 30)
       .setVisible(false);
@@ -2645,14 +2679,12 @@ export class CoworkingScene extends Phaser.Scene {
     promptBg.lineStyle(1.5, 0x174955, 0.28);
     promptBg.strokeRoundedRect(-136, -19, 272, 38, 16);
 
-    const promptTxt = this.add
-      .text(0, 0, text, {
-        fontFamily: 'Inter, sans-serif',
-        fontSize: '11px',
-        fontStyle: 'bold',
-        color: '#174955',
-      })
-      .setOrigin(0.5, 0.5);
+    const promptTxt = this.addCrispText(0, 0, text, {
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '11px',
+      fontStyle: 'bold',
+      color: '#174955',
+    }).setOrigin(0.5, 0.5);
 
     return this.add
       .container(x, y, [promptBg, promptTxt])
@@ -2766,42 +2798,44 @@ export class CoworkingScene extends Phaser.Scene {
       : state.isNpc
       ? `🤖 ${state.name}`
       : state.name;
-    const nameTag = this.add
-      .text(0, 27, labelText, {
-        fontFamily: 'Inter, sans-serif',
-        fontSize: '11px',
-        fontStyle: 'bold',
-        color: '#FFFFFF',
-        backgroundColor: isSelf
-          ? '#174955'
-          : state.isNpc
-          ? '#334E54'
-          : '#2A2E30',
-        padding: { x: 6, y: 2 },
-      })
+    const nameTag = this.addCrispText(0, 27, labelText, {
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '11px',
+      fontStyle: 'bold',
+      color: '#FFFFFF',
+      backgroundColor: isSelf
+        ? '#174955'
+        : state.isNpc
+        ? '#334E54'
+        : '#2A2E30',
+      padding: { x: 6, y: 2 },
+    })
       .setOrigin(0.5, 0)
       .setInteractive({ useHandCursor: true });
 
-    const townBadge = this.add
-      .text(0, 44, `📍 ${state.location}`, {
-        fontFamily: 'Inter, sans-serif',
-        fontSize: '9.5px',
-        color: '#0F323A',
-        backgroundColor: '#EDF5F7',
-        padding: { x: 4, y: 1 },
-      })
+    const townBadge = this.addCrispText(0, 44, `📍 ${state.location}`, {
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '9.5px',
+      color: '#0F323A',
+      backgroundColor: '#EDF5F7',
+      padding: { x: 4, y: 1 },
+    })
       .setOrigin(0.5, 0)
       .setInteractive({ useHandCursor: true });
 
-    const customStatusTag = this.add
-      .text(0, 60, state.customStatus || '', {
+    const customStatusTag = this.addCrispText(
+      0,
+      60,
+      state.customStatus || '',
+      {
         fontFamily: 'Inter, sans-serif',
         fontSize: '9px',
         fontStyle: 'bold',
         color: '#FDF5EE',
         backgroundColor: '#4B6F77',
         padding: { x: 5, y: 1.5 },
-      })
+      }
+    )
       .setOrigin(0.5, 0)
       .setVisible(Boolean(state.customStatus && state.customStatus.trim()));
 
@@ -2809,16 +2843,14 @@ export class CoworkingScene extends Phaser.Scene {
     statusDot.setStrokeStyle(1.5, 0xffffff);
 
     const bubbleBg = this.add.graphics();
-    const bubbleText = this.add
-      .text(0, 0, '', {
-        fontFamily: 'Inter, sans-serif',
-        fontSize: '11px',
-        fontStyle: 'bold',
-        color: '#151718',
-        wordWrap: { width: 195 },
-        align: 'center',
-      })
-      .setOrigin(0.5, 1);
+    const bubbleText = this.addCrispText(0, 0, '', {
+      fontFamily: 'Inter, sans-serif',
+      fontSize: '11px',
+      fontStyle: 'bold',
+      color: '#151718',
+      wordWrap: { width: 195 },
+      align: 'center',
+    }).setOrigin(0.5, 1);
 
     const bubbleContainer = this.add.container(0, -28, [bubbleBg, bubbleText]);
     bubbleContainer.setVisible(false);

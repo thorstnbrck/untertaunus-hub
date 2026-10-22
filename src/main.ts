@@ -302,6 +302,11 @@ function enterFullscreenOffice(): void {
       parent: 'game-canvas-container',
       width: window.innerWidth,
       height: window.innerHeight,
+      render: {
+        antialias: true,
+        antialiasGL: true,
+        roundPixels: false,
+      },
       backgroundColor: '#0F323A',
       physics: {
         default: 'arcade',
