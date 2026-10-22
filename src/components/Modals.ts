@@ -99,7 +99,7 @@ export function populateTownSelect(
 export function openBusinessCardModal(
   dialog: HTMLDialogElement,
   player: PlayerState,
-  onStartDirectChat: (recipientName: string) => void,
+  onStartDirectChat: (player: PlayerState) => void,
   onWalkToPlayer?: (playerId: string) => void
 ): void {
   const nameEl = dialog.querySelector('#vcard-name') as HTMLElement;
@@ -198,7 +198,7 @@ export function openBusinessCardModal(
 
   chatBtn.onclick = () => {
     dialog.close();
-    onStartDirectChat(player.name);
+    onStartDirectChat(player);
   };
 
   safeShowModal(dialog);

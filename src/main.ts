@@ -2,6 +2,7 @@ import Phaser from 'phaser';
 import './styles/main.css';
 import { CoworkingScene } from './game/CoworkingScene';
 import { NetworkManager } from './game/NetworkManager';
+import { ChatCenter } from './components/ChatCenter';
 import {
   attachDialogLightDismissFallback,
   escapeHtml,
@@ -105,6 +106,7 @@ const ONBOARDING_TOUR_STATIONS: OnboardingTourStation[] = [
 
 const network = new NetworkManager();
 const coworkingScene = new CoworkingScene();
+let chatCenter: ChatCenter;
 
 function initApp(): void {
   // 1. Setup all native <dialog closedby="any"> modals + mandatory Safari fallback
@@ -118,10 +120,38 @@ function initApp(): void {
   const whiteboardDialog = document.getElementById(
     'whiteboard-modal'
   ) as HTMLDialogElement;
+  const chatCenterDialog = document.getElementById(
+    'chat-center-modal'
+  ) as HTMLDialogElement;
 
-  [profileDialog, vcardDialog, bulletinDialog, whiteboardDialog].forEach(
-    (dlg) => {
-      if (dlg) attachDialogLightDismissFallback(dlg);
+  [
+    profileDialog,
+    vcardDialog,
+    bulletinDialog,
+    whiteboardDialog,
+    chatCenterDialog,
+  ].forEach((dlg) => {
+    if (dlg) attachDialogLightDismissFallback(dlg);
+  });
+
+  chatCenter = new ChatCenter(
+    chatCenterDialog,
+    network,
+    coworkingScene,
+    () => currentProfile,
+    {
+      onWalkToPlayer: (playerId) => coworkingScene.walkToPlayer(playerId),
+      onOpenVCard: (player) => {
+        openBusinessCardModal(
+          vcardDialog,
+          player,
+          (target) => {
+            chatCenter.selectDm(target);
+            chatCenter.open();
+          },
+          (playerId) => coworkingScene.walkToPlayer(playerId)
+        );
+      },
     }
   );
 
@@ -218,18 +248,16 @@ function enterFullscreenOffice(): void {
 
     coworkingScene.initData(network, currentProfile, {
       onZoneChange: handleZoneChange,
+      onRequestChatFocus: () => {
+        chatCenter?.open();
+      },
       onAvatarClick: (player: PlayerState) => {
         openBusinessCardModal(
           vcardDialog,
           player,
-          (recipientName) => {
-            const chatInput = document.getElementById(
-              'chat-input'
-            ) as HTMLInputElement;
-            if (chatInput) {
-              chatInput.value = `@${recipientName}: `;
-              chatInput.focus();
-            }
+          (target) => {
+            chatCenter?.selectDm(target);
+            chatCenter?.open();
           },
           (playerId) => {
             coworkingScene.walkToPlayer(playerId);
@@ -282,12 +310,6 @@ function enterFullscreenOffice(): void {
             banner.classList.add('hidden');
           }
         }
-      },
-      onRequestChatFocus: () => {
-        const chatInput = document.getElementById(
-          'chat-input'
-        ) as HTMLInputElement;
-        chatInput?.focus();
       },
       onZoomChange: (zoomPercent: number) => {
         const zoomLabel = document.getElementById('zoom-level-label');
@@ -1090,6 +1112,11 @@ function setupInGameHudAndChat(
     }
   });
 
+  const openChatCenterBtn = document.getElementById('open-chat-center-btn');
+  openChatCenterBtn?.addEventListener('click', () => {
+    chatCenter?.toggle();
+  });
+
   toggleChatBtn?.addEventListener('click', () => {
     chatDrawer?.classList.toggle('hidden');
   });
@@ -1251,14 +1278,9 @@ function renderDirectoryList(): void {
       openBusinessCardModal(
         vcardDialog,
         member,
-        (recipientName) => {
-          const chatInput = document.getElementById(
-            'chat-input'
-          ) as HTMLInputElement;
-          if (chatInput) {
-            chatInput.value = `@${recipientName}: `;
-            chatInput.focus();
-          }
+        (target) => {
+          chatCenter?.selectDm(target);
+          chatCenter?.open();
         },
         (playerId) => {
           coworkingScene.walkToPlayer(playerId);
@@ -1309,6 +1331,7 @@ function setupQuickZoneNavigation(): void {
 
 function handleZoneChange(zone: ZoneType): void {
   currentPlayerZone = zone;
+  chatCenter?.setZone(zone);
   const badge = document.getElementById('current-zone-badge');
   const confOverlay = document.getElementById('conference-video-overlay');
   const confTitle = document.getElementById('conference-overlay-title');
@@ -1450,14 +1473,9 @@ function renderConferenceRoomParticipants(
       openBusinessCardModal(
         vcardDialog,
         member,
-        (recipientName) => {
-          const roomInput = document.getElementById(
-            'conference-room-chat-input'
-          ) as HTMLInputElement;
-          if (roomInput) {
-            roomInput.value = `@${recipientName}: `;
-            roomInput.focus();
-          }
+        (target) => {
+          chatCenter?.selectDm(target);
+          chatCenter?.open();
         },
         (playerId) => {
           coworkingScene.walkToPlayer(playerId);

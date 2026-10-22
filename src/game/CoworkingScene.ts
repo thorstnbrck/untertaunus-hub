@@ -3060,14 +3060,16 @@ export class CoworkingScene extends Phaser.Scene {
   }
 
   private isTypingInInput(): boolean {
+    if (document.querySelector('dialog[open]')) {
+      return true;
+    }
     const active = document.activeElement;
     if (!active) return false;
     const tag = active.tagName.toLowerCase();
     return (
       tag === 'input' ||
       tag === 'textarea' ||
-      tag === 'select' ||
-      active.closest('dialog[open]') !== null
+      tag === 'select'
     );
   }
 }

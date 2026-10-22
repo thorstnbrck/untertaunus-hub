@@ -243,7 +243,12 @@ export interface BulletinPin {
   createdAt: string;
 }
 
-export type ChatRoomType = 'global' | 'conference' | 'networking';
+export type ChatRoomType =
+  | 'global'
+  | 'conference'
+  | 'networking'
+  | 'lounge'
+  | 'focus';
 
 export interface ChatMessage {
   id: string;
@@ -253,6 +258,8 @@ export interface ChatMessage {
   timestamp: string;
   color: string;
   room?: ChatRoomType;
+  recipientId?: string;
+  isDirect?: boolean;
 }
 
 export interface WhiteboardStroke {

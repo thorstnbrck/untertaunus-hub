@@ -265,6 +265,7 @@ const DEFAULT_PINS: BulletinPin[] = [
 type ListenerMap = {
   playersUpdated: (players: PlayerState[]) => void;
   chatMessage: (msg: ChatMessage) => void;
+  privateMessage: (msg: ChatMessage) => void;
   pinsUpdated: (pins: BulletinPin[]) => void;
   connectionChanged: (connected: boolean, count: number) => void;
   emoteTriggered: (senderId: string, emoji: string) => void;
@@ -319,8 +320,9 @@ export class NetworkManager {
     },
   ];
 
-  private roomChatHistories: Record<'conference' | 'networking', ChatMessage[]> =
+  private roomChatHistories: Record<ChatRoomType, ChatMessage[]> =
     {
+      global: [],
       conference: [
         {
           id: 'conf-init-1',
@@ -335,19 +337,44 @@ export class NetworkManager {
       networking: [
         {
           id: 'net-init-1',
-          senderId: 'npc-niedernhausen',
-          senderName: 'Svenja Hartmann (Niedernhausen)',
+          senderId: 'npc-badcamberg',
+          senderName: 'Svenja Hartmann (Bad Camberg)',
           text: 'Hallo in der Networking-Arena! 🤝 Hier im Raum-Chat schreiben nur wir Teilnehmer, die gerade in diesem Konferenzraum stehen oder sitzen.',
           timestamp: '09:50',
           color: '#7E1946',
           room: 'networking',
         },
       ],
+      lounge: [
+        {
+          id: 'lounge-init-1',
+          senderId: 'npc-schwalbach',
+          senderName: 'Dr. Florian Becker (Bad Schwalbach)',
+          text: 'Der Kaffee hier schmeckt heute wieder hervorragend! ☕ Wer braucht noch einen Motivationsschub?',
+          timestamp: '09:30',
+          color: '#E68A36',
+          room: 'lounge',
+        },
+      ],
+      focus: [
+        {
+          id: 'focus-init-1',
+          senderId: 'npc-taunusstein',
+          senderName: 'Tim Schneider (Taunusstein)',
+          text: 'Guten Morgen! Im Fokus-Bereich bitte leise arbeiten oder für Audio-Calls in den Konferenzraum wechseln. 🌿',
+          timestamp: '09:20',
+          color: '#00A5B5',
+          room: 'focus',
+        },
+      ],
     };
+
+  private privateChatHistories: Map<string, ChatMessage[]> = new Map();
 
   private listeners: { [K in keyof ListenerMap]: Set<ListenerMap[K]> } = {
     playersUpdated: new Set(),
     chatMessage: new Set(),
+    privateMessage: new Set(),
     pinsUpdated: new Set(),
     connectionChanged: new Set(),
     emoteTriggered: new Set(),
@@ -411,10 +438,7 @@ export class NetworkManager {
           players: PlayerState[];
           pins: BulletinPin[];
           chatHistory: ChatMessage[];
-          roomChatHistories?: {
-            conference?: ChatMessage[];
-            networking?: ChatMessage[];
-          };
+          roomChatHistories?: Record<string, ChatMessage[]>;
           whiteboard?: {
             strokes: WhiteboardStroke[];
             stickies: WhiteboardSticky[];
@@ -432,20 +456,16 @@ export class NetworkManager {
             this.notifyPins();
           }
           if (data.roomChatHistories) {
-            if (
-              Array.isArray(data.roomChatHistories.conference) &&
-              data.roomChatHistories.conference.length > 0
-            ) {
-              this.roomChatHistories.conference =
-                data.roomChatHistories.conference;
-            }
-            if (
-              Array.isArray(data.roomChatHistories.networking) &&
-              data.roomChatHistories.networking.length > 0
-            ) {
-              this.roomChatHistories.networking =
-                data.roomChatHistories.networking;
-            }
+            (['conference', 'networking', 'lounge', 'focus'] as ChatRoomType[]).forEach(
+              (r) => {
+                if (
+                  Array.isArray(data.roomChatHistories?.[r]) &&
+                  data.roomChatHistories[r].length > 0
+                ) {
+                  this.roomChatHistories[r] = data.roomChatHistories[r];
+                }
+              }
+            );
           }
           if (data.whiteboard) {
             this.strokes = data.whiteboard.strokes || [];
@@ -518,9 +538,10 @@ export class NetworkManager {
 
       this.socket.on('chat:message', (msg: ChatMessage) => {
         const room = msg.room || 'global';
-        if (room === 'conference' || room === 'networking') {
+        if (room in this.roomChatHistories) {
           this.roomChatHistories[room].push(msg);
-        } else {
+        }
+        if (room === 'global') {
           this.chatHistory.push(msg);
         }
         const sender = this.remotePlayers.get(msg.senderId);
@@ -531,6 +552,24 @@ export class NetworkManager {
         }
         this.listeners.chatMessage.forEach((cb) => cb(msg));
       });
+
+      const handleIncomingPrivateMessage = (msg: ChatMessage) => {
+        const partnerId =
+          msg.senderId === this.selfId ? msg.recipientId : msg.senderId;
+        if (partnerId) {
+          if (!this.privateChatHistories.has(partnerId)) {
+            this.privateChatHistories.set(partnerId, []);
+          }
+          const list = this.privateChatHistories.get(partnerId)!;
+          if (!list.some((existing) => existing.id === msg.id)) {
+            list.push(msg);
+          }
+        }
+        this.listeners.privateMessage.forEach((cb) => cb(msg));
+      };
+
+      this.socket.on('chat:private', handleIncomingPrivateMessage);
+      this.socket.on('private_message', handleIncomingPrivateMessage);
 
       this.socket.on('bulletin:added', (pin: BulletinPin) => {
         if (!this.pins.some((existing) => existing.id === pin.id)) {
@@ -592,7 +631,7 @@ export class NetworkManager {
     localProfile: PlayerProfile,
     room: ChatRoomType = 'global'
   ): ChatMessage | null {
-    const clean = text.trim().slice(0, 180);
+    const clean = text.trim().slice(0, 240);
     if (!clean) return null;
 
     if (this.connected && this.socket) {
@@ -618,13 +657,79 @@ export class NetworkManager {
       color: localProfile.color,
       room,
     };
-    if (room === 'conference' || room === 'networking') {
+    if (room !== 'global') {
+      if (!this.roomChatHistories[room]) {
+        this.roomChatHistories[room] = [];
+      }
       this.roomChatHistories[room].push(msg);
-      this.triggerNpcConferenceReply(room);
+      if (room === 'conference' || room === 'networking') {
+        this.triggerNpcConferenceReply(room);
+      }
     } else {
       this.chatHistory.push(msg);
     }
     this.listeners.chatMessage.forEach((cb) => cb(msg));
+    return msg;
+  }
+
+  public sendPrivateMessage(
+    recipientId: string,
+    text: string,
+    localProfile: PlayerProfile
+  ): ChatMessage | null {
+    const clean = text.trim().slice(0, 240);
+    if (!clean || !recipientId) return null;
+
+    const now = new Date();
+    const timestamp = now.toTimeString().slice(0, 5);
+    const msg: ChatMessage = {
+      id: `pm-loc-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      senderId: this.selfId,
+      senderName: `${localProfile.name} (${localProfile.location})`,
+      recipientId,
+      text: clean,
+      timestamp,
+      color: localProfile.color,
+      isDirect: true,
+    };
+
+    if (!this.privateChatHistories.has(recipientId)) {
+      this.privateChatHistories.set(recipientId, []);
+    }
+    const list = this.privateChatHistories.get(recipientId)!;
+    if (!list.some((m) => m.id === msg.id)) {
+      list.push(msg);
+    }
+
+    if (this.connected && this.socket) {
+      this.socket.emit('chat:private', {
+        recipientId,
+        text: clean,
+      });
+    } else {
+      // Local fallback simulation if server is offline
+      this.listeners.privateMessage.forEach((cb) => cb(msg));
+      if (recipientId.startsWith('npc-')) {
+        setTimeout(() => {
+          const npc = this.npcs.get(recipientId);
+          const replyText =
+            'Hallo! Vielen Dank für deine Nachricht. Ich freue mich über den regionalen Austausch im Untertaunus Hub! 🤝';
+          const botMsg: ChatMessage = {
+            id: `pm-bot-${Date.now()}`,
+            senderId: recipientId,
+            senderName: npc?.name || 'Demo-Bot',
+            recipientId: this.selfId,
+            text: replyText,
+            timestamp: new Date().toTimeString().slice(0, 5),
+            color: npc?.color || '#174955',
+            isDirect: true,
+          };
+          list.push(botMsg);
+          this.listeners.privateMessage.forEach((cb) => cb(botMsg));
+        }, 1200);
+      }
+    }
+
     return msg;
   }
 
@@ -730,10 +835,17 @@ export class NetworkManager {
     return this.chatHistory;
   }
 
-  public getRoomChatHistory(
-    room: 'conference' | 'networking'
-  ): ChatMessage[] {
-    return this.roomChatHistories[room] || [];
+  public getRoomChatHistory(room: ChatRoomType): ChatMessage[] {
+    if (room === 'global') return [...this.chatHistory];
+    return [...(this.roomChatHistories[room] || [])];
+  }
+
+  public getPrivateChatHistory(partnerId: string): ChatMessage[] {
+    return [...(this.privateChatHistories.get(partnerId) || [])];
+  }
+
+  public getSelfId(): string {
+    return this.selfId;
   }
 
   public getOnlineCount(): number {

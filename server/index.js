@@ -124,6 +124,76 @@ const chatHistory = [
 const roomChatHistories = {
   conference: [],
   networking: [],
+  lounge: [
+    {
+      id: 'lounge-init-1',
+      senderId: 'npc-schwalbach',
+      senderName: 'Dr. Florian Becker (Bad Schwalbach)',
+      text: 'Der Kaffee hier schmeckt heute wieder hervorragend! ☕ Wer braucht noch einen Motivationsschub?',
+      timestamp: '09:30',
+      color: '#E68A36',
+      room: 'lounge',
+    },
+  ],
+  focus: [
+    {
+      id: 'focus-init-1',
+      senderId: 'npc-taunusstein',
+      senderName: 'Tim Schneider (Taunusstein)',
+      text: 'Guten Morgen! Im Fokus-Bereich bitte leise arbeiten oder für Audio-Calls in den Konferenzraum wechseln. 🌿',
+      timestamp: '09:20',
+      color: '#00A5B5',
+      room: 'focus',
+    },
+  ],
+};
+
+const BOT_DIRECTORY = {
+  'npc-idstein': {
+    name: 'Lena Berger (Idstein)',
+    color: '#174955',
+    replies: [
+      'Hallo! Schön, dass du mir schreibst. Wenn du Fragen zu Digitalisierungs-Förderprogrammen oder Projekten im Rheingau-Taunus hast, helfe ich dir gern weiter! 💼',
+      'Moin! Ich bin gerade in einer Beratung, antworte dir aber sofort. Wie gefällt dir das digitale Coworking hier im Hub?',
+    ],
+  },
+  'npc-taunusstein': {
+    name: 'Tim Schneider (Taunusstein)',
+    color: '#00A5B5',
+    replies: [
+      'Hi! Freut mich. Ich sitze hier im Fokus-Bereich an einem Software-Sprint. Hast du auch Tech-, Cloud- oder Webthemen im Unternehmen?',
+      'Hey! Wenn du dich über neue Web-Architekturen oder regionale B2B-Projekte austauschen möchtest: lass gern hören!',
+    ],
+  },
+  'npc-schwalbach': {
+    name: 'Dr. Florian Becker (Bad Schwalbach)',
+    color: '#5F7F6E',
+    replies: [
+      'Guten Tag! Herzliche Grüße aus Bad Schwalbach. Wenn es um Strategie, Verträge oder regionale Vernetzung im Untertaunus geht, bin ich gern dein Ansprechpartner.',
+      'Hallo! Schön, dich im Hub zu sehen. Lass uns gern bei Gelegenheit einen virtuellen Espresso an der Lounge trinken!',
+    ],
+  },
+  'npc-hohenstein': {
+    name: 'Sarah Lindner (Hohenstein)',
+    color: '#E68A36',
+    replies: [
+      'Hey! Schön, dass du da bist. Ich kümmere mich um Mediengestaltung, Webdesign und Employer Branding hier in der Region. Lass uns gern vernetzen!',
+    ],
+  },
+  'npc-aarbergen': {
+    name: 'Jan-Philipp Kraft (Aarbergen)',
+    color: '#00A5B5',
+    replies: [
+      'Servus! Jan hier aus Aarbergen. Suchst du gerade Partner im Handwerk, Smart Energy oder Holzbau? Lass gern sprechen!',
+    ],
+  },
+  'npc-badcamberg': {
+    name: 'Svenja Hartmann (Bad Camberg)',
+    color: '#7E1946',
+    replies: [
+      'Hallo! Willkommen im Untertaunus Hub. Komm später gern an den Networking-Tisch in Saal II für einen kurzen Austausch! 🤝',
+    ],
+  },
 };
 
 app.get('/api/status', (_req, res) => {
@@ -143,6 +213,8 @@ io.on('connection', (socket) => {
     roomChatHistories: {
       conference: roomChatHistories.conference.slice(-30),
       networking: roomChatHistories.networking.slice(-30),
+      lounge: roomChatHistories.lounge.slice(-30),
+      focus: roomChatHistories.focus.slice(-30),
     },
     whiteboard: {
       strokes: whiteboardStrokes,
@@ -229,17 +301,24 @@ io.on('connection', (socket) => {
       ? `${p.name} (${p.location})`
       : payload.senderName || 'Teilnehmer';
     const color = p ? p.color : payload.color || '#174955';
-    const text = String(payload.text || '').trim().slice(0, 180);
+    const text = String(payload.text || '').trim().slice(0, 240);
     if (!text) return;
 
-    const requestedRoom = payload.room;
-    const room =
-      requestedRoom === 'conference' || requestedRoom === 'networking'
-        ? requestedRoom
-        : 'global';
+    const requestedRoom = payload.room || 'global';
+    const validRooms = ['global', 'conference', 'networking', 'lounge', 'focus'];
+    const room = validRooms.includes(requestedRoom) ? requestedRoom : 'global';
 
-    // Only allow sending to a conference room chat if the player is in that room
-    if (room !== 'global' && p && p.zone !== room) {
+    // Verify room zone if room is not global:
+    if (room === 'lounge' && p && p.zone !== 'lounge') {
+      return;
+    }
+    if (room === 'focus' && p && p.zone !== 'focus' && p.zone !== 'cowork2') {
+      return;
+    }
+    if (room === 'conference' && p && p.zone !== 'conference' && p.zone !== 'networking') {
+      return;
+    }
+    if (room === 'networking' && p && p.zone !== 'networking') {
       return;
     }
 
@@ -260,13 +339,22 @@ io.on('connection', (socket) => {
       p.bubbleExpiresAt = Date.now() + 6000;
     }
 
-    if (room === 'conference' || room === 'networking') {
+    if (room !== 'global') {
+      if (!roomChatHistories[room]) {
+        roomChatHistories[room] = [];
+      }
       roomChatHistories[room].push(msg);
       if (roomChatHistories[room].length > 50) roomChatHistories[room].shift();
 
-      // Deliver strictly to players currently inside this specific conference room
+      // Deliver strictly to players currently inside this specific room or zone
       for (const [peerSocketId, peerState] of players.entries()) {
-        if (peerState.zone === room || peerSocketId === socket.id) {
+        const inZone =
+          (room === 'lounge' && peerState.zone === 'lounge') ||
+          (room === 'focus' && (peerState.zone === 'focus' || peerState.zone === 'cowork2')) ||
+          (room === 'conference' && (peerState.zone === 'conference' || peerState.zone === 'networking')) ||
+          (room === 'networking' && peerState.zone === 'networking');
+
+        if (inZone || peerSocketId === socket.id) {
           io.to(peerSocketId).emit('chat:message', msg);
         }
       }
@@ -276,6 +364,65 @@ io.on('connection', (socket) => {
       io.emit('chat:message', msg);
     }
   });
+
+  const handlePrivateMessage = (payload) => {
+    const p = players.get(socket.id);
+    const senderName = p
+      ? `${p.name} (${p.location})`
+      : payload.senderName || 'Teilnehmer';
+    const color = p ? p.color : payload.color || '#174955';
+    const recipientId = payload.recipientId || payload.targetId;
+    const text = String(payload.text || '').trim().slice(0, 240);
+    if (!text || !recipientId) return;
+
+    const now = new Date();
+    const timestamp = now.toTimeString().slice(0, 5);
+    const msg = {
+      id: `pm-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      senderId: socket.id,
+      senderName,
+      recipientId,
+      text,
+      timestamp,
+      color,
+      isDirect: true,
+    };
+
+    // Echo to sender so local client state updates
+    socket.emit('chat:private', msg);
+    socket.emit('private_message', msg);
+
+    // If recipient is a real connected player
+    if (players.has(recipientId)) {
+      io.to(recipientId).emit('chat:private', msg);
+      io.to(recipientId).emit('private_message', msg);
+    } else if (recipientId.startsWith('npc-')) {
+      // Simulate Bot reply
+      const bot = BOT_DIRECTORY[recipientId];
+      if (bot) {
+        setTimeout(() => {
+          const replies = bot.replies;
+          const replyText =
+            replies[Math.floor(Math.random() * replies.length)];
+          const botMsg = {
+            id: `pm-bot-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+            senderId: recipientId,
+            senderName: bot.name,
+            recipientId: socket.id,
+            text: replyText,
+            timestamp: new Date().toTimeString().slice(0, 5),
+            color: bot.color,
+            isDirect: true,
+          };
+          socket.emit('chat:private', botMsg);
+          socket.emit('private_message', botMsg);
+        }, 1200);
+      }
+    }
+  };
+
+  socket.on('chat:private', handlePrivateMessage);
+  socket.on('private_message', handlePrivateMessage);
 
   socket.on('bulletin:add', (pinData) => {
     const newPin = {
