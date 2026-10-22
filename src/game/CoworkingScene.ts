@@ -2761,14 +2761,22 @@ export class CoworkingScene extends Phaser.Scene {
       .image(19, 6, 'coffee-cup-hand')
       .setVisible(Boolean(state.hasCoffee));
 
-    const labelText = isSelf ? `${state.name} (Du)` : state.name;
+    const labelText = isSelf
+      ? `${state.name} (Du)`
+      : state.isNpc
+      ? `🤖 ${state.name}`
+      : state.name;
     const nameTag = this.add
       .text(0, 27, labelText, {
         fontFamily: 'Inter, sans-serif',
         fontSize: '11px',
         fontStyle: 'bold',
         color: '#FFFFFF',
-        backgroundColor: isSelf ? '#174955' : '#2A2E30',
+        backgroundColor: isSelf
+          ? '#174955'
+          : state.isNpc
+          ? '#334E54'
+          : '#2A2E30',
         padding: { x: 6, y: 2 },
       })
       .setOrigin(0.5, 0)
@@ -2904,7 +2912,7 @@ export class CoworkingScene extends Phaser.Scene {
           )
         );
         existing.coffeeSprite.setVisible(Boolean(p.hasCoffee));
-        existing.nameTag.setText(p.name);
+        existing.nameTag.setText(p.isNpc ? `🤖 ${p.name}` : p.name);
         existing.townBadge.setText(`📍 ${p.location}`);
         this.updateCustomStatusTag(existing);
         this.updateStatusDotColor(existing);

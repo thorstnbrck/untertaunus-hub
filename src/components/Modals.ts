@@ -156,6 +156,15 @@ export function openBusinessCardModal(
     zoneBadge.textContent = `${zoneMeta.icon} ${zoneMeta.label}`;
   }
 
+  const botBadge = dialog.querySelector('#vcard-bot-badge') as HTMLElement | null;
+  if (botBadge) {
+    if (player.isNpc) {
+      botBadge.classList.remove('hidden');
+    } else {
+      botBadge.classList.add('hidden');
+    }
+  }
+
   if (customStatusEl) {
     if (player.customStatus && player.customStatus.trim().length > 0) {
       customStatusEl.textContent = `💬 Aktuell: „${player.customStatus}“`;

@@ -1157,6 +1157,11 @@ function appendChatMessage(msg: ChatMessage): void {
           msg.color || '#00A5B5'
         )}"></span>
         ${escapeHtml(msg.senderName)}
+        ${
+          msg.senderId?.startsWith('npc-')
+            ? '<span class="rounded bg-[#174955]/10 px-1 py-0.2 text-[9px] font-extrabold text-[#4B6F77]">BOT</span>'
+            : ''
+        }
       </span>
       <span class="text-[10px] font-medium text-[#4B6F77]">${escapeHtml(
         msg.timestamp
@@ -1224,10 +1229,11 @@ function renderDirectoryList(): void {
         <span class="absolute -bottom-0.5 -right-0.5 h-2.5 w-2.5 rounded-full border border-white" style="background-color: ${dotHex}"></span>
       </span>
       <div class="min-w-0">
-        <div class="text-xs font-extrabold text-[#174955] truncate">
-          ${escapeHtml(member.name)} ${
-      isSelf ? '<span class="text-[#007A87]">(Du)</span>' : ''
-    } ${member.isSeated ? '🪑' : ''} ${member.hasCoffee ? '☕' : ''}
+        <div class="text-xs font-extrabold text-[#174955] truncate flex items-center gap-1.5">
+          <span>${escapeHtml(member.name)}</span>
+          ${isSelf ? '<span class="text-[#007A87] font-bold text-[10px]">(Du)</span>' : ''}
+          ${member.isNpc ? '<span class="rounded-full bg-[#174955]/10 border border-[#174955]/20 px-1.5 py-0.2 text-[9px] font-extrabold text-[#4B6F77]">🤖 BOT</span>' : ''}
+          <span>${member.isSeated ? '🪑' : ''} ${member.hasCoffee ? '☕' : ''}</span>
         </div>
         <div class="text-[10px] font-medium text-[#4B6F77] truncate">
           📍 ${escapeHtml(member.location)} • ${zoneMeta.icon} ${escapeHtml(
