@@ -272,6 +272,13 @@ type ListenerMap = {
   whiteboardUpdated: () => void;
 };
 
+const CHAT_CACHE_KEY = 'untertaunus_chat_cache';
+
+interface CachedChatStorage {
+  privateChats: Record<string, ChatMessage[]>;
+  roomChats?: Partial<Record<ChatRoomType, ChatMessage[]>>;
+}
+
 export class NetworkManager {
   private socket: Socket | null = null;
   private connected = false;
@@ -388,6 +395,34 @@ export class NetworkManager {
         const parsed = JSON.parse(savedPins);
         if (Array.isArray(parsed) && parsed.length > 0) {
           this.pins = parsed;
+        }
+      }
+    } catch {
+      // ignore
+    }
+
+    try {
+      const cachedChat = localStorage.getItem(CHAT_CACHE_KEY);
+      if (cachedChat) {
+        const parsed: CachedChatStorage = JSON.parse(cachedChat);
+        if (parsed.privateChats && typeof parsed.privateChats === 'object') {
+          Object.entries(parsed.privateChats).forEach(([partnerId, msgs]) => {
+            if (Array.isArray(msgs) && msgs.length > 0) {
+              this.privateChatHistories.set(partnerId, msgs.slice(-50));
+            }
+          });
+        }
+        if (parsed.roomChats && typeof parsed.roomChats === 'object') {
+          (Object.keys(parsed.roomChats) as ChatRoomType[]).forEach((room) => {
+            const msgs = parsed.roomChats?.[room];
+            if (Array.isArray(msgs) && msgs.length > 0) {
+              if (room === 'global') {
+                this.chatHistory = msgs.slice(-50);
+              } else if (this.roomChatHistories[room]) {
+                this.roomChatHistories[room] = msgs.slice(-50);
+              }
+            }
+          });
         }
       }
     } catch {
@@ -544,6 +579,7 @@ export class NetworkManager {
         if (room === 'global') {
           this.chatHistory.push(msg);
         }
+        this.saveChatCache();
         const sender = this.remotePlayers.get(msg.senderId);
         if (sender) {
           sender.bubbleText = msg.text;
@@ -570,6 +606,7 @@ export class NetworkManager {
           );
           if (!alreadyExists) {
             list.push(msg);
+            this.saveChatCache();
             this.listeners.privateMessage.forEach((cb) => cb(msg));
           }
         }
@@ -674,6 +711,7 @@ export class NetworkManager {
     } else {
       this.chatHistory.push(msg);
     }
+    this.saveChatCache();
     this.listeners.chatMessage.forEach((cb) => cb(msg));
     return msg;
   }
@@ -706,6 +744,7 @@ export class NetworkManager {
     const list = this.privateChatHistories.get(recipientId)!;
     if (!list.some((m) => m.id === msg.id)) {
       list.push(msg);
+      this.saveChatCache();
     }
 
     if (this.connected && this.socket) {
@@ -867,6 +906,42 @@ export class NetworkManager {
   public on<K extends keyof ListenerMap>(event: K, cb: ListenerMap[K]): () => void {
     this.listeners[event].add(cb);
     return () => this.listeners[event].delete(cb);
+  }
+
+  public clearChatCache(): void {
+    this.privateChatHistories.clear();
+    try {
+      localStorage.removeItem(CHAT_CACHE_KEY);
+    } catch {
+      // ignore
+    }
+  }
+
+  private saveChatCache(): void {
+    try {
+      const privateObj: Record<string, ChatMessage[]> = {};
+      this.privateChatHistories.forEach((msgs, partnerId) => {
+        privateObj[partnerId] = msgs.slice(-50);
+      });
+
+      const roomObj: Partial<Record<ChatRoomType, ChatMessage[]>> = {
+        global: this.chatHistory.slice(-50),
+        conference: (this.roomChatHistories.conference || []).slice(-50),
+        networking: (this.roomChatHistories.networking || []).slice(-50),
+        lounge: (this.roomChatHistories.lounge || []).slice(-50),
+        focus: (this.roomChatHistories.focus || []).slice(-50),
+      };
+
+      localStorage.setItem(
+        CHAT_CACHE_KEY,
+        JSON.stringify({
+          privateChats: privateObj,
+          roomChats: roomObj,
+        })
+      );
+    } catch {
+      // ignore
+    }
   }
 
   private savePinsLocally(): void {

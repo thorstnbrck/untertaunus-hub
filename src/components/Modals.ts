@@ -274,9 +274,27 @@ export function renderBulletinBoardList(
     .join('');
 }
 
+export const USER_PROFILE_KEY = 'untertaunus_user_profile';
+export const LEGACY_PROFILE_KEY = 'taunushub_profile';
+
+export function hasSavedProfile(): boolean {
+  try {
+    const raw =
+      localStorage.getItem(USER_PROFILE_KEY) ||
+      localStorage.getItem(LEGACY_PROFILE_KEY);
+    if (!raw) return false;
+    const parsed = JSON.parse(raw);
+    return Boolean(parsed && parsed.name && parsed.name.trim().length > 0);
+  } catch {
+    return false;
+  }
+}
+
 export function loadSavedProfile(): PlayerProfile {
   try {
-    const raw = localStorage.getItem('taunushub_profile');
+    const raw =
+      localStorage.getItem(USER_PROFILE_KEY) ||
+      localStorage.getItem(LEGACY_PROFILE_KEY);
     if (raw) {
       const parsed = JSON.parse(raw);
       if (parsed && parsed.name) {
@@ -305,7 +323,20 @@ export function loadSavedProfile(): PlayerProfile {
 
 export function saveProfile(profile: PlayerProfile): void {
   try {
-    localStorage.setItem('taunushub_profile', JSON.stringify(profile));
+    const payload = JSON.stringify(profile);
+    localStorage.setItem(USER_PROFILE_KEY, payload);
+    localStorage.setItem(LEGACY_PROFILE_KEY, payload);
+  } catch {
+    // ignore
+  }
+}
+
+export function clearSavedProfile(): void {
+  try {
+    localStorage.removeItem(USER_PROFILE_KEY);
+    localStorage.removeItem(LEGACY_PROFILE_KEY);
+    localStorage.removeItem('untertaunus_chat_cache');
+    localStorage.removeItem('untertaunus_tour_completed');
   } catch {
     // ignore
   }

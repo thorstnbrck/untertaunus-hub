@@ -932,6 +932,19 @@
               </span>
             </button>
 
+            <!-- Profil-Button im Menü (direkt neben dem Chat-Button) -->
+            <button
+              id="top-profile-menu-btn"
+              type="button"
+              data-action="edit-profile-ingame"
+              class="inline-flex items-center gap-1.5 rounded-lg hover:bg-[#174955]/10 px-2.5 py-1.5 text-xs font-bold text-[#174955] transition cursor-pointer"
+              title="Mein Profil & Visitenkarte bearbeiten"
+            >
+              <span id="top-profile-dot" class="h-2.5 w-2.5 rounded-full bg-[#174955] shrink-0"></span>
+              <span id="top-profile-name" class="max-w-[120px] truncate">Alex Hoffmann</span>
+              <span class="text-[10px] text-[#4B6F77] select-none">✏️</span>
+            </button>
+
             <span class="hidden sm:inline text-[#4B6F77]/30 select-none px-0.5" aria-hidden="true">|</span>
 
             <!-- Zoom & Center Camera Controls (Frameless with % Indicator) -->
@@ -1415,6 +1428,71 @@
     </div>
 
     <!-- ===================================================================== -->
+    <!-- MODAL 0: WILLKOMMEN ZURÜCK BEGRÜSSUNG (<dialog>)                      -->
+    <!-- ===================================================================== -->
+    <dialog
+      id="welcome-back-modal"
+      closedby="any"
+      aria-labelledby="welcome-back-modal-title"
+      class="m-auto w-[92vw] max-w-md rounded-3xl border border-[#4B6F77]/20 bg-white p-0 text-[#2A2E30] shadow-2xl overflow-hidden backdrop:bg-black/50"
+    >
+      <div class="p-6 sm:p-7 text-center space-y-4">
+        <!-- Avatar Preview Badge -->
+        <div class="mx-auto flex justify-center">
+          <div
+            id="welcome-avatar-badge"
+            class="h-16 w-16 rounded-full flex items-center justify-center text-xl font-extrabold text-white shadow-md relative"
+            style="background-color: #174955;"
+          >
+            <span id="welcome-avatar-initials">AH</span>
+            <span class="absolute bottom-0 right-0 h-4 w-4 rounded-full bg-[#5F7F6E] border-2 border-white"></span>
+          </div>
+        </div>
+
+        <div>
+          <span class="inline-flex items-center gap-1.5 rounded-full bg-[#EBF9FB] px-3 py-0.5 text-[11px] font-extrabold text-[#007A87] mb-1.5">
+            👋 Willkommen zurück!
+          </span>
+          <h3 id="welcome-back-modal-title" class="text-xl font-extrabold text-[#174955]">
+            <span id="welcome-user-name">Alex Hoffmann</span>
+          </h3>
+          <p id="welcome-user-meta" class="text-xs text-[#4B6F77] font-medium mt-1">
+            Hoffmann Digital Consulting • 📍 Taunusstein
+          </p>
+        </div>
+
+        <div class="space-y-2 pt-2">
+          <button
+            id="welcome-enter-btn"
+            type="button"
+            class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#E68A36] hover:bg-[#B86518] px-6 py-3.5 text-sm font-extrabold text-white shadow-md hover:shadow-lg transition cursor-pointer"
+          >
+            <span>Als <span id="welcome-btn-name">Alex</span> betreten</span>
+            <span class="text-lg leading-none">→</span>
+          </button>
+
+          <button
+            id="welcome-edit-btn"
+            type="button"
+            class="w-full inline-flex items-center justify-center gap-1.5 rounded-full border border-[#4B6F77]/25 bg-[#F4F5F6] hover:bg-[#EDF5F7] px-4 py-2.5 text-xs font-bold text-[#174955] transition cursor-pointer"
+          >
+            <span>✏️ Profil bearbeiten</span>
+          </button>
+        </div>
+
+        <div class="pt-2 border-t border-[#4B6F77]/10 flex justify-center">
+          <button
+            id="welcome-reset-btn"
+            type="button"
+            class="text-[11px] font-medium text-[#7E1946] hover:underline cursor-pointer"
+          >
+            Anderes Profil anlegen
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- ===================================================================== -->
     <!-- MODAL 1: ONBOARDING & DIGITALE VISITENKARTE IM BENTO-LOOK (<dialog>)   -->
     <!-- ===================================================================== -->
     <dialog
@@ -1572,6 +1650,21 @@
               🚀 Jetzt Raum betreten →
             </button>
           </div>
+        </div>
+
+        <!-- Unaufdringliche Profil-Verwaltung & Reset auf diesem Gerät -->
+        <div class="pt-3 mt-1 border-t border-[#4B6F77]/15 flex flex-wrap items-center justify-between gap-2 text-xs">
+          <span class="text-[11px] text-[#64748B]">
+            🔒 Automatisch auf diesem Gerät gespeichert (ohne Passwort)
+          </span>
+          <button
+            id="reset-profile-btn"
+            type="button"
+            class="text-[11px] font-bold text-[#7E1946] hover:text-[#9A1B55] hover:underline cursor-pointer transition flex items-center gap-1"
+            title="Löscht das Profil auf diesem Gerät und startet frisch"
+          >
+            <span>🗑️ Profil auf diesem Gerät zurücksetzen</span>
+          </button>
         </div>
       </form>
     </dialog>

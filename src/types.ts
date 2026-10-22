@@ -214,6 +214,8 @@ export interface PlayerProfile {
   color: string;
   status?: AvailabilityStatus;
   customStatus?: string;
+  completedQuests?: string[];
+  badges?: string[];
 }
 
 export interface PlayerState extends PlayerProfile {

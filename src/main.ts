@@ -5,7 +5,9 @@ import { NetworkManager } from './game/NetworkManager';
 import { ChatCenter } from './components/ChatCenter';
 import {
   attachDialogLightDismissFallback,
+  clearSavedProfile,
   escapeHtml,
+  hasSavedProfile,
   loadSavedProfile,
   openBusinessCardModal,
   populateTownSelect,
@@ -123,6 +125,9 @@ function initApp(): void {
   const chatCenterDialog = document.getElementById(
     'chat-center-modal'
   ) as HTMLDialogElement;
+  const welcomeDialog = document.getElementById(
+    'welcome-back-modal'
+  ) as HTMLDialogElement;
 
   [
     profileDialog,
@@ -130,6 +135,7 @@ function initApp(): void {
     bulletinDialog,
     whiteboardDialog,
     chatCenterDialog,
+    welcomeDialog,
   ].forEach((dlg) => {
     if (dlg) attachDialogLightDismissFallback(dlg);
   });
@@ -159,7 +165,7 @@ function initApp(): void {
   network.connect(currentProfile, 700, 620);
 
   // 3. Bind UI Events & Synchronize Initial State
-  setupOnboardingAndProfileModal(profileDialog);
+  setupOnboardingAndProfileModal(profileDialog, welcomeDialog);
   setupBulletinModal(bulletinDialog);
   setupWhiteboardModal(whiteboardDialog);
   setupInGameHudAndChat(vcardDialog, bulletinDialog, whiteboardDialog);
@@ -169,6 +175,7 @@ function initApp(): void {
   setupLandingFeatureTabs();
 
   updateHudProfileBadge();
+  updateLandingWelcomeState();
   renderDirectoryList();
   renderChatHistory();
   updateOnlineStatusBadge(network.isServerConnected(), network.getOnlineCount());
@@ -511,7 +518,10 @@ function leaveFullscreenOffice(): void {
   inOfficeMode = false;
 }
 
-function setupOnboardingAndProfileModal(dialog: HTMLDialogElement): void {
+function setupOnboardingAndProfileModal(
+  dialog: HTMLDialogElement,
+  welcomeDialog?: HTMLDialogElement
+): void {
   const townSelect = document.getElementById(
     'profile-location'
   ) as HTMLSelectElement;
@@ -520,6 +530,7 @@ function setupOnboardingAndProfileModal(dialog: HTMLDialogElement): void {
   const submitBtn = document.getElementById(
     'profile-submit-btn'
   ) as HTMLButtonElement;
+  const resetBtn = document.getElementById('reset-profile-btn');
 
   const populateForm = (buttonLabel: string) => {
     (document.getElementById('profile-name') as HTMLInputElement).value =
@@ -542,12 +553,94 @@ function setupOnboardingAndProfileModal(dialog: HTMLDialogElement): void {
     }
   };
 
+  const populateWelcomeModal = () => {
+    if (!welcomeDialog) return;
+    const initials =
+      currentProfile.name
+        .split(' ')
+        .map((p) => p[0])
+        .join('')
+        .slice(0, 2)
+        .toUpperCase() || 'UT';
+    const badge = welcomeDialog.querySelector('#welcome-avatar-badge') as HTMLElement | null;
+    const initialsEl = welcomeDialog.querySelector('#welcome-avatar-initials');
+    const userNameEl = welcomeDialog.querySelector('#welcome-user-name');
+    const btnNameEl = welcomeDialog.querySelector('#welcome-btn-name');
+    const userMetaEl = welcomeDialog.querySelector('#welcome-user-meta');
+
+    if (badge) badge.style.backgroundColor = currentProfile.color || '#174955';
+    if (initialsEl) initialsEl.textContent = initials;
+    if (userNameEl) userNameEl.textContent = currentProfile.name;
+    if (btnNameEl) btnNameEl.textContent = currentProfile.name.split(' ')[0] || currentProfile.name;
+    if (userMetaEl) {
+      userMetaEl.textContent = `${currentProfile.company || 'Selbstständig'} • 📍 ${currentProfile.location}`;
+    }
+  };
+
+  // Wire welcomeDialog buttons
+  if (welcomeDialog) {
+    const enterBtn = welcomeDialog.querySelector('#welcome-enter-btn');
+    const editBtn = welcomeDialog.querySelector('#welcome-edit-btn');
+    const resetWelcomeBtn = welcomeDialog.querySelector('#welcome-reset-btn');
+
+    enterBtn?.addEventListener('click', () => {
+      welcomeDialog.close();
+      enterFullscreenOffice();
+    });
+
+    editBtn?.addEventListener('click', () => {
+      welcomeDialog.close();
+      populateForm('💾 Profil speichern & betreten');
+      safeShowModal(dialog);
+    });
+
+    resetWelcomeBtn?.addEventListener('click', () => {
+      if (
+        confirm(
+          'Möchtest du das gespeicherte Profil auf diesem Gerät wirklich zurücksetzen und ein neues anlegen?'
+        )
+      ) {
+        clearSavedProfile();
+        network.clearChatCache();
+        currentProfile = loadSavedProfile();
+        welcomeDialog.close();
+        populateForm('🚀 Jetzt Raum betreten →');
+        updateHudProfileBadge();
+        updateLandingWelcomeState();
+        safeShowModal(dialog);
+      }
+    });
+  }
+
+  // Wire reset profile button in profile dialog
+  resetBtn?.addEventListener('click', () => {
+    if (
+      confirm(
+        'Möchtest du dein Profil und deine Daten auf diesem Gerät wirklich zurücksetzen?'
+      )
+    ) {
+      clearSavedProfile();
+      network.clearChatCache();
+      currentProfile = loadSavedProfile();
+      populateForm('🚀 Jetzt Raum betreten →');
+      updateHudProfileBadge();
+      updateLandingWelcomeState();
+      dialog.close();
+      alert('Dein Profil wurde auf diesem Gerät zurückgesetzt.');
+    }
+  });
+
   document
     .querySelectorAll('[data-action="start-onboarding"]')
     .forEach((trigger) => {
       trigger.addEventListener('click', () => {
-        populateForm('🚀 Jetzt Raum betreten →');
-        safeShowModal(dialog);
+        if (hasSavedProfile() && welcomeDialog) {
+          populateWelcomeModal();
+          safeShowModal(welcomeDialog);
+        } else {
+          populateForm('🚀 Jetzt Raum betreten →');
+          safeShowModal(dialog);
+        }
       });
     });
 
@@ -591,6 +684,7 @@ function setupOnboardingAndProfileModal(dialog: HTMLDialogElement): void {
     saveProfile(updated);
     network.updateProfile(updated);
     updateHudProfileBadge();
+    updateLandingWelcomeState();
     renderDirectoryList();
     dialog.close();
 
@@ -1624,6 +1718,33 @@ function updateHudProfileBadge(): void {
   if (dot) {
     dot.style.backgroundColor = currentProfile.color;
   }
+
+  const topDot = document.getElementById('top-profile-dot');
+  const topName = document.getElementById('top-profile-name');
+  if (topDot) {
+    topDot.style.backgroundColor = currentProfile.color;
+  }
+  if (topName) {
+    topName.textContent = currentProfile.name;
+  }
+}
+
+function updateLandingWelcomeState(): void {
+  const isReturning = hasSavedProfile();
+  document
+    .querySelectorAll('[data-action="start-onboarding"]')
+    .forEach((btn) => {
+      const labelSpan = btn.querySelector('span:first-child');
+      if (labelSpan) {
+        if (isReturning) {
+          const firstName =
+            currentProfile.name.split(' ')[0] || currentProfile.name;
+          labelSpan.textContent = `👋 Als ${firstName} betreten`;
+        } else {
+          labelSpan.textContent = 'Jetzt Raum betreten';
+        }
+      }
+    });
 }
 
 function updateOnlineStatusBadge(_connected: boolean, count: number): void {
