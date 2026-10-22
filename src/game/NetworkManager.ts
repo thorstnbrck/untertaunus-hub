@@ -561,15 +561,21 @@ export class NetworkManager {
             this.privateChatHistories.set(partnerId, []);
           }
           const list = this.privateChatHistories.get(partnerId)!;
-          if (!list.some((existing) => existing.id === msg.id)) {
+          const alreadyExists = list.some(
+            (existing) =>
+              existing.id === msg.id ||
+              (existing.senderId === msg.senderId &&
+                existing.recipientId === msg.recipientId &&
+                existing.text === msg.text)
+          );
+          if (!alreadyExists) {
             list.push(msg);
+            this.listeners.privateMessage.forEach((cb) => cb(msg));
           }
         }
-        this.listeners.privateMessage.forEach((cb) => cb(msg));
       };
 
       this.socket.on('chat:private', handleIncomingPrivateMessage);
-      this.socket.on('private_message', handleIncomingPrivateMessage);
 
       this.socket.on('bulletin:added', (pin: BulletinPin) => {
         if (!this.pins.some((existing) => existing.id === pin.id)) {
@@ -682,8 +688,9 @@ export class NetworkManager {
 
     const now = new Date();
     const timestamp = now.toTimeString().slice(0, 5);
+    const msgId = `pm-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
     const msg: ChatMessage = {
-      id: `pm-loc-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      id: msgId,
       senderId: this.selfId,
       senderName: `${localProfile.name} (${localProfile.location})`,
       recipientId,
@@ -703,6 +710,7 @@ export class NetworkManager {
 
     if (this.connected && this.socket) {
       this.socket.emit('chat:private', {
+        id: msgId,
         recipientId,
         text: clean,
       });

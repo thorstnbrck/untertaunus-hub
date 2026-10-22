@@ -377,8 +377,11 @@ io.on('connection', (socket) => {
 
     const now = new Date();
     const timestamp = now.toTimeString().slice(0, 5);
+    const msgId =
+      payload.id ||
+      `pm-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`;
     const msg = {
-      id: `pm-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+      id: msgId,
       senderId: socket.id,
       senderName,
       recipientId,
@@ -388,14 +391,12 @@ io.on('connection', (socket) => {
       isDirect: true,
     };
 
-    // Echo to sender so local client state updates
+    // Send single chat:private event to recipient and echo to sender
     socket.emit('chat:private', msg);
-    socket.emit('private_message', msg);
 
     // If recipient is a real connected player
     if (players.has(recipientId)) {
       io.to(recipientId).emit('chat:private', msg);
-      io.to(recipientId).emit('private_message', msg);
     } else if (recipientId.startsWith('npc-')) {
       // Simulate Bot reply
       const bot = BOT_DIRECTORY[recipientId];
@@ -415,7 +416,6 @@ io.on('connection', (socket) => {
             isDirect: true,
           };
           socket.emit('chat:private', botMsg);
-          socket.emit('private_message', botMsg);
         }, 1200);
       }
     }
