@@ -1,0 +1,179 @@
+@import "tailwindcss";
+
+:root {
+  /* 1. Tiefes Taunus-Petrol (Primär / Header / Brand) */
+  --color-taunus-petrol: #174955;
+  --color-taunus-petrol-dark: #0F323A;
+  --color-taunus-petrol-bg: #EDF5F7;
+
+  /* 2. Goldenes Warm-Amber (Akzente / CTAs / Highlights / Lounge) */
+  --color-warm-amber: #E68A36;
+  --color-warm-amber-dark: #B86518;
+  --color-warm-amber-bg: #FDF5EE;
+
+  /* 3. Sanftes Salbeigrün (Fokus-Zonen / Status "Verfügbar") */
+  --color-sage-green: #8EAE9D;
+  --color-sage-green-dark: #5F7F6E;
+  --color-sage-green-bg: #F2F7F4;
+
+  /* 4. Edles Beerenrot (Konferenzraum / Status "Besetzt") */
+  --color-berry-red: #7E1946;
+  --color-berry-red-dark: #580E30;
+  --color-berry-red-bg: #FBF0F4;
+
+  /* 5. Schiefer-Petrol (Karten / Container / Borders) */
+  --color-slate-petrol: #4B6F77;
+  --color-slate-petrol-dark: #334E54;
+  --color-slate-petrol-bg: #F0F4F5;
+
+  /* 6. Lebendiges Cyan-Türkis (Links / Info-Badges / Interaktionen) */
+  --color-cyan-teal: #00A5B5;
+  --color-cyan-teal-dark: #007A87;
+  --color-cyan-teal-bg: #EBF9FB;
+
+  /* 7. Anthrazit (Typografie & Dark Accents) */
+  --color-anthracite: #2A2E30;
+  --color-anthracite-dark: #151718;
+  --color-anthracite-bg: #F4F5F6;
+}
+
+@theme {
+  --color-petrol: #174955;
+  --color-petrol-dark: #0F323A;
+  --color-petrol-bg: #EDF5F7;
+
+  --color-amber: #E68A36;
+  --color-amber-dark: #B86518;
+  --color-amber-bg: #FDF5EE;
+
+  --color-sage: #8EAE9D;
+  --color-sage-dark: #5F7F6E;
+  --color-sage-bg: #F2F7F4;
+
+  --color-berry: #7E1946;
+  --color-berry-dark: #580E30;
+  --color-berry-bg: #FBF0F4;
+
+  --color-slate-petrol: #4B6F77;
+  --color-slate-petrol-dark: #334E54;
+  --color-slate-petrol-bg: #F0F4F5;
+
+  --color-cyan-hub: #00A5B5;
+  --color-cyan-hub-dark: #007A87;
+  --color-cyan-hub-bg: #EBF9FB;
+
+  --color-anthracite: #2A2E30;
+  --color-anthracite-dark: #151718;
+  --color-anthracite-bg: #F4F5F6;
+}
+
+html {
+  scroll-behavior: smooth;
+  color: var(--color-anthracite);
+  background-color: #EDF5F7;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+/* Fluid responsive hero heading using clamp() */
+.hero-fluid-title {
+  font-size: clamp(1.95rem, 1.3rem + 2.4vw, 3.35rem);
+  line-height: 1.1;
+  letter-spacing: -0.025em;
+}
+
+/* Below-the-fold Bento sections: defer offscreen rendering without layout shifts */
+.bento-below-fold {
+  content-visibility: auto;
+  contain-intrinsic-size: auto none auto 520px;
+}
+
+/* Fullscreen Office Container using dynamic viewport units (dvw/dvh) */
+.office-fullscreen-viewport {
+  width: 100dvw;
+  height: 100dvh;
+}
+
+#game-canvas-container {
+  width: 100dvw;
+  height: 100dvh;
+}
+
+#game-canvas-container canvas {
+  display: block;
+  width: 100% !important;
+  height: 100% !important;
+  cursor: grab;
+}
+
+#game-canvas-container canvas:active {
+  cursor: grabbing;
+}
+
+/* Apple macOS / visionOS Thick Bezel & Frosted Glass Menu Bar Style */
+.apple-glass-bar {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.93) 0%,
+    rgba(238, 245, 247, 0.89) 100%
+  );
+  backdrop-filter: blur(22px) saturate(185%);
+  -webkit-backdrop-filter: blur(22px) saturate(185%);
+  border: 3.5px solid rgba(255, 255, 255, 0.96);
+  box-shadow:
+    0 0 0 1.5px rgba(23, 73, 85, 0.26),
+    inset 0 1px 1px 0 rgba(255, 255, 255, 1),
+    inset 0 0 0 1px rgba(23, 73, 85, 0.12),
+    0 8px 20px -4px rgba(15, 50, 58, 0.16),
+    0 22px 48px -10px rgba(15, 50, 58, 0.26);
+}
+
+/* Native dialog styling, scroll containment & backdrop */
+dialog:modal {
+  overscroll-behavior: contain;
+}
+
+dialog::backdrop {
+  background: rgba(15, 50, 58, 0.65);
+  backdrop-filter: blur(6px);
+  overflow: hidden;
+  overscroll-behavior: contain;
+}
+
+dialog[open] {
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Custom scrollbar for in-game HUD drawers and bulletin board */
+.hub-scroll::-webkit-scrollbar {
+  width: 6px;
+}
+.hub-scroll::-webkit-scrollbar-track {
+  background: rgba(240, 244, 245, 0.15);
+  border-radius: 9999px;
+}
+.hub-scroll::-webkit-scrollbar-thumb {
+  background: var(--color-slate-petrol);
+  border-radius: 9999px;
+}
+
+/* Exclusive accordion details styling */
+details.faq-item summary {
+  list-style: none;
+}
+details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+details.faq-item[open] .faq-chevron {
+  transform: rotate(180deg);
+}

@@ -1,0 +1,1884 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Untertaunus Digital Business Hub | Virtuelles 2D-Coworking & B2B-Netzwerk</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body class="min-h-screen flex flex-col bg-[#EDF5F7] text-[#2A2E30] antialiased selection:bg-[#00A5B5]/20 selection:text-[#174955]">
+    <!-- ===================================================================== -->
+    <!-- TEIL 1: BENTO-GRID LANDINGPAGE (SICHTBAR VOR DEM BETRETEN)            -->
+    <!-- ===================================================================== -->
+    <div id="landing-info-view" class="min-h-screen flex flex-col bg-gradient-to-b from-[#EDF5F7] via-[#F4F5F6] to-[#EDF5F7]">
+      <!-- 1. STICKY MINIMALISTISCHER BENTO-HEADER -->
+      <header class="sticky top-0 z-30 bg-[#EDF5F7]/85 backdrop-blur-xl border-b border-[#4B6F77]/15">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+          <a href="#" class="flex items-center gap-3.5 group">
+            <div class="h-11 w-11 rounded-2xl bg-[#174955] border border-[#4B6F77]/20 flex items-center justify-center shadow-sm group-hover:bg-[#0F323A] transition">
+              <span class="text-base font-extrabold tracking-tight text-white">UT</span>
+              <span class="ml-0.5 h-2 w-2 rounded-full bg-[#E68A36]"></span>
+            </div>
+            <div>
+              <span class="block text-sm sm:text-base font-extrabold tracking-tight text-[#174955] leading-none">
+                Untertaunus Business Hub
+              </span>
+              <span class="block text-[11px] text-[#4B6F77] font-medium mt-1">
+                Virtueller 2.5D-Workspace &amp; B2B-Stammtisch
+              </span>
+            </div>
+          </a>
+
+          <!-- Quick-Links -->
+          <nav aria-label="Hauptnavigation" class="hidden md:flex items-center gap-1 rounded-full bg-white/90 border border-[#4B6F77]/15 px-2 py-1.5 shadow-2xs text-xs font-semibold text-[#2A2E30]">
+            <a href="#hero-bento-section" class="rounded-full px-3.5 py-1.5 hover:bg-[#EDF5F7] hover:text-[#174955] transition">Überblick</a>
+            <a href="#anleitung-section" class="rounded-full px-3.5 py-1.5 hover:bg-[#EDF5F7] hover:text-[#174955] transition">So funktioniert’s</a>
+            <a href="#raeume-section" class="rounded-full px-3.5 py-1.5 hover:bg-[#EDF5F7] hover:text-[#174955] transition">Büro-Zonen</a>
+            <button
+              type="button"
+              data-action="open-bulletin"
+              class="rounded-full px-3.5 py-1.5 hover:bg-[#EDF5F7] hover:text-[#174955] transition flex items-center gap-1.5 cursor-pointer"
+            >
+              <span>Schwarzes Brett</span>
+              <span
+                data-pin-count
+                class="inline-flex items-center justify-center rounded-full bg-[#00A5B5] px-2 py-0.5 text-[10px] font-extrabold text-white"
+              >
+                4
+              </span>
+            </button>
+            <a href="#stimmen-section" class="rounded-full px-3.5 py-1.5 hover:bg-[#EDF5F7] hover:text-[#174955] transition">Stimmen</a>
+            <a href="#faq-section" class="rounded-full px-3.5 py-1.5 hover:bg-[#EDF5F7] hover:text-[#174955] transition">FAQ</a>
+          </nav>
+
+          <!-- Online Status & Pill CTA Trigger -->
+          <div class="flex items-center gap-2.5 sm:gap-3">
+            <div
+              class="hidden sm:flex items-center gap-2 rounded-full bg-white border border-[#4B6F77]/15 px-3.5 py-2 text-xs font-semibold text-[#174955] shadow-2xs"
+            >
+              <span class="h-2.5 w-2.5 rounded-full bg-[#8EAE9D] animate-pulse"></span>
+              <span data-online-count>5 Personen im Hub online</span>
+            </div>
+
+            <button
+              type="button"
+              data-action="start-onboarding"
+              class="inline-flex items-center gap-2 rounded-full bg-[#174955] hover:bg-[#0F323A] px-5 py-2.5 text-xs sm:text-sm font-bold text-white shadow-sm hover:shadow-md transition-all transform hover:-translate-y-0.5 cursor-pointer"
+            >
+              <span>Jetzt Raum betreten</span>
+              <span aria-hidden="true" class="text-[#E68A36] font-extrabold">→</span>
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main class="flex-1">
+        <!-- ================================================================= -->
+        <!-- A. HERO & PARTNER-GRID (BENTO-STYLE)                              -->
+        <!-- ================================================================= -->
+        <section id="hero-bento-section" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 sm:pt-8 pb-10 space-y-5">
+          <!-- 1. LOGO- / KOMMUNEN-BAR (Horizontale Reihe abgerundeter weißer Cards) -->
+          <div aria-label="Regionale Knotenpunkte im Untertaunus" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 sm:gap-4">
+            <div class="rounded-2xl bg-white border border-[#4B6F77]/15 px-4 py-3.5 shadow-sm flex items-center gap-3 hover:border-[#00A5B5]/40 transition">
+              <div class="h-9 w-9 rounded-xl bg-[#EDF5F7] text-[#174955] font-extrabold text-xs flex items-center justify-center shrink-0">
+                TS
+              </div>
+              <div class="min-w-0">
+                <div class="text-xs sm:text-sm font-extrabold text-[#174955] truncate">Taunusstein</div>
+                <div class="text-[11px] text-[#4B6F77] truncate">Wirtschaftsförderung &amp; Gewerbe</div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl bg-white border border-[#4B6F77]/15 px-4 py-3.5 shadow-sm flex items-center gap-3 hover:border-[#00A5B5]/40 transition">
+              <div class="h-9 w-9 rounded-xl bg-[#FDF5EE] text-[#E68A36] font-extrabold text-xs flex items-center justify-center shrink-0">
+                BS
+              </div>
+              <div class="min-w-0">
+                <div class="text-xs sm:text-sm font-extrabold text-[#174955] truncate">Bad Schwalbach</div>
+                <div class="text-[11px] text-[#4B6F77] truncate">Kreisstadt &amp; Dienstleistung</div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl bg-white border border-[#4B6F77]/15 px-4 py-3.5 shadow-sm flex items-center gap-3 hover:border-[#00A5B5]/40 transition">
+              <div class="h-9 w-9 rounded-xl bg-[#F2F7F4] text-[#5F7F6E] font-extrabold text-xs flex items-center justify-center shrink-0">
+                ID
+              </div>
+              <div class="min-w-0">
+                <div class="text-xs sm:text-sm font-extrabold text-[#174955] truncate">Idstein</div>
+                <div class="text-[11px] text-[#4B6F77] truncate">Hochschulstadt &amp; Tech-KMU</div>
+              </div>
+            </div>
+
+            <div class="rounded-2xl bg-white border border-[#4B6F77]/15 px-4 py-3.5 shadow-sm flex items-center gap-3 hover:border-[#00A5B5]/40 transition">
+              <div class="h-9 w-9 rounded-xl bg-[#EBF9FB] text-[#007A87] font-extrabold text-xs flex items-center justify-center shrink-0">
+                AA
+              </div>
+              <div class="min-w-0">
+                <div class="text-xs sm:text-sm font-extrabold text-[#174955] truncate">Aarbergen</div>
+                <div class="text-[11px] text-[#4B6F77] truncate">Co-Working Initiative</div>
+              </div>
+            </div>
+
+            <div class="col-span-2 sm:col-span-1 rounded-2xl bg-white border border-[#4B6F77]/15 px-4 py-3.5 shadow-sm flex items-center gap-3 hover:border-[#00A5B5]/40 transition">
+              <div class="h-9 w-9 rounded-xl bg-[#FBF0F4] text-[#7E1946] font-extrabold text-xs flex items-center justify-center shrink-0">
+                HS
+              </div>
+              <div class="min-w-0">
+                <div class="text-xs sm:text-sm font-extrabold text-[#174955] truncate">Hohenstein</div>
+                <div class="text-[11px] text-[#4B6F77] truncate">Handwerk &amp; Regionalnetz</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 2. HERO BENTO-GRID (Linke Hauptkarte + 2 Rechte Side-Karten) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
+            <!-- Linke Hauptkarte (Groß, 7 Spalten) -->
+            <div class="lg:col-span-7 rounded-3xl bg-white border border-[#4B6F77]/15 p-7 sm:p-10 lg:p-12 shadow-sm flex flex-col justify-between relative overflow-hidden">
+              <!-- Dezentes dekoratives Hintergrund-Licht -->
+              <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#EDF5F7] blur-2xl opacity-80"></div>
+
+              <div class="relative z-10 space-y-5">
+                <!-- Pill-Badge oberhalb der Headline -->
+                <div class="inline-flex items-center gap-2 rounded-full bg-[#EBF9FB] border border-[#00A5B5]/25 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-[#007A87]">
+                  <span class="text-[#00A5B5]">❖</span>
+                  <span>BUSINESS HUB UNTERTAUNUS</span>
+                </div>
+
+                <!-- Zwei-Farben-Headline: Zeile 1 in tiefem Petrol/Anthrazit, Zeile 2 in Schiefer-Petrol -->
+                <h1 class="hero-fluid-title font-extrabold tracking-tight">
+                  <span class="block text-[#174955]">Dein virtueller Workspace</span>
+                  <span class="block text-[#4B6F77] mt-1">für echte regionale Synergien.</span>
+                </h1>
+
+                <!-- Fließtext -->
+                <p class="text-sm sm:text-base text-[#2A2E30]/85 max-w-xl leading-relaxed">
+                  Für Freelancer, KMUs und Homeoffice-Kräfte zwischen Aar und Taunuskamm. Setz dich im interaktiven 2.5D-Campus an deinen Schreibtisch, triff Nachbarn an der Kaffeemaschine oder pinne Gesuche ans Schwarze Brett.
+                </p>
+              </div>
+
+              <!-- Primärer CTA & Live-Indikatoren -->
+              <div class="relative z-10 pt-8 space-y-6">
+                <div class="flex flex-wrap items-center gap-3.5">
+                  <button
+                    type="button"
+                    data-action="start-onboarding"
+                    class="inline-flex items-center justify-center gap-3 rounded-full bg-[#E68A36] hover:bg-[#B86518] px-7 py-4 text-sm sm:text-base font-extrabold text-white shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                  >
+                    <span>Jetzt Raum betreten</span>
+                    <span aria-hidden="true" class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-xs">→</span>
+                  </button>
+
+                  <button
+                    type="button"
+                    data-action="open-bulletin"
+                    class="inline-flex items-center justify-center gap-2 rounded-full bg-[#EDF5F7] hover:bg-[#DCECEF] border border-[#4B6F77]/20 px-5 py-4 text-xs sm:text-sm font-bold text-[#174955] transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                  >
+                    <span>📌 Schwarzes Brett</span>
+                    <span data-pin-count class="rounded-full bg-[#174955] px-2 py-0.5 text-[10px] font-extrabold text-white">4</span>
+                  </button>
+                </div>
+
+                <div class="pt-4 border-t border-[#4B6F77]/12 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-[#4B6F77]">
+                  <span class="inline-flex items-center gap-2 text-[#174955]">
+                    <span class="h-2.5 w-2.5 rounded-full bg-[#8EAE9D]"></span>
+                    <span>Status: 2.5D-Campus bereit</span>
+                  </span>
+                  <span class="inline-flex items-center gap-1.5">
+                    <span class="text-[#00A5B5]">❖</span> 7 vernetzte Räume
+                  </span>
+                  <span class="inline-flex items-center gap-1.5">
+                    <span class="text-[#E68A36]">❖</span> Direkt im Browser ohne Login-Zwang
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Rechte Side-Karten (5 Spalten: Obere Gradient-Card + Untere Visual-Card) -->
+            <div class="lg:col-span-5 flex flex-col gap-5">
+              <!-- Obere Karte (Gradient-Card: Warm-Amber #E68A36 zu Beerenrot #7E1946) -->
+              <div class="flex-1 rounded-3xl bg-gradient-to-br from-[#E68A36] via-[#C85A3D] to-[#7E1946] p-7 sm:p-8 text-white shadow-md flex flex-col justify-between relative overflow-hidden">
+                <div class="pointer-events-none absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-white/10 blur-xl"></div>
+
+                <div class="flex items-center justify-between gap-2">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-xs px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-white">
+                    <span>❖</span>
+                    <span>100% Regionaler Fokus</span>
+                  </span>
+                  <span class="text-xs font-bold text-white/85">Rheingau-Taunus</span>
+                </div>
+
+                <div class="my-4">
+                  <div class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-none">
+                    0 € Einstiegshürde
+                  </div>
+                  <p class="mt-2 text-xs sm:text-sm text-white/90 leading-relaxed">
+                    Offenes Coworking, digitale Visitenkarte und regionale B2B-Pinnwand – kostenfrei für Selbstständige &amp; Betriebe vor Ort.
+                  </p>
+                </div>
+
+                <div class="flex items-center justify-between pt-3 border-t border-white/20 text-xs font-bold">
+                  <span>Sofort-Zugang ohne Abo</span>
+                  <span class="rounded-full bg-white/20 px-2.5 py-0.5 text-[11px]">Taunus-Initiative</span>
+                </div>
+              </div>
+
+              <!-- Untere Karte (Visual Card: Dunkles Schiefer-Petrol #334E54 mit Grafik-Overlay) -->
+              <div class="flex-1 rounded-3xl bg-[#334E54] border border-[#4B6F77]/30 p-7 sm:p-8 text-white shadow-md flex flex-col justify-between relative overflow-hidden">
+                <!-- Stilisierte 2.5D-Campus Grafik-Komposition im Hintergrund -->
+                <div class="pointer-events-none absolute right-3 top-3 bottom-3 w-44 rounded-2xl bg-[#0F323A]/55 border border-white/10 p-3 hidden sm:flex flex-col justify-between">
+                  <div class="flex items-center justify-between text-[10px] text-[#EBF9FB]/80 font-bold">
+                    <span>🌿 Fokus-Tisch 04</span>
+                    <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
+                  </div>
+                  <!-- Mini 2.5D Avatare & Sprechblase -->
+                  <div class="space-y-2 my-auto">
+                    <div class="rounded-xl bg-white/95 text-[#174955] px-2.5 py-1.5 text-[10px] font-bold shadow-sm">
+                      💬 „Kurzer Kaffee in der Lounge?“
+                    </div>
+                    <div class="flex items-center gap-2">
+                      <span class="h-7 w-7 rounded-xl bg-[#E68A36] text-white font-extrabold text-[10px] flex items-center justify-center shadow-xs">ML</span>
+                      <span class="h-7 w-7 rounded-xl bg-[#00A5B5] text-white font-extrabold text-[10px] flex items-center justify-center shadow-xs">SB</span>
+                      <span class="h-7 w-7 rounded-xl bg-[#8EAE9D] text-[#0F323A] font-extrabold text-[10px] flex items-center justify-center shadow-xs">+4</span>
+                    </div>
+                  </div>
+                  <div class="text-[10px] text-[#E68A36] font-bold">🪑 Klick = Hinsetzen</div>
+                </div>
+
+                <div class="relative z-10 sm:max-w-[58%] space-y-2">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-[#0F323A]/70 border border-[#8EAE9D]/40 px-3 py-1 text-[11px] font-bold text-[#F2F7F4]">
+                    <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
+                    <span>Live-Präsenz</span>
+                  </span>
+                  <h2 class="text-xl sm:text-2xl font-extrabold leading-snug text-white pt-1">
+                    Direkter Draht statt Mail-Ping-Pong
+                  </h2>
+                  <p class="text-xs text-[#EDF5F7]/80 leading-relaxed">
+                    Sieh auf einen Blick, wer gerade ansprechbar ist, wink kurz rüber oder lauf zum Nachbartisch.
+                  </p>
+                </div>
+
+                <div class="relative z-10 pt-4 flex items-center gap-3">
+                  <button
+                    type="button"
+                    data-action="start-onboarding"
+                    class="inline-flex items-center gap-1.5 rounded-full bg-[#174955] hover:bg-[#0F323A] border border-white/15 px-4 py-2 text-xs font-bold text-white transition cursor-pointer"
+                  >
+                    <span>2.5D-Campus öffnen</span>
+                    <span class="text-[#E68A36]">→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. BANNER-LEISTE ("We are not just another video call") -->
+          <div class="rounded-3xl bg-white border border-[#4B6F77]/15 p-4 sm:p-5 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-4">
+            <!-- Icon-Block links in dunklem Petrol #0F323A -->
+            <div class="w-full lg:w-auto flex items-center gap-3.5 rounded-2xl bg-[#0F323A] px-4 py-3 text-white shrink-0">
+              <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-[#174955] text-[#E68A36] text-base font-extrabold">
+                ☕
+              </span>
+              <div>
+                <div class="text-[10px] font-extrabold uppercase tracking-widest text-[#00A5B5]">
+                  WE ARE NOT JUST ANOTHER VIDEO CALL
+                </div>
+                <div class="text-xs font-bold text-white">
+                  Kamera &amp; Mikro bleiben im Alltag aus
+                </div>
+              </div>
+            </div>
+
+            <!-- Horizontal geteilte Botschaft -->
+            <div class="flex-1 text-center lg:text-left px-2">
+              <p class="text-sm sm:text-base font-extrabold text-[#174955]">
+                Keine anonyme Plattform – <span class="text-[#4B6F77]">Dein digitaler Stammtisch für den Untertaunus.</span>
+              </p>
+              <p class="text-xs text-[#4B6F77] mt-0.5">
+                Im Coworking-Bereich kommunizierst du entspannt per Sprechblase <kbd class="rounded bg-[#EDF5F7] px-1.5 py-0.5 text-[10px] font-bold text-[#174955]">Enter</kbd> – Video schaltet sich nur ein, wenn du bewusst einen Konferenzsaal betrittst.
+              </p>
+            </div>
+
+            <!-- Direkt-Einstieg in das 2D-Canvas-Game -->
+            <div class="w-full lg:w-auto flex items-center justify-center gap-2 shrink-0">
+              <span class="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-[#F2F7F4] border border-[#8EAE9D]/40 px-3 py-1.5 text-xs font-bold text-[#5F7F6E]">
+                <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
+                <span>Bereit</span>
+              </span>
+              <button
+                type="button"
+                data-action="start-onboarding"
+                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#174955] hover:bg-[#0F323A] px-5 py-2.5 text-xs font-bold text-white shadow-xs transition-all transform hover:-translate-y-0.5 cursor-pointer"
+              >
+                <span>Visitenkarte anlegen &amp; starten</span>
+                <span class="text-[#E68A36]">→</span>
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- B. INTERAKTIVER FEATURE- & GUIDE-BEREICH                          -->
+        <!-- ================================================================= -->
+        <section id="anleitung-section" class="bento-below-fold max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-10">
+          <!-- Headline mit Pill-Badge & Zwei-Farben-Stil -->
+          <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-2 rounded-full bg-white border border-[#4B6F77]/15 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-[#174955] shadow-2xs mb-3">
+              <span class="text-[#E68A36]">❖</span>
+              <span>SO FUNKTIONIERT'S</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+              <span class="block text-[#2A2E30]">Immer vernetzt, ohne Terminstress.</span>
+              <span class="block text-[#4B6F77] mt-1">Einfach vorbeikommen.</span>
+            </h2>
+          </div>
+
+          <!-- Interaktiver Tab-Switcher (links) mit Live-Preview (rechts) -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-stretch">
+            <!-- Links: Vertikale Auswahlliste mit aktivem Akzentstrich -->
+            <div class="lg:col-span-5 flex flex-col justify-between gap-3.5" role="tablist" aria-label="Funktionen des Untertaunus Business Hubs">
+              <!-- Tab 1 -->
+              <button
+                type="button"
+                role="tab"
+                aria-selected="true"
+                data-feature-tab="0"
+                class="feature-tab-btn group text-left rounded-3xl bg-white border border-[#4B6F77]/15 p-5 sm:p-6 shadow-md transition-all cursor-pointer relative overflow-hidden"
+              >
+                <span data-tab-indicator class="absolute left-0 top-4 bottom-4 w-1.5 rounded-r-full bg-[#00A5B5] transition-all"></span>
+                <div class="flex items-start gap-4 pl-2">
+                  <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#EBF9FB] text-[#007A87] font-extrabold text-sm">
+                    +
+                  </span>
+                  <div>
+                    <div class="text-[11px] font-extrabold uppercase tracking-wider text-[#00A5B5] mb-0.5">
+                      Schritt 01 • Ankommen
+                    </div>
+                    <h3 class="text-base sm:text-lg font-extrabold text-[#174955]">
+                      Profil anlegen &amp; Schreibtisch wählen
+                    </h3>
+                    <p class="mt-1 text-xs sm:text-sm text-[#4B6F77] leading-relaxed">
+                      Trage in 20 Sekunden deine digitale Visitenkarte ein und klicke auf einen freien Schreibtisch – er leuchtet sofort als besetzt auf.
+                    </p>
+                  </div>
+                </div>
+              </button>
+
+              <!-- Tab 2 -->
+              <button
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-feature-tab="1"
+                class="feature-tab-btn group text-left rounded-3xl bg-white/70 hover:bg-white border border-[#4B6F77]/15 p-5 sm:p-6 shadow-xs transition-all cursor-pointer relative overflow-hidden"
+              >
+                <span data-tab-indicator class="absolute left-0 top-4 bottom-4 w-1.5 rounded-r-full bg-transparent transition-all"></span>
+                <div class="flex items-start gap-4 pl-2">
+                  <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#FDF5EE] text-[#E68A36] font-extrabold text-sm">
+                    💬
+                  </span>
+                  <div>
+                    <div class="text-[11px] font-extrabold uppercase tracking-wider text-[#E68A36] mb-0.5">
+                      Schritt 02 • Austausch
+                    </div>
+                    <h3 class="text-base sm:text-lg font-extrabold text-[#174955]">
+                      Sprechblasen-Chat &amp; Kaffeeküche
+                    </h3>
+                    <p class="mt-1 text-xs sm:text-sm text-[#4B6F77] leading-relaxed">
+                      Chatten wie im echten Büro: Drücke Enter für lokale Sprechblasen über deinem Avatar oder hol dir einen Espresso-Boost in der Lounge.
+                    </p>
+                  </div>
+                </div>
+              </button>
+
+              <!-- Tab 3 -->
+              <button
+                type="button"
+                role="tab"
+                aria-selected="false"
+                data-feature-tab="2"
+                class="feature-tab-btn group text-left rounded-3xl bg-white/70 hover:bg-white border border-[#4B6F77]/15 p-5 sm:p-6 shadow-xs transition-all cursor-pointer relative overflow-hidden"
+              >
+                <span data-tab-indicator class="absolute left-0 top-4 bottom-4 w-1.5 rounded-r-full bg-transparent transition-all"></span>
+                <div class="flex items-start gap-4 pl-2">
+                  <span class="flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl bg-[#FBF0F4] text-[#7E1946] font-extrabold text-sm">
+                    🎥
+                  </span>
+                  <div>
+                    <div class="text-[11px] font-extrabold uppercase tracking-wider text-[#7E1946] mb-0.5">
+                      Schritt 03 • Deep Collaboration
+                    </div>
+                    <h3 class="text-base sm:text-lg font-extrabold text-[#174955]">
+                      Spontane Video-Meetings im Saal
+                    </h3>
+                    <p class="mt-1 text-xs sm:text-sm text-[#4B6F77] leading-relaxed">
+                      Betritt den Konferenzsaal „Feldberg“ oder die Networking-Arena für geschützten Raum-Chat, Team-Whiteboard und Live-Video.
+                    </p>
+                  </div>
+                </div>
+              </button>
+            </div>
+
+            <!-- Rechts: Live-Preview Bento-Card (wechselt dynamisch per Klick) -->
+            <div class="lg:col-span-7 rounded-3xl bg-white border border-[#4B6F77]/15 p-6 sm:p-8 lg:p-10 shadow-sm flex flex-col justify-between">
+              <div id="feature-preview-content" class="space-y-6">
+                <!-- Wird initial für Tab 0 gerendert und per JS bei Tab-Klick umgeschaltet -->
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <span id="feature-preview-badge" class="inline-flex items-center gap-2 rounded-full bg-[#EBF9FB] border border-[#00A5B5]/25 px-3.5 py-1 text-xs font-extrabold text-[#007A87]">
+                    <span>❖</span>
+                    <span>LIVE-VORSCHAU • SCHRITT 01</span>
+                  </span>
+                  <span id="feature-preview-zone-pill" class="rounded-full bg-[#F2F7F4] border border-[#8EAE9D]/40 px-3 py-1 text-xs font-bold text-[#5F7F6E]">
+                    🌿 Fokus-Coworking I &amp; Studio II
+                  </span>
+                </div>
+
+                <div>
+                  <h3 id="feature-preview-title" class="text-xl sm:text-2xl font-extrabold text-[#174955]">
+                    Digitale Visitenkarte &amp; reaktive 2.5D-Schreibtische
+                  </h3>
+                  <p id="feature-preview-desc" class="mt-2 text-sm text-[#4B6F77] leading-relaxed">
+                    Wähle deinen Standort (z. B. Taunusstein, Idstein oder Bad Schwalbach) und trage kurz „Ich biete / Ich suche“ ein. Klickst du im Raum auf einen freien Tisch, setzt sich dein Avatar hin, die Schreibtischlampe schaltet sich ein und der Tisch zeigt allen deinen Status.
+                  </p>
+                </div>
+
+                <!-- Visuelles Mockup-Fenster innerhalb der Preview-Card -->
+                <div id="feature-preview-mockup" class="rounded-2xl bg-[#EDF5F7] border border-[#4B6F77]/15 p-5 space-y-4">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                    <div class="rounded-2xl bg-white border border-[#4B6F77]/15 p-4 shadow-2xs">
+                      <div class="flex items-center gap-3 mb-2.5">
+                        <span class="h-10 w-10 rounded-xl bg-[#174955] text-white font-extrabold text-xs flex items-center justify-center">AH</span>
+                        <div>
+                          <div class="text-xs font-extrabold text-[#174955]">Alex Hoffmann</div>
+                          <div class="text-[11px] text-[#4B6F77]">📍 Taunusstein • Digital Consulting</div>
+                        </div>
+                      </div>
+                      <div class="rounded-xl bg-[#F2F7F4] border border-[#8EAE9D]/40 px-2.5 py-1.5 text-[11px] font-semibold text-[#5F7F6E]">
+                        🌿 Bietet: Web-Apps, KI-Workshops &amp; Automatisierung
+                      </div>
+                    </div>
+
+                    <div class="rounded-2xl bg-[#FDF5EE] border-2 border-[#E68A36] p-4 shadow-2xs flex flex-col justify-between">
+                      <div class="flex items-center justify-between text-xs font-extrabold text-[#B86518]">
+                        <span>🪑 Schreibtisch #03</span>
+                        <span class="rounded-full bg-[#E68A36] px-2 py-0.5 text-[10px] text-white">BESETZT</span>
+                      </div>
+                      <p class="text-[11px] text-[#2A2E30]/85 my-2">
+                        Tischplatte leuchtet in Warm-Amber, solange du am Platz arbeitest.
+                      </p>
+                      <div class="text-[10px] font-bold text-[#5F7F6E]">💡 Schreibtischlampe aktiv • 🎧 Fokus-Modus</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="pt-6 mt-6 border-t border-[#4B6F77]/12 flex flex-wrap items-center justify-between gap-4">
+                <div class="text-xs font-semibold text-[#4B6F77]">
+                  Inklusive interaktiver 4-Stationen-Tour beim ersten Betreten
+                </div>
+                <button
+                  type="button"
+                  data-action="start-onboarding"
+                  class="inline-flex items-center gap-2 rounded-full bg-[#174955] hover:bg-[#0F323A] px-5 py-2.5 text-xs font-bold text-white shadow-sm transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                >
+                  <span>Direkt ausprobieren</span>
+                  <span class="text-[#E68A36]">→</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- 3. DREIER FEATURE-KARTEN-REIHE (Bento-Cards mit Pfeil-Button unten rechts) -->
+          <div id="raeume-section" class="grid grid-cols-1 md:grid-cols-3 gap-5 pt-2">
+            <!-- Karte 1: Deep Work Zone -->
+            <div class="group rounded-3xl bg-white border border-[#4B6F77]/15 p-7 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-4">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-[#F2F7F4] border border-[#8EAE9D]/40 px-3 py-1 text-[11px] font-extrabold text-[#5F7F6E]">
+                    <span>🌿</span>
+                    <span>FOKUS &amp; STUDIO</span>
+                  </span>
+                  <span class="text-xs font-bold text-[#4B6F77]">16 Plätze</span>
+                </div>
+                <h3 class="text-xl font-extrabold text-[#174955] mb-2">
+                  Deep Work Zone
+                </h3>
+                <p class="text-xs sm:text-sm text-[#4B6F77] leading-relaxed">
+                  Zwei ruhige Schreibtisch-Räume (Fokus-Coworking I &amp; Projekt-Studio II). Setz dich mit einem Klick an einen freien Tisch – deine Nachbarn sehen sofort, woran du arbeitest.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-[#4B6F77]/12 flex items-center justify-between">
+                <span class="text-xs font-bold text-[#5F7F6E]">🪑 Klick-zum-Hinsetzen</span>
+                <button
+                  type="button"
+                  data-action="start-onboarding"
+                  aria-label="Deep Work Zone betreten"
+                  class="h-10 w-10 rounded-full bg-[#EDF5F7] group-hover:bg-[#174955] text-[#174955] group-hover:text-white font-extrabold flex items-center justify-center transition-all transform group-hover:-translate-y-0.5 cursor-pointer"
+                >
+                  →
+                </button>
+              </div>
+            </div>
+
+            <!-- Karte 2: Kaffeeküche & Lounge -->
+            <div class="group rounded-3xl bg-white border border-[#4B6F77]/15 p-7 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-4">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-[#FDF5EE] border border-[#E68A36]/40 px-3 py-1 text-[11px] font-extrabold text-[#B86518]">
+                    <span>☕</span>
+                    <span>LOUNGE &amp; FUN-RAUM</span>
+                  </span>
+                  <span class="text-xs font-bold text-[#4B6F77]">Espresso &amp; Kicker</span>
+                </div>
+                <h3 class="text-xl font-extrabold text-[#174955] mb-2">
+                  Kaffeeküche &amp; Lounge
+                </h3>
+                <p class="text-xs sm:text-sm text-[#4B6F77] leading-relaxed">
+                  Der Treffpunkt für spontanen Flurfunk: Zieh dir einen Espresso für +25 % Lauf-Tempo, plaudere auf dem Ecksofa oder fordere Kollegen am Tischkicker heraus.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-[#4B6F77]/12 flex items-center justify-between">
+                <span class="text-xs font-bold text-[#B86518]">☕ Inkl. Fun-im-Office</span>
+                <button
+                  type="button"
+                  data-action="start-onboarding"
+                  aria-label="Kaffeeküche und Lounge betreten"
+                  class="h-10 w-10 rounded-full bg-[#FDF5EE] group-hover:bg-[#E68A36] text-[#B86518] group-hover:text-white font-extrabold flex items-center justify-center transition-all transform group-hover:-translate-y-0.5 cursor-pointer"
+                >
+                  →
+                </button>
+              </div>
+            </div>
+
+            <!-- Karte 3: Schwarzes Brett & Marktplatz -->
+            <div class="group rounded-3xl bg-white border border-[#4B6F77]/15 p-7 shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+              <div>
+                <div class="flex items-center justify-between gap-2 mb-4">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-[#EBF9FB] border border-[#00A5B5]/35 px-3 py-1 text-[11px] font-extrabold text-[#007A87]">
+                    <span>📌</span>
+                    <span>B2B-PINNWAND</span>
+                  </span>
+                  <span class="text-xs font-bold text-[#007A87]"><span data-pin-count>4</span> aktive Pins</span>
+                </div>
+                <h3 class="text-xl font-extrabold text-[#174955] mb-2">
+                  Schwarzes Brett &amp; Marktplatz
+                </h3>
+                <p class="text-xs sm:text-sm text-[#4B6F77] leading-relaxed">
+                  Finde lokale Projektpartner, Steuerberater, Handwerker oder IT-Profis im Untertaunus. Pinne eigene Angebote, Gesuche und Events live für alle Besucher an.
+                </p>
+              </div>
+
+              <div class="mt-6 pt-4 border-t border-[#4B6F77]/12 flex items-center justify-between">
+                <span class="text-xs font-bold text-[#007A87]">📌 Direkt-Vorschau öffnen</span>
+                <button
+                  type="button"
+                  data-action="open-bulletin"
+                  aria-label="Schwarzes Brett öffnen"
+                  class="h-10 w-10 rounded-full bg-[#EBF9FB] group-hover:bg-[#00A5B5] text-[#007A87] group-hover:text-white font-extrabold flex items-center justify-center transition-all transform group-hover:-translate-y-0.5 cursor-pointer"
+                >
+                  →
+                </button>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- C. LIVE-STATS-LAUFLEISTE (Tiefes Petrol #174955)                   -->
+        <!-- ================================================================= -->
+        <section aria-label="Kennzahlen des Untertaunus Hubs" class="bg-[#174955] border-y border-[#0F323A] py-5 text-white shadow-sm overflow-hidden">
+          <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-wrap items-center justify-center md:justify-between gap-x-6 gap-y-3 text-xs sm:text-sm md:text-base font-extrabold tracking-wide uppercase">
+              <span class="text-[#E68A36] text-lg leading-none" aria-hidden="true">*</span>
+              <span class="flex items-center gap-2">
+                <span class="text-[#00A5B5]">5</span> Kommunen &amp; Nachbarorte
+              </span>
+              <span class="text-[#E68A36] text-lg leading-none" aria-hidden="true">*</span>
+              <span class="flex items-center gap-2">
+                <span class="text-[#8EAE9D]">1</span> Zentraler Treffpunkt
+              </span>
+              <span class="text-[#E68A36] text-lg leading-none" aria-hidden="true">*</span>
+              <span class="flex items-center gap-2">
+                <span class="text-[#E68A36]">0</span> Downloads nötig
+              </span>
+              <span class="text-[#E68A36] text-lg leading-none" aria-hidden="true">*</span>
+              <span class="flex items-center gap-2">
+                <span class="text-[#00A5B5]">100%</span> DSGVO-Konform
+              </span>
+              <span class="text-[#E68A36] text-lg leading-none" aria-hidden="true">*</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- D. REGIONALE STIMMEN / TESTIMONIAL-CARD                           -->
+        <!-- ================================================================= -->
+        <section id="stimmen-section" class="bento-below-fold max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 sm:py-16 space-y-8">
+          <div class="max-w-3xl">
+            <div class="inline-flex items-center gap-2 rounded-full bg-white border border-[#4B6F77]/15 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-[#007A87] shadow-2xs mb-3">
+              <span class="text-[#00A5B5]">❖</span>
+              <span>REGIONAL VERNETZT</span>
+            </div>
+            <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight leading-tight">
+              <span class="block text-[#174955]">Von Unternehmern vor Ort.</span>
+              <span class="block text-[#4B6F77] mt-1">Für die Region.</span>
+            </h2>
+          </div>
+
+          <!-- Große weiße Bento-Card zweigeteilt -->
+          <div class="rounded-3xl bg-white border border-[#4B6F77]/15 p-6 sm:p-10 lg:p-12 shadow-sm grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            <!-- Links: Metriken + Statement eines regionalen Gründers/Selbstständigen -->
+            <div class="lg:col-span-7 flex flex-col justify-between space-y-6">
+              <!-- Metriken-Pills -->
+              <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5">
+                <div class="rounded-2xl bg-[#EDF5F7] border border-[#4B6F77]/15 p-4">
+                  <div class="text-2xl sm:text-3xl font-extrabold text-[#174955]">20+</div>
+                  <div class="text-xs font-semibold text-[#4B6F77] mt-0.5">Lokale Firmen &amp; Solo-Selbstständige</div>
+                </div>
+                <div class="rounded-2xl bg-[#FDF5EE] border border-[#E68A36]/30 p-4">
+                  <div class="text-2xl sm:text-3xl font-extrabold text-[#E68A36]">1 Klick</div>
+                  <div class="text-xs font-semibold text-[#B86518] mt-0.5">Zum direkten Austausch am Tisch</div>
+                </div>
+                <div class="col-span-2 sm:col-span-1 rounded-2xl bg-[#F2F7F4] border border-[#8EAE9D]/40 p-4">
+                  <div class="text-2xl sm:text-3xl font-extrabold text-[#5F7F6E]">7 Zonen</div>
+                  <div class="text-xs font-semibold text-[#5F7F6E] mt-0.5">Vom Fokus-Desk bis zur Arena</div>
+                </div>
+              </div>
+
+              <!-- Zitat / Statement -->
+              <blockquote class="rounded-2xl bg-[#F4F5F6] border border-[#4B6F77]/12 p-5 sm:p-6 space-y-4">
+                <p class="text-sm sm:text-base font-semibold text-[#2A2E30] leading-relaxed">
+                  „Im Homeoffice in Taunusstein-Wehen hat mir oft der kurze Austausch an der Kaffeemaschine gefehlt. Über den Hub habe ich in einer Woche nicht nur einen Grafikpartner aus Idstein gefunden, sondern auch zwei gemeinsame Kundenprojekte angestoßen – ganz ohne steife Videocalls.“
+                </p>
+                <footer class="flex flex-wrap items-center justify-between gap-3 pt-2 border-t border-[#4B6F77]/15">
+                  <div class="flex items-center gap-3">
+                    <div class="h-10 w-10 rounded-full bg-[#174955] text-white font-extrabold text-xs flex items-center justify-center">
+                      MK
+                    </div>
+                    <div>
+                      <div class="text-xs sm:text-sm font-extrabold text-[#174955]">Markus Krämer</div>
+                      <div class="text-[11px] text-[#4B6F77]">Gründer &amp; IT-Berater • Taunusstein / Idstein</div>
+                    </div>
+                  </div>
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-[#F2F7F4] border border-[#8EAE9D]/50 px-3 py-1 text-[11px] font-bold text-[#5F7F6E]">
+                    <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
+                    <span>Stammgast an Tisch #02</span>
+                  </span>
+                </footer>
+              </blockquote>
+            </div>
+
+            <!-- Rechts: Abgerundetes Co-Working-Visual / Interaktive Raum-Komposition -->
+            <div class="lg:col-span-5">
+              <div class="rounded-3xl bg-gradient-to-br from-[#0F323A] via-[#174955] to-[#334E54] p-6 sm:p-7 text-white shadow-md relative overflow-hidden min-h-[320px] flex flex-col justify-between">
+                <div class="pointer-events-none absolute -top-12 -right-12 h-44 w-44 rounded-full bg-[#00A5B5]/20 blur-2xl"></div>
+
+                <!-- Header im Visual -->
+                <div class="relative z-10 flex items-center justify-between gap-2">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-white/15 px-3 py-1 text-[11px] font-bold text-[#EBF9FB]">
+                    <span>🌲</span>
+                    <span>Taunus Campus • 2.5D Live-Map</span>
+                  </span>
+                  <span class="rounded-full bg-[#8EAE9D] px-2.5 py-0.5 text-[10px] font-extrabold text-[#0F323A]">
+                    LIVE
+                  </span>
+                </div>
+
+                <!-- Illustrierte Co-Working Szene -->
+                <div class="relative z-10 my-5 rounded-2xl bg-[#0F323A]/80 border border-white/15 p-4 space-y-3">
+                  <div class="flex items-center justify-between text-xs border-b border-white/10 pb-2.5">
+                    <span class="font-bold text-[#EDF5F7]">☕ Kaffeeküche &amp; Fokus-Zone</span>
+                    <span class="text-[11px] text-[#E68A36] font-semibold">📍 Untertaunus</span>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-2.5">
+                    <div class="rounded-xl bg-[#174955]/90 border border-[#8EAE9D]/40 p-2.5">
+                      <div class="text-[10px] font-bold text-[#8EAE9D]">🌿 Fokus-Tisch 01</div>
+                      <div class="text-xs font-extrabold text-white mt-0.5">Sarah B. (Idstein)</div>
+                      <div class="text-[10px] text-[#EDF5F7]/75 mt-1">„Biete UX &amp; Branding“</div>
+                    </div>
+                    <div class="rounded-xl bg-[#174955]/90 border border-[#E68A36]/50 p-2.5">
+                      <div class="text-[10px] font-bold text-[#E68A36]">☕ Siebträger-Bar</div>
+                      <div class="text-xs font-extrabold text-white mt-0.5">Jan T. (Aarbergen)</div>
+                      <div class="text-[10px] text-[#EDF5F7]/75 mt-1">„Offen für Kaffeepause“</div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Action unten im Visual -->
+                <div class="relative z-10 flex items-center justify-between gap-3">
+                  <div class="text-xs text-[#EDF5F7]/85 font-medium">
+                    Eigene Visitenkarte in 20 Sek. bereit
+                  </div>
+                  <button
+                    type="button"
+                    data-action="start-onboarding"
+                    class="inline-flex items-center gap-2 rounded-full bg-[#E68A36] hover:bg-[#B86518] px-4 py-2 text-xs font-extrabold text-white shadow-sm transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                  >
+                    <span>Jetzt beitreten</span>
+                    <span>→</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- ================================================================= -->
+        <!-- FAQ-SEKTION IM BENTO-LOOK                                         -->
+        <!-- ================================================================= -->
+        <section id="faq-section" class="bento-below-fold max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 pt-4">
+          <div class="text-center mb-8">
+            <div class="inline-flex items-center gap-2 rounded-full bg-white border border-[#4B6F77]/15 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-[#174955] shadow-2xs mb-2">
+              <span class="text-[#00A5B5]">❖</span>
+              <span>HÄUFIGE FRAGEN</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-extrabold tracking-tight">
+              <span class="text-[#174955]">Kurz erklärt – </span>
+              <span class="text-[#4B6F77]">alles zum digitalen Nachbarschaftsbüro.</span>
+            </h2>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <details class="faq-item group rounded-3xl border border-[#4B6F77]/15 bg-white p-6 shadow-sm" name="hub-faq" open>
+              <summary class="flex items-center justify-between gap-4 cursor-pointer font-extrabold text-[#174955] text-sm sm:text-base">
+                <span>Brauche ich eine Kamera oder ein Mikrofon?</span>
+                <span class="faq-chevron h-7 w-7 rounded-full bg-[#EDF5F7] text-[#174955] flex items-center justify-center text-xs transition-transform duration-200 shrink-0">▼</span>
+              </summary>
+              <p class="mt-3 text-xs sm:text-sm text-[#4B6F77] leading-relaxed border-t border-[#4B6F77]/12 pt-3">
+                <strong class="text-[#174955]">Nein!</strong> Im gesamten Coworking-Bereich, in der Eingangshalle, im Fun-Raum und in der Kaffeelounge läuft die Kommunikation über <strong class="text-[#174955]">visuelle Sprechblasen (Text-Chat)</strong>, Emotes und digitale Visitenkarten. Kamera und Mikrofon sind ausschließlich optional in den beiden Konferenzräumen.
+              </p>
+            </details>
+
+            <details class="faq-item group rounded-3xl border border-[#4B6F77]/15 bg-white p-6 shadow-sm" name="hub-faq">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer font-extrabold text-[#174955] text-sm sm:text-base">
+                <span>Kostet die Nutzung des Business Hubs etwas?</span>
+                <span class="faq-chevron h-7 w-7 rounded-full bg-[#EDF5F7] text-[#174955] flex items-center justify-center text-xs transition-transform duration-200 shrink-0">▼</span>
+              </summary>
+              <p class="mt-3 text-xs sm:text-sm text-[#4B6F77] leading-relaxed border-t border-[#4B6F77]/12 pt-3">
+                Der Zugang zum offenen Coworking-Bereich, das Anlegen deiner digitalen Visitenkarte sowie das Veröffentlichen von regionalen B2B-Gesuchen und Angeboten am <strong class="text-[#174955]">Schwarzen Brett</strong> sind für Selbstständige, Freelancer, KMUs und Homeoffice-Kräfte im Untertaunus <strong class="text-[#174955]">kostenfrei (0 €)</strong>.
+              </p>
+            </details>
+
+            <details class="faq-item group rounded-3xl border border-[#4B6F77]/15 bg-white p-6 shadow-sm" name="hub-faq">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer font-extrabold text-[#174955] text-sm sm:text-base">
+                <span>Wie funktioniert das Hinsetzen an Schreibtischen?</span>
+                <span class="faq-chevron h-7 w-7 rounded-full bg-[#EDF5F7] text-[#174955] flex items-center justify-center text-xs transition-transform duration-200 shrink-0">▼</span>
+              </summary>
+              <p class="mt-3 text-xs sm:text-sm text-[#4B6F77] leading-relaxed border-t border-[#4B6F77]/12 pt-3">
+                Klicke einfach auf einen freien Schreibtisch, Konferenzstuhl oder Sitzsack: Dein Avatar läuft automatisch hin, setzt sich und der Schreibtisch schaltet seine Tischlampe sowie die <strong class="text-[#174955]">Warm-Amber-Kennzeichnung („BESETZT“)</strong> ein.
+              </p>
+            </details>
+
+            <details class="faq-item group rounded-3xl border border-[#4B6F77]/15 bg-white p-6 shadow-sm" name="hub-faq">
+              <summary class="flex items-center justify-between gap-4 cursor-pointer font-extrabold text-[#174955] text-sm sm:text-base">
+                <span>Welche Browser und Steuerungen werden unterstützt?</span>
+                <span class="faq-chevron h-7 w-7 rounded-full bg-[#EDF5F7] text-[#174955] flex items-center justify-center text-xs transition-transform duration-200 shrink-0">▼</span>
+              </summary>
+              <p class="mt-3 text-xs sm:text-sm text-[#4B6F77] leading-relaxed border-t border-[#4B6F77]/12 pt-3">
+                Der Hub läuft direkt im Browser (Chrome, Safari, Firefox, Edge). Du steuerst deinen Avatar wahlweise per <strong class="text-[#174955]">WASD / Pfeiltasten</strong> oder per <strong class="text-[#174955]">Mausklick</strong> und kannst die gesamte Karte mit gedrückter Maustaste verschieben.
+              </p>
+            </details>
+          </div>
+        </section>
+      </main>
+
+      <!-- E. FLOATING STICKY GAME-TRIGGER PILL (UNTEN RECHTS AUF DER LANDINGPAGE) -->
+      <div class="fixed bottom-5 right-5 z-30 pointer-events-auto">
+        <button
+          type="button"
+          data-action="start-onboarding"
+          class="inline-flex items-center gap-3 rounded-full bg-[#174955] hover:bg-[#0F323A] border-2 border-white/80 pl-4 pr-5 py-3 text-xs sm:text-sm font-extrabold text-white shadow-xl hover:shadow-2xl transition-all transform hover:-translate-y-0.5 cursor-pointer"
+        >
+          <span class="flex h-3 w-3 relative">
+            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#8EAE9D] opacity-75"></span>
+            <span class="relative inline-flex rounded-full h-3 w-3 bg-[#8EAE9D]"></span>
+          </span>
+          <span>2D-Raum betreten</span>
+          <span class="inline-flex items-center justify-center rounded-full bg-[#E68A36] px-2.5 py-0.5 text-[11px] font-extrabold text-white">
+            Live →
+          </span>
+        </button>
+      </div>
+
+      <!-- FOOTER -->
+      <footer class="bg-white text-[#4B6F77] border-t border-[#4B6F77]/15 py-8 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-wrap items-center justify-between gap-4">
+          <div class="flex items-center gap-2.5">
+            <span class="h-7 w-7 rounded-xl bg-[#174955] text-white font-extrabold text-[11px] flex items-center justify-center">UT</span>
+            <span><strong class="text-[#174955]">Untertaunus Digital Business Hub</strong> • Virtuelles B2B-Coworking für den Rheingau-Taunus-Kreis</span>
+          </div>
+          <div class="font-medium text-[#4B6F77]">
+            <span>Taunusstein • Bad Schwalbach • Idstein • Aarbergen • Hohenstein • Niedernhausen</span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- TEIL 2: VOLLBILD-BÜRO (100dvw x 100dvh) MIT GATHER.TOWN IN-GAME-HUD    -->
+    <!-- ===================================================================== -->
+    <div
+      id="office-fullscreen-view"
+      class="hidden fixed inset-0 z-40 office-fullscreen-viewport bg-[#0F323A] overflow-hidden select-none"
+    >
+      <!-- Fullscreen Phaser 3 Canvas Container -->
+      <div id="game-canvas-container" class="w-full h-full"></div>
+
+      <!-- UNIFIED TWO-ROW IN-OFFICE TOP MENU BAR (APPLE DESIGN THICK BEZEL & FROSTED GLASS) -->
+      <header
+        id="ingame-top-menubar"
+        class="apple-glass-bar fixed top-2.5 inset-x-3.5 z-50 rounded-[22px] text-[#174955] pointer-events-auto px-4 py-1.5 flex flex-col gap-1"
+      >
+        <!-- ZEILE 1: PROFIL & STATUS LINKS • AKTIONEN & TOOLS RECHTS (ALLE OHNE EINZELRAHMEN) -->
+        <div class="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 min-h-9">
+          <!-- Left Group: Profile + Current Zone + Seated/Coffee Status -->
+          <div class="flex flex-wrap items-center gap-1 sm:gap-2">
+            <!-- Own Profile Item (No border/box) -->
+            <button
+              type="button"
+              data-action="edit-profile-ingame"
+              class="flex items-center gap-2 rounded-lg hover:bg-[#174955]/10 px-2.5 py-1 text-xs text-[#174955] transition cursor-pointer"
+              title="Eigene digitale Visitenkarte bearbeiten"
+            >
+              <span id="hud-profile-dot" class="h-3 w-3 rounded-full bg-[#174955] shrink-0"></span>
+              <span id="hud-profile-name" class="font-extrabold whitespace-nowrap">Alex Hoffmann</span>
+              <span id="hud-profile-town" class="hidden md:inline text-[11px] text-[#4B6F77] font-semibold whitespace-nowrap">📍 Taunusstein ✏️</span>
+            </button>
+
+            <span class="text-[#4B6F77]/30 select-none" aria-hidden="true">|</span>
+
+            <!-- Current Zone Indicator (Frameless inside the bar) -->
+            <div
+              id="current-zone-badge"
+              class="inline-flex items-center gap-1.5 px-2 py-1 text-xs font-extrabold text-[#174955] whitespace-nowrap"
+            >
+              🏛️ Eingangshalle &amp; Infopunkt
+            </div>
+
+            <!-- Seated Indicator (Frameless inside the bar) -->
+            <div
+              id="hud-seated-badge"
+              class="hidden items-center gap-1.5 px-2 py-1 text-xs font-extrabold text-[#B86518] whitespace-nowrap"
+            >
+              <span id="hud-seated-label">🪑 Sitzt am Platz</span>
+            </div>
+
+            <!-- Espresso Speed-Boost Indicator (Frameless inside the bar) -->
+            <div
+              id="hud-coffee-boost-badge"
+              class="hidden items-center gap-1.5 px-2 py-1 text-xs font-extrabold text-[#B86518] whitespace-nowrap"
+            >
+              <span>☕ Espresso-Boost (+25%)</span>
+            </div>
+          </div>
+
+          <!-- Right Group: All Menu Actions seamlessly in one bar without individual borders -->
+          <div class="flex flex-wrap items-center gap-0.5 sm:gap-1">
+            <!-- Team Whiteboard -->
+            <button
+              type="button"
+              data-action="open-whiteboard"
+              class="inline-flex items-center gap-1.5 rounded-lg hover:bg-[#174955]/10 px-2.5 py-1.5 text-xs font-bold text-[#174955] transition cursor-pointer"
+            >
+              <span>🎨 Whiteboard</span>
+            </button>
+
+            <!-- Schwarzes Brett -->
+            <button
+              type="button"
+              data-action="open-bulletin"
+              class="inline-flex items-center gap-1.5 rounded-lg hover:bg-[#174955]/10 px-2.5 py-1.5 text-xs font-bold text-[#174955] transition cursor-pointer"
+            >
+              <span>📌 Schwarzes Brett</span>
+              <span
+                data-pin-count
+                class="rounded-full bg-[#00A5B5] px-1.5 py-0.2 text-[10px] font-extrabold text-white"
+              >
+                4
+              </span>
+            </button>
+
+            <!-- Active Members Drawer Toggle -->
+            <button
+              id="toggle-members-drawer-btn"
+              type="button"
+              class="inline-flex items-center gap-1.5 rounded-lg hover:bg-[#174955]/10 px-2.5 py-1.5 text-xs font-bold text-[#174955] transition cursor-pointer"
+            >
+              <span class="h-2 w-2 rounded-full bg-[#5F7F6E] animate-pulse"></span>
+              <span data-online-count>6 Personen im Hub</span>
+            </button>
+
+            <span class="hidden sm:inline text-[#4B6F77]/30 select-none px-0.5" aria-hidden="true">|</span>
+
+            <!-- Zoom & Center Camera Controls (Frameless with % Indicator) -->
+            <div class="flex items-center">
+              <button
+                id="zoom-out-btn"
+                type="button"
+                class="rounded-lg hover:bg-[#174955]/10 px-2 py-1 text-xs font-extrabold text-[#174955] transition cursor-pointer"
+                title="Herauszoomen (−10%)"
+              >
+                −
+              </button>
+              <span
+                id="zoom-level-label"
+                class="px-1.5 py-0.5 text-[11px] font-extrabold tabular-nums text-[#174955] select-none min-w-[44px] text-center"
+                title="Aktuelle Zoom-Stufe in Prozent"
+              >
+                50%
+              </span>
+              <button
+                id="zoom-in-btn"
+                type="button"
+                class="rounded-lg hover:bg-[#174955]/10 px-2 py-1 text-xs font-extrabold text-[#174955] transition cursor-pointer"
+                title="Hineinzoomen (+10%)"
+              >
+                +
+              </button>
+              <button
+                id="center-camera-btn"
+                type="button"
+                class="rounded-lg hover:bg-[#174955]/10 px-2 py-1 text-xs font-extrabold text-[#E68A36] transition cursor-pointer"
+                title="Kamera wieder auf meinen Avatar zentrieren"
+              >
+                🎯
+              </button>
+            </div>
+
+            <!-- Onboarding Tour Restart -->
+            <button
+              id="restart-tour-btn"
+              type="button"
+              data-action="restart-tour"
+              class="inline-flex items-center gap-1.5 rounded-lg hover:bg-[#174955]/10 px-2.5 py-1.5 text-xs font-bold text-[#174955] transition cursor-pointer"
+              title="Interaktive Onboarding-Tour erneut starten"
+            >
+              <span>🧭 Tour erneut starten</span>
+            </button>
+
+            <!-- Native Browser Fullscreen Toggle -->
+            <button
+              id="browser-fullscreen-btn"
+              type="button"
+              class="rounded-lg hover:bg-[#174955]/10 px-2 py-1.5 text-xs font-extrabold text-[#174955] transition cursor-pointer"
+              title="Browser-Vollbild umschalten"
+            >
+              ⛶
+            </button>
+
+            <!-- Leave Office back to Info Page -->
+            <button
+              id="leave-office-btn"
+              type="button"
+              class="inline-flex items-center gap-1.5 rounded-lg hover:bg-[#7E1946]/15 px-2.5 py-1.5 text-xs font-extrabold text-[#7E1946] transition cursor-pointer"
+            >
+              <span>🚪 Zur Infoseite</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- ZEILE 2: IMMER SICHTBARE RAUM-LEISTE (ALLE 7 RÄUME OHNE EINZELRAHMEN) -->
+        <nav
+          aria-label="Schnellwahl der Büro-Räume"
+          class="flex flex-wrap items-center gap-1 sm:gap-2 pt-1 border-t border-[#4B6F77]/15 text-xs"
+        >
+          <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#4B6F77] mr-1 select-none">
+            Räume:
+          </span>
+          <button
+            type="button"
+            data-teleport-zone="lobby"
+            class="rounded-lg bg-[#174955]/12 px-2.5 py-1 font-extrabold text-[#174955] transition cursor-pointer"
+          >
+            🏛️ Empfang
+          </button>
+          <button
+            type="button"
+            data-teleport-zone="focus"
+            class="rounded-lg hover:bg-[#174955]/10 px-2.5 py-1 font-semibold text-[#334E54] hover:text-[#174955] transition cursor-pointer"
+          >
+            🌿 Fokus I
+          </button>
+          <button
+            type="button"
+            data-teleport-zone="cowork2"
+            class="rounded-lg hover:bg-[#174955]/10 px-2.5 py-1 font-semibold text-[#334E54] hover:text-[#174955] transition cursor-pointer"
+          >
+            💻 Studio II
+          </button>
+          <button
+            type="button"
+            data-teleport-zone="lounge"
+            class="rounded-lg hover:bg-[#174955]/10 px-2.5 py-1 font-semibold text-[#334E54] hover:text-[#174955] transition cursor-pointer"
+          >
+            ☕ Lounge
+          </button>
+          <button
+            type="button"
+            data-teleport-zone="fun"
+            class="rounded-lg hover:bg-[#174955]/10 px-2.5 py-1 font-semibold text-[#334E54] hover:text-[#174955] transition cursor-pointer"
+          >
+            🎮 Fun-Raum
+          </button>
+          <button
+            type="button"
+            data-teleport-zone="conference"
+            class="rounded-lg hover:bg-[#174955]/10 px-2.5 py-1 font-semibold text-[#334E54] hover:text-[#174955] transition cursor-pointer"
+          >
+            🔴 Konferenz I
+          </button>
+          <button
+            type="button"
+            data-teleport-zone="networking"
+            class="rounded-lg hover:bg-[#174955]/10 px-2.5 py-1 font-semibold text-[#334E54] hover:text-[#174955] transition cursor-pointer"
+          >
+            🤝 Networking II
+          </button>
+        </nav>
+      </header>
+
+      <!-- INTERACTIVE ONBOARDING TOUR OVERLAY (Taunus-Petrol #174955 & Warm-Amber #E68A36) -->
+      <div
+        id="onboarding-tour-overlay"
+        class="hidden fixed inset-x-0 bottom-20 sm:bottom-24 z-50 flex justify-center px-4 pointer-events-none"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="tour-station-title"
+      >
+        <div
+          class="pointer-events-auto w-full max-w-xl rounded-2xl border-2 border-[#E68A36] bg-[#174955]/95 text-white shadow-[0_20px_60px_rgba(15,50,58,0.88)] backdrop-blur-md overflow-hidden transition-all duration-300"
+        >
+          <!-- Top Accent Bar & Progress Step Indicator -->
+          <div class="flex items-center justify-between gap-3 bg-[#0F323A] px-5 py-3 border-b border-[#4B6F77]/60">
+            <div class="flex items-center gap-2">
+              <span class="inline-flex items-center justify-center rounded-lg bg-[#E68A36] px-2.5 py-0.5 text-[11px] font-extrabold uppercase tracking-wider text-white shadow-xs">
+                🧭 Onboarding-Tour
+              </span>
+              <span
+                id="tour-step-counter"
+                class="text-xs font-bold text-[#EDF5F7]/85"
+              >
+                Station 1 von 4
+              </span>
+            </div>
+
+            <!-- 4 Interactive Progress Dots -->
+            <div id="tour-progress-dots" class="flex items-center gap-1.5">
+              <span class="h-2.5 w-6 rounded-full bg-[#E68A36] transition-all"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-[#4B6F77] transition-all"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-[#4B6F77] transition-all"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-[#4B6F77] transition-all"></span>
+            </div>
+          </div>
+
+          <!-- Station Title & Tooltip Content -->
+          <div class="p-5 sm:p-6">
+            <div class="flex items-start gap-3.5">
+              <div
+                id="tour-station-icon"
+                class="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#0F323A] border border-[#E68A36]/60 text-2xl shadow-inner"
+              >
+                🌿
+              </div>
+              <div class="flex-1 min-w-0">
+                <div
+                  id="tour-station-subtitle"
+                  class="text-[11px] font-extrabold uppercase tracking-wider text-[#E68A36] mb-0.5"
+                >
+                  STATION 1 • SILENT COWORKING
+                </div>
+                <h3
+                  id="tour-station-title"
+                  class="text-base sm:text-lg font-extrabold text-white leading-snug"
+                >
+                  Station 1: Dein Arbeitsplatz (Fokus-Zone)
+                </h3>
+                <p
+                  id="tour-station-tooltip"
+                  class="mt-2 text-xs sm:text-sm text-[#EDF5F7]/95 leading-relaxed"
+                >
+                  Willkommen! Das ist der Silent Coworking-Bereich. Wenn du an einem Tisch sitzt, arbeitest du konzentriert. Chatte hier leise über Sprechblasen [Enter].
+                </p>
+              </div>
+            </div>
+
+            <!-- Dynamic Action Buttons (Zurück / Tour überspringen / Weiter / Loslegen & Hub betreten) -->
+            <div class="mt-5 pt-4 border-t border-[#4B6F77]/50 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center gap-2">
+                <button
+                  id="tour-prev-btn"
+                  type="button"
+                  class="hidden rounded-xl border border-[#4B6F77] bg-[#0F323A] hover:bg-[#334E54] px-4 py-2.5 text-xs font-bold text-[#EDF5F7] transition cursor-pointer"
+                >
+                  ← Zurück
+                </button>
+                <button
+                  id="tour-skip-btn"
+                  type="button"
+                  class="rounded-xl border border-white/15 bg-white/10 hover:bg-white/20 px-4 py-2.5 text-xs font-semibold text-[#EDF5F7]/90 transition cursor-pointer"
+                >
+                  Tour überspringen
+                </button>
+              </div>
+
+              <button
+                id="tour-next-btn"
+                type="button"
+                class="inline-flex items-center gap-2 rounded-xl bg-[#E68A36] hover:bg-[#B86518] px-5 py-2.5 text-xs sm:text-sm font-extrabold text-white shadow-lg transition cursor-pointer"
+              >
+                <span id="tour-next-btn-label">Weiter →</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- FLOATING IN-OFFICE PANEL: ANWESENDE & DIGITALE VISITENKARTEN (TOP-RIGHT DRAWER) -->
+      <aside
+        id="ingame-members-drawer"
+        class="apple-glass-bar hidden fixed top-24 right-3.5 z-50 w-88 rounded-[22px] p-4 text-[#174955] pointer-events-auto"
+      >
+        <div class="flex items-center justify-between pb-2.5 mb-2.5 border-b border-[#4B6F77]/15">
+          <div>
+            <h2 class="text-xs font-extrabold uppercase tracking-wider text-[#174955]">
+              📇 Anwesende im Büro
+            </h2>
+            <p class="text-[11px] text-[#4B6F77]">
+              Visitenkarte öffnen oder mit 🧭 direkt hinlaufen
+            </p>
+          </div>
+          <button
+            id="close-members-drawer-btn"
+            type="button"
+            class="rounded-lg hover:bg-[#174955]/10 px-2 py-1 text-xs font-extrabold text-[#174955] cursor-pointer"
+          >
+            ✕
+          </button>
+        </div>
+        <div id="active-members-list" class="hub-scroll max-h-72 overflow-y-auto space-y-2 pr-1"></div>
+      </aside>
+
+      <!-- AUTOMATIC CONFERENCE ROOM OVERLAY INSIDE FULLSCREEN OFFICE (zone === 'conference' || zone === 'networking') -->
+      <div
+        id="conference-video-overlay"
+        class="hidden fixed top-24 left-1/2 -translate-x-1/2 z-50 w-[95vw] max-w-4xl rounded-2xl border-2 border-[#7E1946] bg-[#E6ECEF]/98 text-[#151718] shadow-[0_20px_50px_rgba(15,30,36,0.45)] backdrop-blur-md overflow-hidden pointer-events-auto"
+      >
+        <div class="flex flex-wrap items-center justify-between gap-2 bg-[#580E30] text-white px-4 py-2.5 border-b border-[#7E1946]">
+          <div class="flex items-center gap-2">
+            <span class="h-3 w-3 rounded-full bg-[#E68A36] animate-ping"></span>
+            <span id="conference-overlay-title" class="text-xs sm:text-sm font-bold tracking-wide">
+              🔴 KONFERENZSAAL I „FELDBERG“ • VIDEO- &amp; VOICE-SESSION AKTIV
+            </span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button
+              type="button"
+              data-action="open-whiteboard"
+              class="rounded-lg bg-[#E68A36] hover:bg-[#B86518] px-3 py-1 text-xs font-bold text-white transition cursor-pointer"
+            >
+              🎨 Whiteboard
+            </button>
+            <button
+              id="conference-jitsi-btn"
+              type="button"
+              class="rounded-lg bg-[#00A5B5] hover:bg-[#007A87] px-3 py-1 text-xs font-bold text-white transition cursor-pointer"
+            >
+              Jitsi-Live-Raum laden (Optional)
+            </button>
+            <button
+              id="conference-minimize-btn"
+              type="button"
+              class="rounded-lg bg-white/15 hover:bg-white/25 px-2.5 py-1 text-xs font-semibold text-white transition cursor-pointer"
+            >
+              Minimieren
+            </button>
+            <button
+              id="conference-leave-btn"
+              type="button"
+              class="rounded-lg bg-[#7E1946] hover:bg-[#580E30] border border-white/25 px-3 py-1 text-xs font-bold text-white transition cursor-pointer"
+            >
+              Saal verlassen
+            </button>
+          </div>
+        </div>
+
+        <div id="conference-overlay-body" class="p-4 grid grid-cols-1 lg:grid-cols-12 gap-4">
+          <!-- Left Column (7 cols): Video/Audio Status + Only People Currently In This Room -->
+          <div class="lg:col-span-7 flex flex-col justify-between gap-3">
+            <div id="conference-simulated-grid" class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div class="rounded-xl border-2 border-[#8EAE9D] bg-white p-3 flex flex-col justify-between h-24 shadow-sm">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-extrabold text-[#174955]">🎙️ Audio- &amp; Video-Brücke</span>
+                  <span class="rounded bg-[#2E6F4E] px-2 py-0.5 text-[10px] font-bold text-white">Verbunden</span>
+                </div>
+                <div class="text-[11px] font-medium text-[#2A3B40]">
+                  Klicke im Raum direkt auf einen freien Konferenzstuhl, um dich an den Tisch zu setzen.
+                </div>
+                <div class="text-[10px] font-semibold text-[#3D6352]">Verlässt du den Raum, schließt sich dieses Fenster automatisch.</div>
+              </div>
+
+              <div class="rounded-xl border-2 border-[#4B6F77]/60 bg-white p-3 flex flex-col justify-between h-24 shadow-sm">
+                <div class="flex items-center justify-between text-xs">
+                  <span class="font-extrabold text-[#174955]">🖥️ Screen-Sharing &amp; Pitch</span>
+                  <span id="conference-overlay-room-badge" class="rounded bg-[#007A87] px-2 py-0.5 text-[10px] font-bold text-white">Feldberg</span>
+                </div>
+                <div class="text-[11px] font-medium text-[#2A3B40]">
+                  Präsentations-Slot für Pitches, Workshops &amp; B2B-Speed-Networking.
+                </div>
+                <div class="text-[10px] font-semibold text-[#007A87]">Optional oben per Klick als Jitsi-Video starten</div>
+              </div>
+            </div>
+
+            <div id="conference-jitsi-container" class="hidden"></div>
+
+            <!-- Live Participant List: ONLY people currently inside this specific conference room -->
+            <div class="rounded-xl border-2 border-[#4B6F77]/50 bg-white p-3 shadow-sm">
+              <div class="flex items-center justify-between gap-2 mb-2">
+                <span class="text-xs font-extrabold text-[#174955] flex items-center gap-1.5">
+                  <span>👥 Aktuell in diesem Raum anwesend</span>
+                  <span
+                    id="conference-room-member-count"
+                    class="rounded-full bg-[#E68A36] px-2 py-0.5 text-[10px] font-extrabold text-white"
+                  >
+                    2
+                  </span>
+                </span>
+                <span class="text-[10px] font-semibold text-[#4B6F77]">
+                  🔒 Nur diese Personen sehen den Raum-Chat
+                </span>
+              </div>
+              <div
+                id="conference-room-members-list"
+                class="flex flex-wrap items-center gap-2"
+              ></div>
+            </div>
+          </div>
+
+          <!-- Right Column (5 cols): Exclusive Conference Room Chat -->
+          <div class="lg:col-span-5 rounded-xl border-2 border-[#7E1946]/70 bg-white p-3 flex flex-col justify-between h-64 shadow-sm">
+            <div class="flex items-center justify-between gap-2 pb-2 mb-2 border-b border-[#D5E1E6]">
+              <div>
+                <div class="text-xs font-extrabold text-[#174955] flex items-center gap-1.5">
+                  <span>🔒 Exklusiver Raum-Chat</span>
+                  <span
+                    id="conference-chat-room-pill"
+                    class="rounded bg-[#7E1946] px-1.5 py-0.5 text-[10px] text-white"
+                  >
+                    Nur Saal I
+                  </span>
+                </div>
+                <p class="text-[10px] font-medium text-[#4B6F77]">
+                  Nachrichten hier sind nur für Personen in diesem Konferenzraum sichtbar
+                </p>
+              </div>
+            </div>
+
+            <div
+              id="conference-room-chat-messages"
+              class="hub-scroll flex-1 overflow-y-auto space-y-2 pr-1 mb-2"
+              aria-live="polite"
+            ></div>
+
+            <form id="conference-room-chat-form" class="flex items-center gap-1.5">
+              <input
+                id="conference-room-chat-input"
+                type="text"
+                maxlength="180"
+                placeholder="Nachricht nur an diesen Raum senden..."
+                class="flex-1 rounded-lg border-2 border-[#94B0B8] bg-[#F1F5F9] px-2.5 py-1.5 text-xs font-medium text-[#151718] placeholder-[#64748B] focus:bg-white focus:border-[#174955] focus:outline-none"
+              />
+              <button
+                type="submit"
+                class="rounded-lg bg-[#E68A36] hover:bg-[#B86518] px-3 py-1.5 text-xs font-extrabold text-white transition shrink-0 cursor-pointer"
+              >
+                Senden
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTTOM-CENTER IN-OFFICE DOCK: APPLE DESIGN THICK BEZEL & FROSTED GLASS -->
+      <div class="fixed bottom-2.5 inset-x-3.5 z-50 flex flex-col items-center gap-2.5 pointer-events-none">
+        <!-- Collapsible Floating Chat History Log (Apple Glass Tone) -->
+        <div
+          id="ingame-chat-drawer"
+          class="apple-glass-bar hidden pointer-events-auto w-full max-w-3xl rounded-[22px] p-3.5 text-[#174955]"
+        >
+          <div class="flex items-center justify-between pb-2 mb-2 border-b border-[#4B6F77]/15 text-xs">
+            <span class="font-extrabold text-[#174955]">💬 Raum-Chat-Verlauf (Sprechblasen)</span>
+            <button
+              id="close-chat-drawer-btn"
+              type="button"
+              class="rounded-lg hover:bg-[#174955]/10 px-2 py-0.5 text-[#4B6F77] hover:text-[#174955] font-bold cursor-pointer"
+            >
+              Minimieren ✕
+            </button>
+          </div>
+          <div
+            id="chat-messages"
+            class="hub-scroll max-h-44 overflow-y-auto space-y-2 pr-1"
+            aria-live="polite"
+          ></div>
+        </div>
+
+        <!-- Unified Wide Light Bottom Control Bar (Apple Design Bezel, Frameless items inside) -->
+        <div class="apple-glass-bar pointer-events-auto w-full max-w-5xl rounded-[22px] px-4 py-1.5 text-[#174955] flex flex-wrap items-center justify-between gap-2">
+          <!-- Left: Live Status Selector + Mini Custom Status Input (Frameless) -->
+          <div class="flex items-center gap-1.5">
+            <select
+              id="dock-status-select"
+              aria-label="Verfügbarkeitsstatus wählen"
+              class="rounded-lg bg-transparent hover:bg-[#174955]/10 px-2.5 py-1.5 text-xs font-extrabold text-[#174955] focus:bg-white/80 focus:outline-none cursor-pointer transition"
+            >
+              <option value="available">🟢 Ansprechbar</option>
+              <option value="focus">🎧 Deep Work</option>
+              <option value="away">☕ Kurz weg</option>
+            </select>
+
+            <span class="hidden lg:inline text-[#4B6F77]/30 select-none" aria-hidden="true">|</span>
+
+            <input
+              id="dock-custom-status"
+              type="text"
+              maxlength="36"
+              placeholder="Status-Notiz (z.B. Am Pitch)..."
+              title="Kurze Status-Zeile unter deinem Avatar (Enter zum Speichern)"
+              class="hidden lg:block w-44 rounded-lg bg-transparent hover:bg-[#174955]/8 focus:bg-white px-2.5 py-1.5 text-xs font-medium text-[#174955] placeholder-[#4B6F77]/70 focus:outline-none transition"
+            />
+          </div>
+
+          <span class="hidden sm:inline text-[#4B6F77]/30 select-none" aria-hidden="true">|</span>
+
+          <!-- Center: Gather Emote Bar (Keys 1-6, Frameless inside the bar) -->
+          <div
+            id="dock-emote-bar"
+            class="hidden sm:flex items-center gap-0.5 px-1 py-0.5"
+            title="Schnell-Reaktionen über deinem Avatar (Tasten 1 bis 6)"
+          ></div>
+
+          <span class="hidden sm:inline text-[#4B6F77]/30 select-none" aria-hidden="true">|</span>
+
+          <!-- Right: Chat Log Toggle + Speech Bubble Input (Frameless inside the bar) -->
+          <div class="flex-1 min-w-[230px] flex items-center gap-1.5">
+            <button
+              id="toggle-chat-drawer-btn"
+              type="button"
+              class="rounded-lg hover:bg-[#174955]/10 px-2.5 py-1.5 text-xs font-extrabold text-[#174955] shrink-0 transition cursor-pointer"
+              title="Chat-Verlauf ein-/ausblenden"
+            >
+              💬 Verlauf
+            </button>
+
+            <form id="chat-form" class="flex-1 flex items-center gap-1.5">
+              <input
+                id="chat-input"
+                type="text"
+                maxlength="160"
+                placeholder="[Enter] Sprechblase schreiben..."
+                class="flex-1 rounded-lg bg-[#174955]/8 hover:bg-[#174955]/12 focus:bg-white px-3 py-1.5 text-xs font-medium text-[#174955] placeholder-[#4B6F77]/75 focus:outline-none transition"
+              />
+              <button
+                type="submit"
+                class="rounded-lg bg-[#E68A36] hover:bg-[#B86518] px-3.5 py-1.5 text-xs font-extrabold text-white transition shrink-0 cursor-pointer"
+              >
+                Senden
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 1: ONBOARDING & DIGITALE VISITENKARTE IM BENTO-LOOK (<dialog>)   -->
+    <!-- ===================================================================== -->
+    <dialog
+      id="profile-modal"
+      closedby="any"
+      aria-labelledby="profile-modal-title"
+      class="m-auto w-full max-w-2xl rounded-3xl border border-[#4B6F77]/20 bg-[#EDF5F7] p-0 text-[#2A2E30] shadow-2xl overflow-hidden"
+    >
+      <!-- Bento Header Card -->
+      <div class="bg-white px-6 sm:px-8 py-5 border-b border-[#4B6F77]/15 flex items-start justify-between gap-4">
+        <div class="space-y-1.5">
+          <div class="flex flex-wrap items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-[#EBF9FB] border border-[#00A5B5]/25 px-3 py-0.5 text-[10px] font-extrabold uppercase tracking-wider text-[#007A87]">
+              <span class="text-[#00A5B5]">❖</span>
+              <span>DIGITALE VISITENKARTE</span>
+            </span>
+            <span class="inline-flex items-center gap-1.5 rounded-full bg-[#F2F7F4] border border-[#8EAE9D]/50 px-3 py-0.5 text-[10px] font-extrabold text-[#5F7F6E]">
+              <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
+              <span>Bereit für den Hub</span>
+            </span>
+          </div>
+          <h3 id="profile-modal-title" class="text-xl sm:text-2xl font-extrabold tracking-tight leading-snug">
+            <span class="text-[#174955]">Dein Avatar &amp; Profil.</span>
+            <span class="text-[#4B6F77] font-bold"> Direkt vernetzt im Untertaunus.</span>
+          </h3>
+        </div>
+        <button
+          type="button"
+          onclick="document.getElementById('profile-modal').close()"
+          aria-label="Dialog schließen"
+          class="h-9 w-9 rounded-full bg-[#EDF5F7] hover:bg-[#174955] text-[#174955] hover:text-white flex items-center justify-center text-xs font-extrabold transition cursor-pointer shrink-0"
+        >
+          ✕
+        </button>
+      </div>
+
+      <form id="profile-form" class="p-5 sm:p-7 space-y-4">
+        <!-- Bento Subcard 1: Basis-Kontaktdaten -->
+        <div class="rounded-2xl bg-white border border-[#4B6F77]/15 p-4 sm:p-5 shadow-2xs space-y-4">
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="profile-name" class="block text-xs font-extrabold text-[#174955] mb-1.5">
+                Vor- &amp; Nachname *
+              </label>
+              <input
+                id="profile-name"
+                type="text"
+                required
+                maxlength="50"
+                placeholder="z. B. Maria Becker"
+                class="w-full rounded-xl border border-[#4B6F77]/25 bg-[#F4F5F6] px-3.5 py-2.5 text-sm font-medium text-[#2A2E30] focus:border-[#00A5B5] focus:bg-white focus:outline-none transition"
+              />
+            </div>
+
+            <div>
+              <label for="profile-location" class="block text-xs font-extrabold text-[#174955] mb-1.5">
+                Standort im Untertaunus *
+              </label>
+              <select
+                id="profile-location"
+                class="w-full rounded-xl border border-[#4B6F77]/25 bg-[#F4F5F6] px-3.5 py-2.5 text-sm font-medium text-[#2A2E30] focus:border-[#00A5B5] focus:bg-white focus:outline-none transition"
+              ></select>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <div>
+              <label for="profile-company" class="block text-xs font-extrabold text-[#174955] mb-1.5">
+                Unternehmen / Funktion *
+              </label>
+              <input
+                id="profile-company"
+                type="text"
+                required
+                maxlength="70"
+                placeholder="z. B. Becker Architektur / Inhaberin"
+                class="w-full rounded-xl border border-[#4B6F77]/25 bg-[#F4F5F6] px-3.5 py-2.5 text-sm font-medium text-[#2A2E30] focus:border-[#00A5B5] focus:bg-white focus:outline-none transition"
+              />
+            </div>
+
+            <div>
+              <label for="profile-website" class="block text-xs font-extrabold text-[#174955] mb-1.5">
+                Website oder LinkedIn <span class="font-normal text-[#4B6F77]">(optional)</span>
+              </label>
+              <input
+                id="profile-website"
+                type="text"
+                maxlength="120"
+                placeholder="linkedin.com/in/..."
+                class="w-full rounded-xl border border-[#4B6F77]/25 bg-[#F4F5F6] px-3.5 py-2.5 text-sm font-medium text-[#2A2E30] focus:border-[#00A5B5] focus:bg-white focus:outline-none transition"
+              />
+            </div>
+          </div>
+        </div>
+
+        <!-- Bento Subcard 2: Matching (Salbeigrün #8EAE9D & Amber #E68A36) -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="rounded-2xl bg-white border border-[#8EAE9D]/50 p-4 shadow-2xs">
+            <label for="profile-offers" class="flex items-center gap-1.5 text-xs font-extrabold text-[#5F7F6E] mb-1.5">
+              <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
+              <span>🌿 Ich biete der Region:</span>
+            </label>
+            <input
+              id="profile-offers"
+              type="text"
+              maxlength="140"
+              placeholder="z. B. Webentwicklung, Steuerberatung..."
+              class="w-full rounded-xl border border-[#8EAE9D]/60 bg-[#F2F7F4] px-3 py-2 text-xs sm:text-sm font-medium text-[#2A2E30] focus:border-[#5F7F6E] focus:bg-white focus:outline-none transition"
+            />
+          </div>
+
+          <div class="rounded-2xl bg-white border border-[#E68A36]/50 p-4 shadow-2xs">
+            <label for="profile-seeks" class="flex items-center gap-1.5 text-xs font-extrabold text-[#B86518] mb-1.5">
+              <span class="h-2 w-2 rounded-full bg-[#E68A36]"></span>
+              <span>🔍 Ich suche im Netzwerk:</span>
+            </label>
+            <input
+              id="profile-seeks"
+              type="text"
+              maxlength="140"
+              placeholder="z. B. Handwerksbetriebe, Grafikpartner..."
+              class="w-full rounded-xl border border-[#E68A36]/60 bg-[#FDF5EE] px-3 py-2 text-xs sm:text-sm font-medium text-[#2A2E30] focus:border-[#E68A36] focus:bg-white focus:outline-none transition"
+            />
+          </div>
+        </div>
+
+        <!-- Bento Subcard 3: Avatar-Farbe -->
+        <div class="rounded-2xl bg-white border border-[#4B6F77]/15 p-4 shadow-2xs">
+          <span class="block text-xs font-extrabold text-[#174955] mb-2.5">
+            🎨 Avatar-Farbe wählen (Taunus-Farbwelt):
+          </span>
+          <div id="profile-color-swatches" class="flex flex-wrap gap-2"></div>
+        </div>
+
+        <!-- Bento Footer Actions (Salbeigrün "Bereit" + Pill-Buttons) -->
+        <div class="flex flex-wrap items-center justify-between gap-3 pt-2">
+          <div class="inline-flex items-center gap-2 rounded-full bg-white border border-[#8EAE9D]/50 px-3.5 py-1.5 text-xs font-bold text-[#5F7F6E]">
+            <span class="h-2.5 w-2.5 rounded-full bg-[#8EAE9D]"></span>
+            <span>Status beim Start: Bereit &amp; Ansprechbar</span>
+          </div>
+
+          <div class="flex items-center gap-2.5 ml-auto">
+            <button
+              type="button"
+              onclick="document.getElementById('profile-modal').close()"
+              class="rounded-full border border-[#4B6F77]/25 bg-white hover:bg-[#F4F5F6] px-5 py-2.5 text-xs font-bold text-[#334E54] transition cursor-pointer"
+            >
+              Abbrechen
+            </button>
+            <button
+              id="profile-submit-btn"
+              type="submit"
+              class="rounded-full bg-[#E68A36] hover:bg-[#B86518] px-6 py-3 text-xs sm:text-sm font-extrabold text-white shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
+            >
+              🚀 Jetzt Raum betreten →
+            </button>
+          </div>
+        </div>
+      </form>
+    </dialog>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 2: DIGITALE VISITENKARTE BEI AVATAR-KLICK IM BENTO-LOOK (<dialog>)-->
+    <!-- ===================================================================== -->
+    <dialog
+      id="vcard-modal"
+      closedby="any"
+      aria-labelledby="vcard-name"
+      class="m-auto w-full max-w-md rounded-3xl border border-[#4B6F77]/20 bg-[#EDF5F7] p-0 text-[#2A2E30] shadow-2xl overflow-hidden"
+    >
+      <div class="bg-white p-5 sm:p-6 border-b border-[#4B6F77]/15 flex items-start justify-between gap-4">
+        <div class="flex items-center gap-3.5">
+          <div
+            id="vcard-avatar"
+            class="h-14 w-14 rounded-2xl border-2 border-[#EDF5F7] flex items-center justify-center text-lg font-extrabold text-white shadow-md shrink-0"
+          >
+            UT
+          </div>
+          <div>
+            <div class="flex flex-wrap items-center gap-1.5">
+              <span class="inline-flex items-center gap-1 rounded-full bg-[#EDF5F7] px-2.5 py-0.5 text-[11px] font-bold text-[#174955]">
+                📍 <span id="vcard-location">Taunusstein</span>
+              </span>
+              <span id="vcard-zone" class="inline-flex items-center gap-1 rounded-full bg-[#EBF9FB] px-2.5 py-0.5 text-[11px] font-bold text-[#007A87]">
+                🏛️ Eingangshalle
+              </span>
+            </div>
+            <h3 id="vcard-name" class="text-lg font-extrabold text-[#174955] leading-snug mt-1">Name</h3>
+            <p id="vcard-company" class="text-xs font-medium text-[#4B6F77]">Unternehmen</p>
+          </div>
+        </div>
+        <button
+          type="button"
+          onclick="document.getElementById('vcard-modal').close()"
+          aria-label="Visitenkarte schließen"
+          class="h-8 w-8 rounded-full bg-[#EDF5F7] hover:bg-[#174955] text-[#174955] hover:text-white flex items-center justify-center text-xs font-extrabold transition cursor-pointer shrink-0"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="p-5 sm:p-6 space-y-3.5">
+        <div class="flex flex-wrap items-center gap-2">
+          <span id="vcard-status"></span>
+          <span
+            id="vcard-custom-status"
+            class="hidden rounded-full bg-white border border-[#4B6F77]/15 px-3 py-1 text-xs font-semibold text-[#174955]"
+          ></span>
+        </div>
+
+        <div class="rounded-2xl border border-[#8EAE9D]/50 bg-white p-4 shadow-2xs">
+          <div class="text-[11px] font-extrabold uppercase tracking-wider text-[#5F7F6E] mb-1 flex items-center gap-1.5">
+            <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
+            <span>🌿 Ich biete</span>
+          </div>
+          <p id="vcard-offers" class="text-xs sm:text-sm text-[#2A2E30] leading-relaxed"></p>
+        </div>
+
+        <div class="rounded-2xl border border-[#E68A36]/50 bg-white p-4 shadow-2xs">
+          <div class="text-[11px] font-extrabold uppercase tracking-wider text-[#B86518] mb-1 flex items-center gap-1.5">
+            <span class="h-2 w-2 rounded-full bg-[#E68A36]"></span>
+            <span>🔍 Ich suche</span>
+          </div>
+          <p id="vcard-seeks" class="text-xs sm:text-sm text-[#2A2E30] leading-relaxed"></p>
+        </div>
+
+        <div class="hidden rounded-2xl border border-[#00A5B5]/30 bg-white px-4 py-3 text-xs shadow-2xs">
+          <span class="font-bold text-[#007A87]">🔗 Website / Profil: </span>
+          <a
+            id="vcard-website"
+            href="#"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="font-semibold text-[#00A5B5] underline break-all"
+          ></a>
+        </div>
+
+        <div class="flex flex-wrap items-center justify-end gap-2 pt-2">
+          <button
+            type="button"
+            onclick="document.getElementById('vcard-modal').close()"
+            class="rounded-full border border-[#4B6F77]/25 bg-white hover:bg-[#F4F5F6] px-4 py-2 text-xs font-bold text-[#334E54] cursor-pointer"
+          >
+            Schließen
+          </button>
+          <button
+            id="vcard-walk-btn"
+            type="button"
+            class="rounded-full bg-[#8EAE9D] hover:bg-[#5F7F6E] px-4 py-2 text-xs font-extrabold text-[#0F323A] hover:text-white shadow-xs transition cursor-pointer"
+          >
+            🧭 Hinlaufen
+          </button>
+          <button
+            id="vcard-chat-btn"
+            type="button"
+            class="rounded-full bg-[#E68A36] hover:bg-[#B86518] px-4 py-2 text-xs font-extrabold text-white shadow-xs transition cursor-pointer"
+          >
+            💬 Ansprechen
+          </button>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 3: INTERAKTIVES SCHWARZES BRETT (<dialog>)                      -->
+    <!-- ===================================================================== -->
+    <dialog
+      id="bulletin-modal"
+      closedby="any"
+      aria-labelledby="bulletin-modal-title"
+      class="m-auto w-full max-w-5xl rounded-2xl border-2 border-[#174955] bg-white p-0 text-[#2A2E30] shadow-2xl"
+    >
+      <div class="bg-[#174955] px-6 py-4 text-white flex items-center justify-between">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-[#00A5B5]">Regionale B2B-Pinnwand</span>
+          <h3 id="bulletin-modal-title" class="text-lg sm:text-xl font-extrabold">
+            📌 Digitales Schwarzes Brett – Untertaunus
+          </h3>
+        </div>
+        <button
+          type="button"
+          onclick="document.getElementById('bulletin-modal').close()"
+          class="rounded-lg bg-white/10 hover:bg-white/20 px-3 py-1.5 text-xs font-bold text-white cursor-pointer"
+        >
+          ✕ Schließen
+        </button>
+      </div>
+
+      <div class="p-6 grid grid-cols-1 lg:grid-cols-12 gap-6 max-h-[80vh] overflow-y-auto">
+        <div class="lg:col-span-7 space-y-4">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="flex flex-wrap gap-1.5">
+              <button
+                type="button"
+                data-pin-filter="all"
+                class="rounded-lg bg-[#174955] px-3 py-1.5 text-xs font-semibold text-white cursor-pointer"
+              >
+                Alle Aushänge
+              </button>
+              <button
+                type="button"
+                data-pin-filter="angebot"
+                class="rounded-lg bg-[#F0F4F5] px-3 py-1.5 text-xs font-semibold text-[#334E54] hover:bg-[#EDF5F7] cursor-pointer"
+              >
+                🌿 Angebote
+              </button>
+              <button
+                type="button"
+                data-pin-filter="gesuch"
+                class="rounded-lg bg-[#F0F4F5] px-3 py-1.5 text-xs font-semibold text-[#334E54] hover:bg-[#EDF5F7] cursor-pointer"
+              >
+                🔍 Gesuche
+              </button>
+              <button
+                type="button"
+                data-pin-filter="event"
+                class="rounded-lg bg-[#F0F4F5] px-3 py-1.5 text-xs font-semibold text-[#334E54] hover:bg-[#EDF5F7] cursor-pointer"
+              >
+                📅 Events
+              </button>
+            </div>
+          </div>
+
+          <div id="bulletin-pins-list" class="hub-scroll space-y-3 max-h-[52vh] overflow-y-auto pr-1"></div>
+        </div>
+
+        <div class="lg:col-span-5 rounded-2xl border border-[#4B6F77]/30 bg-[#F0F4F5] p-5 self-start">
+          <h4 class="text-base font-extrabold text-[#174955] mb-1">
+            Neuen Aushang anpinnen
+          </h4>
+          <p class="text-xs text-[#4B6F77] mb-4">
+            Dein Beitrag erscheint sofort live für alle Besucher im Untertaunus-Hub.
+          </p>
+
+          <form id="bulletin-new-form" class="space-y-3">
+            <div>
+              <label for="pin-type" class="block text-xs font-bold text-[#174955] mb-1">
+                Kategorie
+              </label>
+              <select
+                id="pin-type"
+                class="w-full rounded-lg border border-[#4B6F77]/40 bg-white px-3 py-2 text-xs font-semibold focus:border-[#00A5B5] focus:outline-none"
+              >
+                <option value="angebot">🌿 Ich biete (Angebot / Dienstleistung)</option>
+                <option value="gesuch">🔍 Ich suche (Kooperation / Auftrag)</option>
+                <option value="event">📅 Veranstaltung / Netzwerk-Treffen</option>
+              </select>
+            </div>
+
+            <div>
+              <label for="pin-title" class="block text-xs font-bold text-[#174955] mb-1">
+                Überschrift *
+              </label>
+              <input
+                id="pin-title"
+                type="text"
+                required
+                maxlength="90"
+                placeholder="z. B. Suche Steuerkanzlei oder biete Webdesign..."
+                class="w-full rounded-lg border border-[#4B6F77]/40 bg-white px-3 py-2 text-xs focus:border-[#00A5B5] focus:outline-none"
+              />
+            </div>
+
+            <div>
+              <label for="pin-description" class="block text-xs font-bold text-[#174955] mb-1">
+                Kurzbeschreibung *
+              </label>
+              <textarea
+                id="pin-description"
+                rows="3"
+                required
+                maxlength="340"
+                placeholder="Beschreibe kurz dein Angebot, Gesuch oder Event im Untertaunus..."
+                class="w-full rounded-lg border border-[#4B6F77]/40 bg-white px-3 py-2 text-xs focus:border-[#00A5B5] focus:outline-none"
+              ></textarea>
+            </div>
+
+            <div>
+              <label for="pin-contact" class="block text-xs font-bold text-[#174955] mb-1">
+                Kontaktweg (E-Mail, Telefon oder Treffpunkt im Hub)
+              </label>
+              <input
+                id="pin-contact"
+                type="text"
+                maxlength="90"
+                placeholder="z. B. kontakt@firma.de oder Tisch 2 im Fokus-Raum"
+                class="w-full rounded-lg border border-[#4B6F77]/40 bg-white px-3 py-2 text-xs focus:border-[#00A5B5] focus:outline-none"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="w-full rounded-xl bg-[#E68A36] hover:bg-[#B86518] py-2.5 text-xs font-bold text-white shadow-sm transition cursor-pointer"
+            >
+              📌 Jetzt am Schwarzen Brett veröffentlichen
+            </button>
+          </form>
+        </div>
+      </div>
+    </dialog>
+
+    <!-- ===================================================================== -->
+    <!-- MODAL 4: KOLLABORATIVES TEAM-WHITEBOARD IM KONFERENZSAAL (<dialog>)   -->
+    <!-- ===================================================================== -->
+    <dialog
+      id="whiteboard-modal"
+      closedby="any"
+      aria-labelledby="whiteboard-modal-title"
+      class="m-auto w-full max-w-4xl rounded-2xl border-2 border-[#7E1946] bg-white p-0 text-[#2A2E30] shadow-2xl"
+    >
+      <div class="bg-[#580E30] px-6 py-4 text-white flex items-center justify-between">
+        <div>
+          <span class="text-[11px] font-bold uppercase tracking-wider text-[#E68A36]">
+            Gather-Feature • Konferenzsaal „Feldberg“
+          </span>
+          <h3 id="whiteboard-modal-title" class="text-lg font-extrabold">
+            🎨 Kollaboratives Team-Whiteboard &amp; Ideenwand
+          </h3>
+        </div>
+        <button
+          type="button"
+          onclick="document.getElementById('whiteboard-modal').close()"
+          class="rounded-lg bg-white/10 hover:bg-white/20 px-3 py-1.5 text-xs font-bold text-white cursor-pointer"
+        >
+          ✕ Schließen
+        </button>
+      </div>
+
+      <div class="p-5 space-y-4">
+        <!-- Toolbar: Colors + Sticky Note Form + Clear -->
+        <div class="flex flex-wrap items-center justify-between gap-3 rounded-xl bg-[#F0F4F5] p-3 border border-[#4B6F77]/25">
+          <div class="flex items-center gap-2">
+            <span class="text-xs font-bold text-[#174955]">Stiftfarbe:</span>
+            <button type="button" data-wb-color="#174955" class="h-6 w-6 rounded-full bg-[#174955] ring-2 ring-offset-1 ring-[#00A5B5] cursor-pointer"></button>
+            <button type="button" data-wb-color="#E68A36" class="h-6 w-6 rounded-full bg-[#E68A36] cursor-pointer"></button>
+            <button type="button" data-wb-color="#7E1946" class="h-6 w-6 rounded-full bg-[#7E1946] cursor-pointer"></button>
+            <button type="button" data-wb-color="#5F7F6E" class="h-6 w-6 rounded-full bg-[#5F7F6E] cursor-pointer"></button>
+            <button type="button" data-wb-color="#00A5B5" class="h-6 w-6 rounded-full bg-[#00A5B5] cursor-pointer"></button>
+          </div>
+
+          <form id="whiteboard-sticky-form" class="flex items-center gap-2 flex-1 max-w-md">
+            <input
+              id="whiteboard-sticky-input"
+              type="text"
+              maxlength="80"
+              placeholder="Post-it Notiz hinzufügen..."
+              class="flex-1 rounded-lg border border-[#4B6F77]/40 bg-white px-3 py-1.5 text-xs focus:border-[#00A5B5] focus:outline-none"
+            />
+            <button
+              type="submit"
+              class="rounded-lg bg-[#E68A36] hover:bg-[#B86518] px-3 py-1.5 text-xs font-bold text-white cursor-pointer"
+            >
+              + Post-it
+            </button>
+          </form>
+
+          <button
+            id="whiteboard-clear-btn"
+            type="button"
+            class="rounded-lg border border-[#7E1946]/40 bg-[#FBF0F4] hover:bg-[#7E1946] hover:text-white px-3 py-1.5 text-xs font-bold text-[#7E1946] transition cursor-pointer"
+          >
+            🗑️ Board leeren
+          </button>
+        </div>
+
+        <!-- Drawing Canvas + Sticky Notes Overlay -->
+        <div class="relative rounded-xl border-2 border-[#4B6F77]/40 bg-[#F4F5F6] overflow-hidden h-[380px]">
+          <canvas
+            id="whiteboard-canvas"
+            width="840"
+            height="380"
+            class="w-full h-full cursor-crosshair bg-white"
+          ></canvas>
+          <div
+            id="whiteboard-stickies-layer"
+            class="pointer-events-none absolute inset-0 p-4 flex flex-wrap content-start gap-3 overflow-hidden"
+          ></div>
+        </div>
+      </div>
+    </dialog>
+
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>
