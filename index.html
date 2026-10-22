@@ -1906,129 +1906,131 @@
       id="chat-center-modal"
       closedby="any"
       aria-labelledby="chat-center-modal-title"
-      class="m-auto w-[94vw] max-w-4xl h-[86vh] max-h-[700px] rounded-2xl border-2 border-[#4B6F77]/20 bg-white p-0 text-[#2A2E30] shadow-2xl backdrop:bg-black/45 overflow-hidden flex flex-col"
+      class="m-auto w-[94vw] max-w-4xl h-[86vh] max-h-[700px] rounded-2xl border-2 border-[#4B6F77]/20 bg-white p-0 text-[#2A2E30] shadow-2xl backdrop:bg-black/45 overflow-hidden"
     >
-      <!-- Top Modal Header -->
-      <div class="bg-[#174955] px-5 py-3.5 text-white flex items-center justify-between shrink-0">
-        <div class="flex items-center gap-2.5">
-          <span class="text-xl select-none">💬</span>
-          <div>
-            <h3 id="chat-center-modal-title" class="text-sm sm:text-base font-extrabold leading-tight">
-              Chat-Center • Untertaunus Hub
-            </h3>
-            <p class="text-[11px] font-medium text-[#EDF5F7]/80">
-              Raum-Chats mit Zonen-Sperre & 1:1-Direktnachrichten
-            </p>
-          </div>
-        </div>
-        <button
-          id="chat-center-close-btn"
-          type="button"
-          class="rounded-lg bg-white/10 hover:bg-white/20 px-3 py-1.5 text-xs font-bold text-white transition cursor-pointer"
-        >
-          ✕ Schließen
-        </button>
-      </div>
-
-      <!-- Main Two-Column Body -->
-      <div class="flex flex-1 min-h-0 overflow-hidden">
-        <!-- Left Column: Navigation (Rooms & DMs) -->
-        <aside class="w-64 sm:w-76 border-r border-[#4B6F77]/15 bg-[#F8FAFB] flex flex-col min-h-0 shrink-0">
-          <div class="flex-1 overflow-y-auto p-3 space-y-4 hub-scroll">
-            <!-- Sektion: Raum-Chats -->
-            <div>
-              <div class="flex items-center justify-between px-1 mb-1.5">
-                <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#4B6F77]">
-                  📍 Raum-Chats (Zonen)
-                </span>
-              </div>
-              <div id="chat-center-rooms-list" class="space-y-1">
-                <!-- Dynamically populated room buttons -->
-              </div>
-            </div>
-
-            <!-- Sektion: Direktnachrichten (1:1) -->
-            <div>
-              <div class="flex items-center justify-between px-1 mb-1.5 pt-2 border-t border-[#4B6F77]/15">
-                <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#4B6F77]">
-                  💬 Direktnachrichten (1:1)
-                </span>
-              </div>
-              <div id="chat-center-dms-list" class="space-y-1">
-                <!-- Dynamically populated DM contact buttons -->
-              </div>
-            </div>
-          </div>
-        </aside>
-
-        <!-- Right Column: Active Conversation & Feed -->
-        <main class="flex-1 flex flex-col min-h-0 bg-white">
-          <!-- Active Conversation Header -->
-          <div class="px-4 py-3 border-b border-[#4B6F77]/15 bg-[#FAFDFD] flex items-center justify-between gap-3 shrink-0">
+      <div class="w-full h-full flex flex-col min-h-0 overflow-hidden">
+        <!-- Top Modal Header -->
+        <div class="bg-[#174955] px-5 py-3.5 text-white flex items-center justify-between shrink-0">
+          <div class="flex items-center gap-2.5 min-w-0">
+            <span class="text-xl select-none shrink-0">💬</span>
             <div class="min-w-0">
-              <div id="chat-center-active-title" class="text-sm font-extrabold text-[#174955] flex items-center gap-2 truncate">
-                <!-- Populated dynamically -->
-              </div>
-              <div id="chat-center-active-subtitle" class="text-[11px] font-medium text-[#64748B] truncate">
-                <!-- Populated dynamically -->
-              </div>
-            </div>
-            <div id="chat-center-active-actions" class="shrink-0 flex items-center gap-1.5">
-              <!-- Populated dynamically (e.g. Hinlaufen / Visitenkarte) -->
+              <h3 id="chat-center-modal-title" class="text-sm sm:text-base font-extrabold leading-tight truncate">
+                Chat-Center • Untertaunus Hub
+              </h3>
+              <p class="text-[11px] font-medium text-[#EDF5F7]/80 truncate">
+                Raum-Chats mit Zonen-Sperre & 1:1-Direktnachrichten
+              </p>
             </div>
           </div>
-
-          <!-- Zone-Locked Warning Banner (Hidden by default) -->
-          <div
-            id="chat-center-locked-banner"
-            class="hidden px-4 py-2.5 bg-[#FFF7ED] border-b border-[#E68A36]/30 text-xs text-[#9A3412] flex items-center justify-between gap-2 shrink-0"
+          <button
+            id="chat-center-close-btn"
+            type="button"
+            class="shrink-0 rounded-lg bg-white/10 hover:bg-white/20 px-3 py-1.5 text-xs font-bold text-white transition cursor-pointer"
           >
-            <div class="flex items-center gap-2">
-              <span>🔒</span>
-              <span id="chat-center-locked-text" class="font-medium">
-                Bewege deinen Avatar in diesen Raum, um mitzureden.
-              </span>
+            ✕ Schließen
+          </button>
+        </div>
+
+        <!-- Main Two-Column Body -->
+        <div class="flex flex-1 min-h-0 min-w-0 overflow-hidden">
+          <!-- Left Column: Navigation (Rooms & DMs) -->
+          <aside class="w-60 sm:w-72 border-r border-[#4B6F77]/15 bg-[#F8FAFB] flex flex-col min-h-0 shrink-0">
+            <div class="flex-1 overflow-y-auto p-3 space-y-4 hub-scroll">
+              <!-- Sektion: Raum-Chats -->
+              <div>
+                <div class="flex items-center justify-between px-1 mb-1.5">
+                  <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#4B6F77]">
+                    📍 Raum-Chats (Zonen)
+                  </span>
+                </div>
+                <div id="chat-center-rooms-list" class="space-y-1">
+                  <!-- Dynamically populated room buttons -->
+                </div>
+              </div>
+
+              <!-- Sektion: Direktnachrichten (1:1) -->
+              <div>
+                <div class="flex items-center justify-between px-1 mb-1.5 pt-2 border-t border-[#4B6F77]/15">
+                  <span class="text-[10px] font-extrabold uppercase tracking-wider text-[#4B6F77]">
+                    💬 Direktnachrichten (1:1)
+                  </span>
+                </div>
+                <div id="chat-center-dms-list" class="space-y-1">
+                  <!-- Dynamically populated DM contact buttons -->
+                </div>
+              </div>
             </div>
-            <button
-              id="chat-center-teleport-btn"
-              type="button"
-              class="shrink-0 rounded-lg bg-[#E68A36] hover:bg-[#B86518] text-white px-2.5 py-1 text-[11px] font-extrabold transition cursor-pointer"
+          </aside>
+
+          <!-- Right Column: Active Conversation & Feed -->
+          <main class="flex-1 flex flex-col min-h-0 min-w-0 bg-white overflow-hidden">
+            <!-- Active Conversation Header -->
+            <div class="px-4 py-2.5 border-b border-[#4B6F77]/15 bg-[#FAFDFD] flex items-center justify-between gap-2 shrink-0 min-w-0">
+              <div class="min-w-0 flex-1">
+                <div id="chat-center-active-title" class="text-sm font-extrabold text-[#174955] flex items-center gap-2 truncate">
+                  <!-- Populated dynamically -->
+                </div>
+                <div id="chat-center-active-subtitle" class="text-[11px] font-medium text-[#64748B] truncate">
+                  <!-- Populated dynamically -->
+                </div>
+              </div>
+              <div id="chat-center-active-actions" class="shrink-0 flex items-center gap-1.5">
+                <!-- Populated dynamically (e.g. Hinlaufen / Visitenkarte) -->
+              </div>
+            </div>
+
+            <!-- Zone-Locked Warning Banner (Hidden by default) -->
+            <div
+              id="chat-center-locked-banner"
+              class="hidden px-4 py-2.5 bg-[#FFF7ED] border-b border-[#E68A36]/30 text-xs text-[#9A3412] flex items-center justify-between gap-2 shrink-0"
             >
-              🧭 Dorthin bewegen
-            </button>
-          </div>
-
-          <!-- Messages Stream -->
-          <div
-            id="chat-center-messages"
-            class="flex-1 overflow-y-auto p-4 space-y-3 hub-scroll bg-[#FAFDFD]"
-            aria-live="polite"
-          >
-            <!-- Messages populated dynamically -->
-          </div>
-
-          <!-- Input Bar -->
-          <div id="chat-center-input-bar" class="p-3 border-t border-[#4B6F77]/15 bg-white shrink-0">
-            <form id="chat-center-form" class="flex items-center gap-2">
-              <input
-                id="chat-center-input"
-                type="text"
-                maxlength="240"
-                placeholder="Nachricht eingeben... [Enter]"
-                autocomplete="off"
-                class="flex-1 rounded-xl border border-[#94B0B8] bg-[#F8FAFB] px-3.5 py-2.5 text-xs font-medium text-[#151718] placeholder-[#64748B] focus:bg-white focus:border-[#174955] focus:outline-none transition"
-              />
+              <div class="flex items-center gap-2 min-w-0">
+                <span class="shrink-0">🔒</span>
+                <span id="chat-center-locked-text" class="font-medium truncate">
+                  Bewege deinen Avatar in diesen Raum, um mitzureden.
+                </span>
+              </div>
               <button
-                id="chat-center-submit-btn"
-                type="submit"
-                class="rounded-xl bg-[#174955] hover:bg-[#0F323A] text-white px-4 py-2.5 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shrink-0 shadow-2xs"
+                id="chat-center-teleport-btn"
+                type="button"
+                class="shrink-0 rounded-lg bg-[#E68A36] hover:bg-[#B86518] text-white px-2.5 py-1 text-[11px] font-extrabold transition cursor-pointer"
               >
-                <span>Senden</span>
-                <span class="text-sm leading-none">➤</span>
+                🧭 Dorthin bewegen
               </button>
-            </form>
-          </div>
-        </main>
+            </div>
+
+            <!-- Messages Stream -->
+            <div
+              id="chat-center-messages"
+              class="flex-1 overflow-y-auto p-4 space-y-3 hub-scroll bg-[#FAFDFD] min-w-0 w-full"
+              aria-live="polite"
+            >
+              <!-- Messages populated dynamically -->
+            </div>
+
+            <!-- Input Bar -->
+            <div id="chat-center-input-bar" class="p-3 border-t border-[#4B6F77]/15 bg-white shrink-0 w-full min-w-0">
+              <form id="chat-center-form" class="flex items-center gap-2 w-full min-w-0">
+                <input
+                  id="chat-center-input"
+                  type="text"
+                  maxlength="240"
+                  placeholder="Nachricht eingeben... [Enter]"
+                  autocomplete="off"
+                  class="flex-1 min-w-0 rounded-xl border border-[#94B0B8] bg-[#F8FAFB] px-3.5 py-2 text-xs font-medium text-[#151718] placeholder-[#64748B] focus:bg-white focus:border-[#174955] focus:outline-none transition"
+                />
+                <button
+                  id="chat-center-submit-btn"
+                  type="submit"
+                  class="rounded-xl bg-[#174955] hover:bg-[#0F323A] text-white px-3.5 sm:px-4 py-2 text-xs font-bold transition flex items-center gap-1.5 cursor-pointer shrink-0 shadow-2xs"
+                >
+                  <span>Senden</span>
+                  <span class="text-sm leading-none">➤</span>
+                </button>
+              </form>
+            </div>
+          </main>
+        </div>
       </div>
     </dialog>
 

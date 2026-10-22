@@ -128,6 +128,10 @@ html {
 }
 
 /* Native dialog styling, scroll containment & backdrop */
+dialog:not([open]) {
+  display: none !important;
+}
+
 dialog:modal {
   overscroll-behavior: contain;
 }

@@ -419,7 +419,7 @@ export class ChatCenter {
 
     if (this.activeTarget.type === 'room') {
       const room = this.activeTarget.room;
-      titleEl.innerHTML = `<span>${room.icon}</span> <span>${escapeHtml(room.label)}</span>`;
+      titleEl.innerHTML = `<span>${room.icon}</span> <span class="truncate">${escapeHtml(room.label)}</span>`;
       subtitleEl.textContent = room.description;
     } else {
       const partner = this.activeTarget.partner;
@@ -428,10 +428,10 @@ export class ChatCenter {
         <span class="inline-block h-3.5 w-3.5 rounded-full shrink-0" style="background-color: ${escapeHtml(
           partner.color || '#174955'
         )}"></span>
-        <span>${escapeHtml(partner.name)}</span>
+        <span class="truncate">${escapeHtml(partner.name)}</span>
         ${
           partner.isNpc
-            ? '<span class="rounded bg-[#174955]/10 px-1.5 py-0.5 text-[9.5px] font-extrabold text-[#4B6F77]">🤖 DEMO-BOT</span>'
+            ? '<span class="shrink-0 rounded bg-[#174955]/10 px-1.5 py-0.5 text-[9.5px] font-extrabold text-[#4B6F77]">🤖 DEMO-BOT</span>'
             : ''
         }
       `;
@@ -441,8 +441,9 @@ export class ChatCenter {
       const walkBtn = document.createElement('button');
       walkBtn.type = 'button';
       walkBtn.className =
-        'rounded-lg bg-[#8EAE9D] hover:bg-[#5F7F6E] text-white px-2.5 py-1 text-xs font-bold transition cursor-pointer flex items-center gap-1';
-      walkBtn.innerHTML = '🧭 <span>Hinlaufen</span>';
+        'shrink-0 rounded-lg bg-[#8EAE9D] hover:bg-[#5F7F6E] text-white px-2 py-1 text-[11px] font-bold transition cursor-pointer flex items-center gap-1';
+      walkBtn.innerHTML = '🧭 <span class="hidden sm:inline">Hinlaufen</span>';
+      walkBtn.title = 'Direkt zu diesem Avatar laufen';
       walkBtn.addEventListener('click', () => {
         this.close();
         if (this.onWalkToPlayer) {
@@ -453,8 +454,9 @@ export class ChatCenter {
       const cardBtn = document.createElement('button');
       cardBtn.type = 'button';
       cardBtn.className =
-        'rounded-lg bg-[#EDF5F7] hover:bg-[#174955]/10 text-[#174955] px-2.5 py-1 text-xs font-bold transition cursor-pointer flex items-center gap-1';
-      cardBtn.innerHTML = '👤 <span>Visitenkarte</span>';
+        'shrink-0 rounded-lg bg-[#EDF5F7] hover:bg-[#174955]/10 text-[#174955] px-2 py-1 text-[11px] font-bold transition cursor-pointer flex items-center gap-1';
+      cardBtn.innerHTML = '👤 <span class="hidden sm:inline">Visitenkarte</span>';
+      cardBtn.title = 'Digitale Visitenkarte anzeigen';
       cardBtn.addEventListener('click', () => {
         if (this.onOpenVCard) {
           this.onOpenVCard(partner);
@@ -502,24 +504,24 @@ export class ChatCenter {
     messages.forEach((msg) => {
       const isSelf = msg.senderId === selfId;
       const row = document.createElement('div');
-      row.className = `flex flex-col ${isSelf ? 'items-end' : 'items-start'} space-y-1`;
+      row.className = `flex flex-col ${isSelf ? 'items-end' : 'items-start'} space-y-1 w-full min-w-0`;
 
       row.innerHTML = `
         <div class="flex items-center gap-1.5 text-[10px] ${
           isSelf ? 'text-right' : 'text-left'
-        }">
-          <span class="font-extrabold text-[#174955] flex items-center gap-1">
-            <span class="inline-block h-2 w-2 rounded-full" style="background-color: ${escapeHtml(
+        } max-w-full truncate">
+          <span class="font-extrabold text-[#174955] flex items-center gap-1 truncate max-w-[200px]">
+            <span class="inline-block h-2 w-2 rounded-full shrink-0" style="background-color: ${escapeHtml(
               msg.color || '#174955'
             )}"></span>
-            ${escapeHtml(msg.senderName)}
+            <span class="truncate">${escapeHtml(msg.senderName)}</span>
             ${
               msg.senderId?.startsWith('npc-')
-                ? '<span class="rounded bg-[#174955]/10 px-1 py-0.2 text-[8.5px] font-extrabold text-[#4B6F77]">BOT</span>'
+                ? '<span class="shrink-0 rounded bg-[#174955]/10 px-1 py-0.2 text-[8.5px] font-extrabold text-[#4B6F77]">BOT</span>'
                 : ''
             }
           </span>
-          <span class="text-[#64748B] font-medium">${escapeHtml(msg.timestamp)}</span>
+          <span class="text-[#64748B] font-medium shrink-0">${escapeHtml(msg.timestamp)}</span>
         </div>
         <div class="max-w-[85%] rounded-2xl px-3.5 py-2 text-xs font-medium leading-relaxed shadow-2xs break-words ${
           isSelf
