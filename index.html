@@ -135,143 +135,63 @@
             </div>
           </div>
 
-          <!-- 2. HERO BENTO-GRID (Linke Hauptkarte + 2 Rechte Side-Karten) -->
-          <div class="grid grid-cols-1 lg:grid-cols-12 gap-5 items-stretch">
-            <!-- Linke Hauptkarte (Groß, 7 Spalten) -->
-            <div class="lg:col-span-7 rounded-3xl bg-white border border-[#4B6F77]/15 p-7 sm:p-10 lg:p-12 shadow-sm flex flex-col justify-between relative overflow-hidden">
-              <!-- Dezentes dekoratives Hintergrund-Licht -->
-              <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#EDF5F7] blur-2xl opacity-80"></div>
+          <!-- 2. HERO HAUPTKARTE -->
+          <div class="rounded-3xl bg-white border border-[#4B6F77]/15 p-7 sm:p-10 lg:p-12 shadow-sm flex flex-col justify-between relative overflow-hidden">
+            <!-- Dezentes dekoratives Hintergrund-Licht -->
+            <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#EDF5F7] blur-2xl opacity-80"></div>
 
-              <div class="relative z-10 space-y-5">
-                <!-- Pill-Badge oberhalb der Headline -->
-                <div class="inline-flex items-center gap-2 rounded-full bg-[#EBF9FB] border border-[#00A5B5]/25 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-[#007A87]">
-                  <span class="text-[#00A5B5]">❖</span>
-                  <span>BUSINESS HUB UNTERTAUNUS</span>
-                </div>
-
-                <!-- Zwei-Farben-Headline: Zeile 1 in tiefem Petrol/Anthrazit, Zeile 2 in Schiefer-Petrol -->
-                <h1 class="hero-fluid-title font-extrabold tracking-tight">
-                  <span class="block text-[#174955]">Dein virtueller Workspace</span>
-                  <span class="block text-[#4B6F77] mt-1">für echte regionale Synergien.</span>
-                </h1>
-
-                <!-- Fließtext -->
-                <p class="text-sm sm:text-base text-[#2A2E30]/85 max-w-xl leading-relaxed">
-                  Für Freelancer, KMUs und Homeoffice-Kräfte zwischen Aar und Taunuskamm. Setz dich im interaktiven 2.5D-Campus an deinen Schreibtisch, triff Nachbarn an der Kaffeemaschine oder pinne Gesuche ans Schwarze Brett.
-                </p>
+            <div class="relative z-10 space-y-5">
+              <!-- Pill-Badge oberhalb der Headline -->
+              <div class="inline-flex items-center gap-2 rounded-full bg-[#EBF9FB] border border-[#00A5B5]/25 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-[#007A87]">
+                <span class="text-[#00A5B5]">❖</span>
+                <span>BUSINESS HUB UNTERTAUNUS</span>
               </div>
 
-              <!-- Primärer CTA & Live-Indikatoren -->
-              <div class="relative z-10 pt-8 space-y-6">
-                <div class="flex flex-wrap items-center gap-3.5">
-                  <button
-                    type="button"
-                    data-action="start-onboarding"
-                    class="inline-flex items-center justify-center gap-3 rounded-full bg-[#E68A36] hover:bg-[#B86518] px-7 py-4 text-sm sm:text-base font-extrabold text-white shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
-                  >
-                    <span>Jetzt Raum betreten</span>
-                    <span aria-hidden="true" class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-xs">→</span>
-                  </button>
+              <!-- Zwei-Farben-Headline: Zeile 1 in tiefem Petrol/Anthrazit, Zeile 2 in Schiefer-Petrol -->
+              <h1 class="hero-fluid-title font-extrabold tracking-tight">
+                <span class="block text-[#174955]">Dein virtueller Workspace</span>
+                <span class="block text-[#4B6F77] mt-1">für echte regionale Synergien.</span>
+              </h1>
 
-                  <button
-                    type="button"
-                    data-action="open-bulletin"
-                    class="inline-flex items-center justify-center gap-2 rounded-full bg-[#EDF5F7] hover:bg-[#DCECEF] border border-[#4B6F77]/20 px-5 py-4 text-xs sm:text-sm font-bold text-[#174955] transition-all transform hover:-translate-y-0.5 cursor-pointer"
-                  >
-                    <span>📌 Schwarzes Brett</span>
-                    <span data-pin-count class="rounded-full bg-[#174955] px-2 py-0.5 text-[10px] font-extrabold text-white">4</span>
-                  </button>
-                </div>
-
-                <div class="pt-4 border-t border-[#4B6F77]/12 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-[#4B6F77]">
-                  <span class="inline-flex items-center gap-2 text-[#174955]">
-                    <span class="h-2.5 w-2.5 rounded-full bg-[#8EAE9D]"></span>
-                    <span>Status: 2.5D-Campus bereit</span>
-                  </span>
-                  <span class="inline-flex items-center gap-1.5">
-                    <span class="text-[#00A5B5]">❖</span> 7 vernetzte Räume
-                  </span>
-                  <span class="inline-flex items-center gap-1.5">
-                    <span class="text-[#E68A36]">❖</span> Direkt im Browser ohne Login-Zwang
-                  </span>
-                </div>
-              </div>
+              <!-- Fließtext -->
+              <p class="text-sm sm:text-base text-[#2A2E30]/85 max-w-2xl leading-relaxed">
+                Für Freelancer, KMUs und Homeoffice-Kräfte zwischen Aar und Taunuskamm. Setz dich im interaktiven 2.5D-Campus an deinen Schreibtisch, triff Nachbarn an der Kaffeemaschine oder pinne Gesuche ans Schwarze Brett.
+              </p>
             </div>
 
-            <!-- Rechte Side-Karten (5 Spalten: Obere Gradient-Card + Untere Visual-Card) -->
-            <div class="lg:col-span-5 flex flex-col gap-5">
-              <!-- Obere Karte (Gradient-Card: Warm-Amber #E68A36 zu Beerenrot #7E1946) -->
-              <div class="flex-1 rounded-3xl bg-gradient-to-br from-[#E68A36] via-[#C85A3D] to-[#7E1946] p-7 sm:p-8 text-white shadow-md flex flex-col justify-between relative overflow-hidden">
-                <div class="pointer-events-none absolute -right-10 -bottom-10 h-40 w-40 rounded-full bg-white/10 blur-xl"></div>
+            <!-- Primärer CTA & Live-Indikatoren -->
+            <div class="relative z-10 pt-8 space-y-6">
+              <div class="flex flex-wrap items-center gap-3.5">
+                <button
+                  type="button"
+                  data-action="start-onboarding"
+                  class="inline-flex items-center justify-center gap-3 rounded-full bg-[#E68A36] hover:bg-[#B86518] px-7 py-4 text-sm sm:text-base font-extrabold text-white shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                >
+                  <span>Jetzt Raum betreten</span>
+                  <span aria-hidden="true" class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-xs">→</span>
+                </button>
 
-                <div class="flex items-center justify-between gap-2">
-                  <span class="inline-flex items-center gap-1.5 rounded-full bg-white/20 backdrop-blur-xs px-3 py-1 text-[11px] font-extrabold uppercase tracking-wider text-white">
-                    <span>❖</span>
-                    <span>100% Regionaler Fokus</span>
-                  </span>
-                  <span class="text-xs font-bold text-white/85">Rheingau-Taunus</span>
-                </div>
-
-                <div class="my-4">
-                  <div class="text-3xl sm:text-4xl font-extrabold tracking-tight leading-none">
-                    0 € Einstiegshürde
-                  </div>
-                  <p class="mt-2 text-xs sm:text-sm text-white/90 leading-relaxed">
-                    Offenes Coworking, digitale Visitenkarte und regionale B2B-Pinnwand – kostenfrei für Selbstständige &amp; Betriebe vor Ort.
-                  </p>
-                </div>
-
-                <div class="flex items-center justify-between pt-3 border-t border-white/20 text-xs font-bold">
-                  <span>Sofort-Zugang ohne Abo</span>
-                  <span class="rounded-full bg-white/20 px-2.5 py-0.5 text-[11px]">Taunus-Initiative</span>
-                </div>
+                <button
+                  type="button"
+                  data-action="open-bulletin"
+                  class="inline-flex items-center justify-center gap-2 rounded-full bg-[#EDF5F7] hover:bg-[#DCECEF] border border-[#4B6F77]/20 px-5 py-4 text-xs sm:text-sm font-bold text-[#174955] transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                >
+                  <span>📌 Schwarzes Brett</span>
+                  <span data-pin-count class="rounded-full bg-[#174955] px-2 py-0.5 text-[10px] font-extrabold text-white">4</span>
+                </button>
               </div>
 
-              <!-- Untere Karte (Visual Card: Dunkles Schiefer-Petrol #334E54 mit Grafik-Overlay) -->
-              <div class="flex-1 rounded-3xl bg-[#334E54] border border-[#4B6F77]/30 p-7 sm:p-8 text-white shadow-md flex flex-col justify-between relative overflow-hidden">
-                <!-- Stilisierte 2.5D-Campus Grafik-Komposition im Hintergrund -->
-                <div class="pointer-events-none absolute right-3 top-3 bottom-3 w-44 rounded-2xl bg-[#0F323A]/55 border border-white/10 p-3 hidden sm:flex flex-col justify-between">
-                  <div class="flex items-center justify-between text-[10px] text-[#EBF9FB]/80 font-bold">
-                    <span>🌿 Fokus-Tisch 04</span>
-                    <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
-                  </div>
-                  <!-- Mini 2.5D Avatare & Sprechblase -->
-                  <div class="space-y-2 my-auto">
-                    <div class="rounded-xl bg-white/95 text-[#174955] px-2.5 py-1.5 text-[10px] font-bold shadow-sm">
-                      💬 „Kurzer Kaffee in der Lounge?“
-                    </div>
-                    <div class="flex items-center gap-2">
-                      <span class="h-7 w-7 rounded-xl bg-[#E68A36] text-white font-extrabold text-[10px] flex items-center justify-center shadow-xs">ML</span>
-                      <span class="h-7 w-7 rounded-xl bg-[#00A5B5] text-white font-extrabold text-[10px] flex items-center justify-center shadow-xs">SB</span>
-                      <span class="h-7 w-7 rounded-xl bg-[#8EAE9D] text-[#0F323A] font-extrabold text-[10px] flex items-center justify-center shadow-xs">+4</span>
-                    </div>
-                  </div>
-                  <div class="text-[10px] text-[#E68A36] font-bold">🪑 Klick = Hinsetzen</div>
-                </div>
-
-                <div class="relative z-10 sm:max-w-[58%] space-y-2">
-                  <span class="inline-flex items-center gap-1.5 rounded-full bg-[#0F323A]/70 border border-[#8EAE9D]/40 px-3 py-1 text-[11px] font-bold text-[#F2F7F4]">
-                    <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
-                    <span>Live-Präsenz</span>
-                  </span>
-                  <h2 class="text-xl sm:text-2xl font-extrabold leading-snug text-white pt-1">
-                    Direkter Draht statt Mail-Ping-Pong
-                  </h2>
-                  <p class="text-xs text-[#EDF5F7]/80 leading-relaxed">
-                    Sieh auf einen Blick, wer gerade ansprechbar ist, wink kurz rüber oder lauf zum Nachbartisch.
-                  </p>
-                </div>
-
-                <div class="relative z-10 pt-4 flex items-center gap-3">
-                  <button
-                    type="button"
-                    data-action="start-onboarding"
-                    class="inline-flex items-center gap-1.5 rounded-full bg-[#174955] hover:bg-[#0F323A] border border-white/15 px-4 py-2 text-xs font-bold text-white transition cursor-pointer"
-                  >
-                    <span>2.5D-Campus öffnen</span>
-                    <span class="text-[#E68A36]">→</span>
-                  </button>
-                </div>
+              <div class="pt-4 border-t border-[#4B6F77]/12 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-[#4B6F77]">
+                <span class="inline-flex items-center gap-2 text-[#174955]">
+                  <span class="h-2.5 w-2.5 rounded-full bg-[#8EAE9D]"></span>
+                  <span>Status: 2.5D-Campus bereit</span>
+                </span>
+                <span class="inline-flex items-center gap-1.5">
+                  <span class="text-[#00A5B5]">❖</span> 7 vernetzte Räume
+                </span>
+                <span class="inline-flex items-center gap-1.5">
+                  <span class="text-[#E68A36]">❖</span> Direkt im Browser ohne Login-Zwang
+                </span>
               </div>
             </div>
           </div>
