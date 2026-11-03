@@ -135,19 +135,19 @@
             </div>
           </div>
 
-          <!-- 2. HERO HAUPTKARTE -->
-          <div class="rounded-3xl bg-white border border-[#4B6F77]/15 p-7 sm:p-10 lg:p-12 shadow-sm flex flex-col justify-between relative overflow-hidden">
+          <!-- 2. HERO HAUPTKARTE (Vereint mit Community-Botschaft in einer harmonischen Box) -->
+          <div class="rounded-3xl bg-white border border-[#4B6F77]/15 p-7 sm:p-9 lg:p-11 shadow-sm flex flex-col justify-between relative overflow-hidden space-y-6">
             <!-- Dezentes dekoratives Hintergrund-Licht -->
-            <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#EDF5F7] blur-2xl opacity-80"></div>
+            <div class="pointer-events-none absolute -top-24 -right-24 h-64 w-64 rounded-full bg-[#EDF5F7] blur-2xl opacity-75"></div>
 
-            <div class="relative z-10 space-y-5">
+            <div class="relative z-10 space-y-4">
               <!-- Pill-Badge oberhalb der Headline -->
               <div class="inline-flex items-center gap-2 rounded-full bg-[#EBF9FB] border border-[#00A5B5]/25 px-3.5 py-1.5 text-[11px] font-extrabold uppercase tracking-wider text-[#007A87]">
                 <span class="text-[#00A5B5]">❖</span>
                 <span>BUSINESS HUB UNTERTAUNUS</span>
               </div>
 
-              <!-- Zwei-Farben-Headline: Zeile 1 in tiefem Petrol/Anthrazit, Zeile 2 in Schiefer-Petrol -->
+              <!-- Zwei-Farben-Headline -->
               <h1 class="hero-fluid-title font-extrabold tracking-tight">
                 <span class="block text-[#174955]">Dein virtueller Workspace</span>
                 <span class="block text-[#4B6F77] mt-1">für echte regionale Synergien.</span>
@@ -159,84 +159,54 @@
               </p>
             </div>
 
-            <!-- Primärer CTA & Live-Indikatoren -->
-            <div class="relative z-10 pt-8 space-y-6">
-              <div class="flex flex-wrap items-center gap-3.5">
+            <!-- Primärer CTA & Sanftere Buttons -->
+            <div class="relative z-10 space-y-5">
+              <div class="flex flex-wrap items-center gap-3">
                 <button
                   type="button"
                   data-action="start-onboarding"
-                  class="inline-flex items-center justify-center gap-3 rounded-full bg-[#E68A36] hover:bg-[#B86518] px-7 py-4 text-sm sm:text-base font-extrabold text-white shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                  class="inline-flex items-center justify-center gap-2.5 rounded-full bg-[#D97D3E] hover:bg-[#C87033] px-6 py-3.5 text-sm sm:text-base font-bold text-white shadow-xs hover:shadow-sm transition-all transform hover:-translate-y-0.5 cursor-pointer"
                 >
                   <span>Jetzt Raum betreten</span>
-                  <span aria-hidden="true" class="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white/20 text-xs">→</span>
+                  <span aria-hidden="true" class="inline-flex h-5 w-5 items-center justify-center rounded-full bg-white/20 text-xs">→</span>
                 </button>
 
                 <button
                   type="button"
                   data-action="open-bulletin"
-                  class="inline-flex items-center justify-center gap-2 rounded-full bg-[#EDF5F7] hover:bg-[#DCECEF] border border-[#4B6F77]/20 px-5 py-4 text-xs sm:text-sm font-bold text-[#174955] transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                  class="inline-flex items-center justify-center gap-2 rounded-full bg-[#F3F7F8] hover:bg-[#E6EFF1] border border-[#4B6F77]/20 px-5 py-3.5 text-xs sm:text-sm font-semibold text-[#174955] transition-all transform hover:-translate-y-0.5 cursor-pointer"
                 >
                   <span>📌 Schwarzes Brett</span>
-                  <span data-pin-count class="rounded-full bg-[#174955] px-2 py-0.5 text-[10px] font-extrabold text-white">4</span>
+                  <span data-pin-count class="rounded-full bg-[#174955]/12 text-[#174955] px-2 py-0.5 text-[10px] font-extrabold">4</span>
                 </button>
               </div>
 
-              <div class="pt-4 border-t border-[#4B6F77]/12 flex flex-wrap items-center gap-x-6 gap-y-2 text-xs font-semibold text-[#4B6F77]">
-                <span class="inline-flex items-center gap-2 text-[#174955]">
-                  <span class="h-2.5 w-2.5 rounded-full bg-[#8EAE9D]"></span>
-                  <span>Status: 2.5D-Campus bereit</span>
-                </span>
-                <span class="inline-flex items-center gap-1.5">
-                  <span class="text-[#00A5B5]">❖</span> 7 vernetzte Räume
-                </span>
-                <span class="inline-flex items-center gap-1.5">
-                  <span class="text-[#E68A36]">❖</span> Direkt im Browser ohne Login-Zwang
-                </span>
-              </div>
-            </div>
-          </div>
-
-          <!-- 3. BANNER-LEISTE ("We are not just another video call") -->
-          <div class="rounded-3xl bg-white border border-[#4B6F77]/15 p-4 sm:p-5 shadow-sm flex flex-col lg:flex-row items-center justify-between gap-4">
-            <!-- Icon-Block links in dunklem Petrol #0F323A -->
-            <div class="w-full lg:w-auto flex items-center gap-3.5 rounded-2xl bg-[#0F323A] px-4 py-3 text-white shrink-0">
-              <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-[#174955] text-[#E68A36] text-base font-extrabold">
-                ☕
-              </span>
-              <div>
-                <div class="text-[10px] font-extrabold uppercase tracking-widest text-[#00A5B5]">
-                  WE ARE NOT JUST ANOTHER VIDEO CALL
+              <!-- Integrierte Botschaft: Keine anonyme Plattform / Digitaler Stammtisch -->
+              <div class="pt-5 border-t border-[#4B6F77]/12 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div class="flex items-start sm:items-center gap-3 min-w-0">
+                  <span class="flex h-9 w-9 items-center justify-center rounded-xl bg-[#F4F8F9] border border-[#4B6F77]/15 text-[#D97D3E] text-base shrink-0">
+                    ☕
+                  </span>
+                  <div>
+                    <div class="text-xs sm:text-sm font-bold text-[#174955]">
+                      Keine anonyme Plattform – <span class="text-[#4B6F77] font-semibold">Dein digitaler Stammtisch für den Untertaunus.</span>
+                    </div>
+                    <p class="text-xs text-[#64748B] mt-0.5">
+                      Kamera &amp; Mikrofon bleiben aus – kommuniziere entspannt per Sprechblase <kbd class="rounded bg-[#F0F4F5] px-1.5 py-0.5 text-[10px] font-bold text-[#174955] border border-[#4B6F77]/20">Enter</kbd>, Video nur im Konferenzsaal.
+                    </p>
+                  </div>
                 </div>
-                <div class="text-xs font-bold text-white">
-                  Kamera &amp; Mikro bleiben im Alltag aus
+
+                <div class="flex items-center gap-3 shrink-0 pt-1 md:pt-0">
+                  <span class="inline-flex items-center gap-1.5 rounded-full bg-[#F2F7F4] border border-[#8EAE9D]/40 px-3 py-1 text-xs font-semibold text-[#5F7F6E]">
+                    <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
+                    <span>Bereit</span>
+                  </span>
+                  <span class="text-xs font-semibold text-[#4B6F77]">
+                    7 vernetzte Räume • Ohne Login
+                  </span>
                 </div>
               </div>
-            </div>
-
-            <!-- Horizontal geteilte Botschaft -->
-            <div class="flex-1 text-center lg:text-left px-2">
-              <p class="text-sm sm:text-base font-extrabold text-[#174955]">
-                Keine anonyme Plattform – <span class="text-[#4B6F77]">Dein digitaler Stammtisch für den Untertaunus.</span>
-              </p>
-              <p class="text-xs text-[#4B6F77] mt-0.5">
-                Im Coworking-Bereich kommunizierst du entspannt per Sprechblase <kbd class="rounded bg-[#EDF5F7] px-1.5 py-0.5 text-[10px] font-bold text-[#174955]">Enter</kbd> – Video schaltet sich nur ein, wenn du bewusst einen Konferenzsaal betrittst.
-              </p>
-            </div>
-
-            <!-- Direkt-Einstieg in das 2D-Canvas-Game -->
-            <div class="w-full lg:w-auto flex items-center justify-center gap-2 shrink-0">
-              <span class="hidden sm:inline-flex items-center gap-1.5 rounded-full bg-[#F2F7F4] border border-[#8EAE9D]/40 px-3 py-1.5 text-xs font-bold text-[#5F7F6E]">
-                <span class="h-2 w-2 rounded-full bg-[#8EAE9D]"></span>
-                <span>Bereit</span>
-              </span>
-              <button
-                type="button"
-                data-action="start-onboarding"
-                class="w-full sm:w-auto inline-flex items-center justify-center gap-2 rounded-full bg-[#174955] hover:bg-[#0F323A] px-5 py-2.5 text-xs font-bold text-white shadow-xs transition-all transform hover:-translate-y-0.5 cursor-pointer"
-              >
-                <span>Visitenkarte anlegen &amp; starten</span>
-                <span class="text-[#E68A36]">→</span>
-              </button>
             </div>
           </div>
         </section>
@@ -639,7 +609,7 @@
                   <button
                     type="button"
                     data-action="start-onboarding"
-                    class="inline-flex items-center gap-2 rounded-full bg-[#E68A36] hover:bg-[#B86518] px-4 py-2 text-xs font-extrabold text-white shadow-sm transition-all transform hover:-translate-y-0.5 cursor-pointer"
+                    class="inline-flex items-center gap-2 rounded-full bg-[#D97D3E] hover:bg-[#C87033] px-4 py-2 text-xs font-bold text-white shadow-xs transition-all transform hover:-translate-y-0.5 cursor-pointer"
                   >
                     <span>Jetzt beitreten</span>
                     <span>→</span>
@@ -1385,7 +1355,7 @@
           <button
             id="welcome-enter-btn"
             type="button"
-            class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#E68A36] hover:bg-[#B86518] px-6 py-3.5 text-sm font-extrabold text-white shadow-md hover:shadow-lg transition cursor-pointer"
+            class="w-full inline-flex items-center justify-center gap-2 rounded-full bg-[#D97D3E] hover:bg-[#C87033] px-6 py-3.5 text-sm font-bold text-white shadow-xs hover:shadow-sm transition cursor-pointer"
           >
             <span>Als <span id="welcome-btn-name">Alex</span> betreten</span>
             <span class="text-lg leading-none">→</span>
@@ -1565,7 +1535,7 @@
             <button
               id="profile-submit-btn"
               type="submit"
-              class="rounded-full bg-[#E68A36] hover:bg-[#B86518] px-6 py-3 text-xs sm:text-sm font-extrabold text-white shadow-md hover:shadow-lg transition-all transform hover:-translate-y-0.5 cursor-pointer"
+              class="rounded-full bg-[#D97D3E] hover:bg-[#C87033] px-6 py-3 text-xs sm:text-sm font-bold text-white shadow-xs hover:shadow-sm transition-all transform hover:-translate-y-0.5 cursor-pointer"
             >
               🚀 Jetzt Raum betreten →
             </button>
